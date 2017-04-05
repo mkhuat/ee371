@@ -22,7 +22,8 @@ module testBench;
 endmodule
 
 module Tester(clk, rst, q);
-        input clk, rst;
+        output clk, rst;
+		reg clk, rst;
 		output [3:0] q;
 		wire [3:0] q;
         Main dut (clk, rst, q);
@@ -32,13 +33,40 @@ module Tester(clk, rst, q);
 		initial // Response
 
 		begin
-			$display("\t\t q[3] q[2] q[1] q[0] \t Time ");
-			$monitor("\t\t %b %b %b %b \t %b", q[3], q[2], q[1], q[0], $time);
+			$display("\t\t q[3] \t q[2] \t q[1] \t q[0] \t Clock \t Time ");
+			$monitor("\t\t %b %b %b %b %b \t %b", q[3], q[2], q[1], q[0], clk, $time);
 		end	
 
 		initial // Stimulus
 		begin
 			clk = 1'b0;
+			rst = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			// Will now have set q to be 0000
+			rst = 1'b1;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
+			#stimDelay clk = 1'b1;
+			#stimDelay clk = 1'b0;
 			#stimDelay clk = 1'b1;
 			#stimDelay clk = 1'b0;
 			#stimDelay clk = 1'b1;
