@@ -1,23 +1,41 @@
-`include "Main.v"
+`include "RippleUpCounter.v"
+`include "SyncUpCounter.v"
+`include "JohnsonUpCounter.v"
+
+
+/*
+To test a module, uncomment:
+	1. test module declaration (ex: RippleUpCounter rippleUpCounter (clk, rst, q);)
+	2. dump files (ex: $dumpfile("RippleUpCounter.vcd"); $dumpvars(1, rippleUpCounter);)
+	3. dut in the test proper (ex: SyncUpCounter dut (clk, rst, q);)
+*/
 
 module testBench;
-
-	// connect the two modules
 	wire clk, rst;
 	wire [3:0] q;
 
-	// declare an instance of the AND module
-	Main main (clk, rst, q);
-
-	// declare an instance of the testIt module
+	// Declare instance of test module
+	// RippleUpCounter rippleUpCounter (clk, rst, q);
+	SyncUpCounter syncUpCounter (clk, rst, q);
+	// JohnsonUpCounter johnsonUpCounter (clk, rst, q);
+	
+	// declare an instance of the Tester module
 	Tester aTester (clk, rst, q);
-
+	
 	// file for gtkwave
 	initial
 	begin
-		// these two files support gtkwave and are required
-		$dumpfile("main.vcd");
-		$dumpvars(1, main);
+		// RippleUpCounter dump
+		// $dumpfile("RippleUpCounter.vcd");
+		// $dumpvars(1, rippleUpCounter);
+		
+		// SyncUpCounter dump
+		$dumpfile("SyncupCounter.vcd");
+		$dumpvars(1, syncUpCounter);
+		
+		// JohnsonUpCounter dump
+		// $dumpfile("JohnsonUpCounter.vcd");
+		// $dumpvars(1, johnsonUpCounter);
 	end
 endmodule
 
@@ -26,15 +44,19 @@ module Tester(clk, rst, q);
 		reg clk, rst;
 		output [3:0] q;
 		wire [3:0] q;
-        Main dut (clk, rst, q);
-			
+        
+		// Uncomment to test:
+		// RippleUpCounter dut (clk, rst, q);
+		SyncUpCounter dut (clk, rst, q);
+		// JohnsonUpCounter dut (clk, rst, q);
+		
 		parameter stimDelay = 20;
 
 		initial // Response
 
 		begin
 			$display("\t\t q[3] \t q[2] \t q[1] \t q[0] \t Clock \t Time ");
-			$monitor("\t\t %b %b %b %b %b \t %b", q[3], q[2], q[1], q[0], clk, $time);
+			$monitor("\t\t %b \t %b \t %b \t %b \t %b \t %b", q[3], q[2], q[1], q[0], clk, $time);
 		end	
 
 		initial // Stimulus

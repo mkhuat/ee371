@@ -11,10 +11,11 @@ module testBench;
 
 	// declare an instance of the AND module
 
+	// (output, output, input, input)
 	AndOr myAndOr (XandY[1:0], XorY[1:0], X[1:0], Y[1:0]);
 
 	// declare an instance of the testIt module
-
+	// (output, output, input, input)
 	Tester aTester (X[1:0], Y[1:0], XandY[1:0], XorY[1:0]);
 
 
