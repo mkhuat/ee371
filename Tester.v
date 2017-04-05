@@ -51,12 +51,13 @@ module Tester(clk, rst, q);
 		// JohnsonUpCounter dut (clk, rst, q);
 		
 		parameter stimDelay = 20;
-
+		parameter nSteps = 36;
+		integer i;
 		initial // Response
 
 		begin
 			$display("\t\t q[3] \t q[2] \t q[1] \t q[0] \t Clock \t Time ");
-			$monitor("\t\t %b \t %b \t %b \t %b \t %b \t %b", q[3], q[2], q[1], q[0], clk, $time);
+			$monitor("\t\t %b \t %b \t %b \t %b \t %b \t %d", q[3], q[2], q[1], q[0], clk, $time);
 		end	
 
 		initial // Stimulus
@@ -67,40 +68,9 @@ module Tester(clk, rst, q);
 			#stimDelay clk = 1'b0;
 			// Will now have set q to be 0000
 			rst = 1'b1;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
+			for (i = 0; i < nSteps; i=i+1) begin
+			    #stimDelay clk = ~clk;
+			end
 			#(2*stimDelay); // needed to see END of simulation
 			$finish; // finish simulation
 		end
