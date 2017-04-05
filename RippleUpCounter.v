@@ -1,5 +1,5 @@
 `include "DFlipFlop.v"
-
+// Gate design: connected wires
 module RippleUpCounter(clk, rst, q);
 	input clk, rst;
 	output [3:0] q, qBar;

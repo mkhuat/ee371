@@ -16,8 +16,8 @@ module testBench;
 
 	// Declare instance of test module
 	// RippleUpCounter rippleUpCounter (clk, rst, q);
-	SyncUpCounter syncUpCounter (clk, rst, q);
-	// JohnsonUpCounter johnsonUpCounter (clk, rst, q);
+	// SyncUpCounter syncUpCounter (clk, rst, q);
+	JohnsonUpCounter johnsonUpCounter (clk, rst, q);
 	
 	// declare an instance of the Tester module
 	Tester aTester (clk, rst, q);
@@ -30,12 +30,12 @@ module testBench;
 		// $dumpvars(1, rippleUpCounter);
 		
 		// SyncUpCounter dump
-		$dumpfile("SyncupCounter.vcd");
-		$dumpvars(1, syncUpCounter);
+		// $dumpfile("SyncupCounter.vcd");
+		// $dumpvars(1, syncUpCounter);
 		
 		// JohnsonUpCounter dump
-		// $dumpfile("JohnsonUpCounter.vcd");
-		// $dumpvars(1, johnsonUpCounter);
+		$dumpfile("JohnsonUpCounter.vcd");
+		$dumpvars(1, johnsonUpCounter);
 	end
 endmodule
 
@@ -47,8 +47,8 @@ module Tester(clk, rst, q);
         
 		// Uncomment to test:
 		// RippleUpCounter dut (clk, rst, q);
-		SyncUpCounter dut (clk, rst, q);
-		// JohnsonUpCounter dut (clk, rst, q);
+		// SyncUpCounter dut (clk, rst, q);
+		JohnsonUpCounter dut (clk, rst, q);
 		
 		parameter stimDelay = 20;
 		parameter nSteps = 36;
@@ -73,57 +73,5 @@ module Tester(clk, rst, q);
 			end
 			#(2*stimDelay); // needed to see END of simulation
 			$finish; // finish simulation
-		end
-		
-        // Set up the clock.
-		
-		/*
-        parameter CLOCK_PERIOD=100;
-        initial clk=1;
-        always begin
-                #(CLOCK_PERIOD/2);
-                clk = ~clk;
-        end
-        initial begin
-			rst=0;
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			rst=0;
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			@(posedge clk);
-			
-			// dump file is for dumping all the variables in a simulation
-			$dumpfile("gfxFile.vcd");
-
-			// dumps all the variables in module myDesign and below
-			// but not modules instantiated in myDesign into the dump file.
-			$dumpvars(1, dut);
-        end
-		*/
-		
-
-		
+		end		
 endmodule
