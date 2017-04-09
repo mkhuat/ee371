@@ -1,6 +1,7 @@
 `include "RippleUpCounter.v"
 `include "SyncUpCounter.v"
 `include "JohnsonUpCounter.v"
+`include "SyncUpSchem.v"
 
 
 /*
@@ -17,7 +18,8 @@ module testBench;
 	// Declare instance of test module
 	// RippleUpCounter rippleUpCounter (clk, rst, q);
 	// SyncUpCounter syncUpCounter (clk, rst, q);
-	JohnsonUpCounter johnsonUpCounter (clk, rst, q);
+	// JohnsonUpCounter johnsonUpCounter (clk, rst, q);
+	SyncUpSchem syncUpSchem (clk, rst, q[0], q[1], q[2], q[3]);
 	
 	// declare an instance of the Tester module
 	Tester aTester (clk, rst, q);
@@ -34,8 +36,12 @@ module testBench;
 		// $dumpvars(1, syncUpCounter);
 		
 		// JohnsonUpCounter dump
-		$dumpfile("JohnsonUpCounter.vcd");
-		$dumpvars(1, johnsonUpCounter);
+		// $dumpfile("JohnsonUpCounter.vcd");
+		// $dumpvars(1, johnsonUpCounter);
+		
+		// SyncUpSchem dump
+		$dumpfile("SyncUpSchem.vcd");
+		$dumpvars(1, syncUpSchem);
 	end
 endmodule
 
@@ -48,7 +54,8 @@ module Tester(clk, rst, q);
 		// Uncomment to test:
 		// RippleUpCounter dut (clk, rst, q);
 		// SyncUpCounter dut (clk, rst, q);
-		JohnsonUpCounter dut (clk, rst, q);
+		// JohnsonUpCounter dut (clk, rst, q);
+		SyncUpSchem dut (clk, rst, q[0], q[1], q[2], q[3]);
 		
 		parameter stimDelay = 20;
 		parameter nSteps = 36;

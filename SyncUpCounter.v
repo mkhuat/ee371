@@ -9,7 +9,7 @@ module d1(input [3:0] q, output d);
 endmodule
 
 module d2(input [3:0] q, output d);
-	assign d = (~q[2] & q[1] & q[0]) | (q[2] & (~q[0] | ~q[1]));
+assign d = (~q[2] & q[1] & q[0]) | (q[2] & (~q[0] | ~q[1]));
 endmodule
 
 module d3(input [3:0] q, output d);
