@@ -1,0 +1,101 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'iClk'
+Slack : -3.254
+TNS   : -33.751
+
+Type  : Slow 1100mV 85C Model Setup 'tBase[24]'
+Slack : -1.128
+TNS   : -7.485
+
+Type  : Slow 1100mV 85C Model Hold 'iClk'
+Slack : -0.618
+TNS   : -0.618
+
+Type  : Slow 1100mV 85C Model Hold 'tBase[24]'
+Slack : 0.611
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'iClk'
+Slack : -0.394
+TNS   : -13.197
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'tBase[24]'
+Slack : -0.394
+TNS   : -3.667
+
+Type  : Slow 1100mV 0C Model Setup 'iClk'
+Slack : -3.410
+TNS   : -35.451
+
+Type  : Slow 1100mV 0C Model Setup 'tBase[24]'
+Slack : -1.144
+TNS   : -7.654
+
+Type  : Slow 1100mV 0C Model Hold 'iClk'
+Slack : -0.672
+TNS   : -0.672
+
+Type  : Slow 1100mV 0C Model Hold 'tBase[24]'
+Slack : 0.592
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'iClk'
+Slack : -0.394
+TNS   : -14.114
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'tBase[24]'
+Slack : -0.394
+TNS   : -3.605
+
+Type  : Fast 1100mV 85C Model Setup 'iClk'
+Slack : -1.865
+TNS   : -10.299
+
+Type  : Fast 1100mV 85C Model Setup 'tBase[24]'
+Slack : -0.384
+TNS   : -2.442
+
+Type  : Fast 1100mV 85C Model Hold 'iClk'
+Slack : -0.223
+TNS   : -0.223
+
+Type  : Fast 1100mV 85C Model Hold 'tBase[24]'
+Slack : 0.319
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'iClk'
+Slack : -0.357
+TNS   : -2.459
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'tBase[24]'
+Slack : 0.144
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'iClk'
+Slack : -1.610
+TNS   : -9.308
+
+Type  : Fast 1100mV 0C Model Setup 'tBase[24]'
+Slack : -0.332
+TNS   : -2.070
+
+Type  : Fast 1100mV 0C Model Hold 'iClk'
+Slack : -0.334
+TNS   : -0.334
+
+Type  : Fast 1100mV 0C Model Hold 'tBase[24]'
+Slack : 0.287
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'iClk'
+Slack : -0.349
+TNS   : -2.473
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'tBase[24]'
+Slack : 0.151
+TNS   : 0.000
+
+------------------------------------------------------------
