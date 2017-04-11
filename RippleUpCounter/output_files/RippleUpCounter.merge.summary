@@ -1,13 +1,13 @@
-Partition Merge Status : Successful - Sun Apr 09 17:36:15 2017
+Partition Merge Status : Successful - Tue Apr 11 10:04:31 2017
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 Revision Name : RippleUpCounter
 Top-level Entity Name : RippleUpTester
 Family : Cyclone V
-Logic utilization (in ALMs) : 393 / 32,070 ( 1 % )
-Total registers : 589
+Logic utilization (in ALMs) : 436 / 32,070 ( 1 % )
+Total registers : 655
 Total pins : 6 / 457 ( 1 % )
 Total virtual pins : 0
-Total block memory bits : 24,576 / 4,065,280 ( < 1 % )
+Total block memory bits : 57,344 / 4,065,280 ( 1 % )
 Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
