@@ -1,8 +1,8 @@
 |JohnsonUpCounterImpl
-outBus[0] <= b0.DB_MAX_OUTPUT_PORT_TYPE
-outBus[1] <= b1.DB_MAX_OUTPUT_PORT_TYPE
-outBus[2] <= b2.DB_MAX_OUTPUT_PORT_TYPE
-outBus[3] <= b3.DB_MAX_OUTPUT_PORT_TYPE
+outBus[0] << b0.DB_MAX_OUTPUT_PORT_TYPE
+outBus[1] << b1.DB_MAX_OUTPUT_PORT_TYPE
+outBus[2] << b2.DB_MAX_OUTPUT_PORT_TYPE
+outBus[3] << b3.DB_MAX_OUTPUT_PORT_TYPE
 iClk => tBase[0].CLK
 iClk => tBase[1].CLK
 iClk => tBase[2].CLK
