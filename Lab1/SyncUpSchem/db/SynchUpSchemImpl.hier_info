@@ -1,0 +1,54 @@
+|SynchUpSchemImpl
+outBus[0] <= b0.DB_MAX_OUTPUT_PORT_TYPE
+outBus[1] <= b1.DB_MAX_OUTPUT_PORT_TYPE
+outBus[2] <= b2.DB_MAX_OUTPUT_PORT_TYPE
+outBus[3] <= b3.DB_MAX_OUTPUT_PORT_TYPE
+iClk => tBase[0].CLK
+iClk => tBase[1].CLK
+iClk => tBase[2].CLK
+iClk => tBase[3].CLK
+iClk => tBase[4].CLK
+iClk => tBase[5].CLK
+iClk => tBase[6].CLK
+iClk => tBase[7].CLK
+iClk => tBase[8].CLK
+iClk => tBase[9].CLK
+iClk => tBase[10].CLK
+iClk => tBase[11].CLK
+iClk => tBase[12].CLK
+iClk => tBase[13].CLK
+iClk => tBase[14].CLK
+iClk => tBase[15].CLK
+iClk => tBase[16].CLK
+iClk => tBase[17].CLK
+iClk => tBase[18].CLK
+iClk => tBase[19].CLK
+iClk => tBase[20].CLK
+iClk => tBase[21].CLK
+iClk => tBase[22].CLK
+iClk => tBase[23].CLK
+iClk => tBase[24].CLK
+iClk => tBase[25].CLK
+iClk => tBase[26].CLK
+iClk => tBase[27].CLK
+iClk => tBase[28].CLK
+iClk => tBase[29].CLK
+iClk => tBase[30].CLK
+externalRst => externalRst.IN1
+
+
+|SynchUpSchemImpl|SyncUpSchem:syncUpSchem
+clock => DFF_inst13.CLK
+clock => SYNTHESIZED_WIRE_14.CLK
+clock => SYNTHESIZED_WIRE_16.CLK
+clock => SYNTHESIZED_WIRE_11.CLK
+rst => SYNTHESIZED_WIRE_11.ACLR
+rst => SYNTHESIZED_WIRE_16.ACLR
+rst => SYNTHESIZED_WIRE_14.ACLR
+rst => DFF_inst13.ACLR
+q0 <= SYNTHESIZED_WIRE_11.DB_MAX_OUTPUT_PORT_TYPE
+q1 <= SYNTHESIZED_WIRE_16.DB_MAX_OUTPUT_PORT_TYPE
+q2 <= SYNTHESIZED_WIRE_14.DB_MAX_OUTPUT_PORT_TYPE
+q3 <= DFF_inst13.DB_MAX_OUTPUT_PORT_TYPE
+
+
