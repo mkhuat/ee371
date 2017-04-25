@@ -25,9 +25,9 @@ void part1() {
 	char char_y = 'b';
 
 	// Declaring one pointer for each type: int, float, char
-	int * int_ptr;
-	float * float_ptr;
-	char * char_ptr;
+	int* int_ptr;
+	float* float_ptr;
+	char* char_ptr;
 
 	// Assigning the address of the int vars to the pointer to int
 	int_ptr = &int_x;
@@ -51,6 +51,7 @@ void part1() {
 	printf("\tChar value at address %p: %c\n", char_ptr, *char_ptr);
 }
 
+
 // Part 2: Working with Pointer Variables
 void part2() {
 	printf("\nPart 2: Working with Pointer Variables\n");
@@ -66,23 +67,14 @@ void part2() {
 	int result;
 
 	// Declaring pointers to each integer
-	int * A_ptr = &A; 
-	int * B_ptr = &B;
-	int * C_ptr = &C;
-	int * D_ptr = &D;
-	int * E_ptr = &E;
+	int* A_ptr = &A; 
+	int* B_ptr = &B;
+	int* C_ptr = &C;
+	int* D_ptr = &D;
+	int* E_ptr = &E;
 
 	// Perform given computation using only pointers
 	result = ((*A_ptr - *B_ptr) * (*C_ptr + *D_ptr)) / (*E_ptr);
 	printf("\tComputing ((A – B)*(C+D))/E with pointers...\n");
 	printf("\tValue of result: %d\n\n", result);
 }
-
-
-
-
-
-
-
-
-
