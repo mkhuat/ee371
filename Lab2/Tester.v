@@ -1,61 +1,89 @@
-/*
-To test a module, uncomment:
-	1. test module declaration (ex: RippleUpCounter rippleUpCounter (clk, rst, q);)
-	2. dump files (ex: $dumpfile("RippleUpCounter.vcd"); $dumpvars(1, rippleUpCounter);)
-	3. dut in the test proper (ex: SyncUpCounter dut (clk, rst, q);)
-*/
-
 module testBench;
 	wire clk, rst;
 	wire [3:0] q;
 
-	// Declare instance of test module
-	RippleUpCounter rippleUpCounter (clk, rst, q);
+	// Declare instance of device under test
+	TopLevelLockSystem dut (clk, reset, arr_sw, dept_sw,
+		toggle_outer_sw, toggle_inner_sw, inc_water_level, dec_water_level,arr_led,
+		dept_led, toggle_outer_led, toggle_inner_led);
 
-	
-	// declare an instance of the Tester module
-	Tester aTester (clk, rst, q);
-	
-	// file for gtkwave
+
+	// Declare an instance of the Tester module
+	Tester aTester (clk, reset, arr_sw, dept_sw, toggle_outer_sw, toggle_inner_sw,
+		 inc_water_level,dec_water_level,arr_led, dept_led, toggle_outer_led,
+		 toggle_inner_led);
+
+	// dumpfile for gtkwave
 	initial
 	begin
-		$dumpfile("RippleUpCounter.vcd");
-		$dumpvars(1, rippleUpCounter);
+		$dumpfile("LockSystem.vcd");
+		$dumpvars(1, dut);
 	end
 endmodule
 
-module Tester(clk, rst, q);
-        output clk, rst;
-		reg clk, rst;
-		output [3:0] q;
-		wire [3:0] q;
-        
-		// Uncomment to test:
-		RippleUpCounter dut (clk, rst, q);
+module Tester(clk, reset, arr_sw, dept_sw, toggle_outer_sw, toggle_inner_sw,
+	 inc_water_level,dec_water_level,arr_led, dept_led, toggle_outer_led,
+	 toggle_inner_led);
 
-		
-		parameter stimDelay = 20;
-		parameter nSteps = 36;
+		input wire arr_led, dept_led, toggle_outer_led, toggle_inner_led;
+		output reg clk, reset, arr_sw, dept_sw, toggle_outer_sw, toggle_inner_sw,
+			inc_water_level, dec_water_level;
+
+
+		// Test vars
+		parameter delay = 20;
+		parameter nSteps;
 		integer i;
-		initial // Response
 
-		begin
-			$display("\t\t q[3] \t q[2] \t q[1] \t q[0] \t Clock \t Time ");
-			$monitor("\t\t %b \t %b \t %b \t %b \t %b \t %d", q[3], q[2], q[1], q[0], clk, $time);
-		end	
+		initial begin
+			// TODO: truncate literals
+			$display("\t\t ArriveLED | DepartLED | OutGateLED | InGateLED | ArriveSW | DepartSW | OutGateSW | InGateSW | IncrWater | DecrWater | Clock | Reset | Time ");
+			$monitor("\t\t     %b 	 |     %b    |     %b     |     %b    |     %b   |    %b    |     %b    |   %b     |    %b     |    %b     |  %b   |   %b  |  %t",
+			arr_led, dept_led, toggle_outer_led, toggle_inner_led, arr_sw, dept_sw, toggle_outer_sw,
+			toggle_inner_sw, inc_water_level, dec_water_level, clk, reset, $time);
+		end
 
-		initial // Stimulus
-		begin
+		initial begin
+			// Prime the system
 			clk = 1'b0;
 			rst = 1'b0;
-			#stimDelay clk = 1'b1;
-			#stimDelay clk = 1'b0;
-			// Will now have set q to be 0000
-			rst = 1'b1;
-			for (i = 0; i < nSteps; i=i+1) begin
-			    #stimDelay clk = ~clk;
+			arr_sw = 1'b0;
+			dept_sw = 1'b0;
+			toggle_outer_sw = 1'b0;
+			toggle_inner_sw = 1'b0;
+			inc_water_level = 1'b0;
+			dec_water_level = 1'b0;
+			#delay clk = 1'b1;
+			#delay clk = 1'b0;
+			rst = 1'b1; // Activation
+			#delay clk = ~clk;
+
+			// Signal a Gondola.
+			arr_sw = 1'b1;
+			#delay clk = ~clk;
+			arr_sw = 1'b0;
+			#delay clk = ~clk;
+
+			// Wait for gate
+			while (toggle_outer_led == 0) begin
+				#delay clk = ~clk;
 			end
-			#(2*stimDelay); // needed to see END of simulation
+			#delay clk = ~clk;
+
+			// Open the gate.
+			toggle_outer_sw = 1'b1;
+			#delay clk = ~clk;
+			toggle_outer_sw = 1'b0;
+			#delay clk = ~clk;
+
+
+			for (i = 0; i < nSteps; i=i+1) begin
+			    #delay clk = ~clk;
+			end
+
+
+
+			#(2*delay); // needed to see END of simulation
 			$finish; // finish simulation
-		end		
+		end
 endmodule
