@@ -1,0 +1,63 @@
+Test Cases:
+The following cases use ListPrice.exe as your executable. If you're using gcc/other, use ./a.out in place of ListPrice.exe.
+
+// Case: $10000 car with a 15% dealer markup, a 10% discount, and a 2% sales tax
+ListPrice.exe 10000 15 10 2
+// Expect:
+Car Price Calculator
+Manufacturer Cost: $10000.00, Dealer Markup: 15.00%, Discount: 10.00%, Sales Tax: 2.00%
+Final car cost: $10557.00
+
+// Case: $10000 car with a 0% dealer markup, a 0% discount, and a 0% sales tax
+ListPrice.exe 10000 0 0 0
+// Expect:
+Car Price Calculator
+Manufacturer Cost: $10000.00, Dealer Markup: 0.00%, Discount: 0.00%, Sales Tax: 0.00% 
+Final car cost: $10000.00
+
+// Case: $-1 car with a 15% dealer markup, a 10% discount, and a 2% sales tax
+ListPrice.exe -1 15 10 2
+// Expect:
+Manufacturer cost must be at least $0, but found $-1.00
+Error: Invalid input
+
+// Case: $10000 car with a -1% dealer markup, a 10% discount, and a 2% sales tax
+ListPrice.exe 10000 -1 10 2
+// Expect:
+Markup must be at least 0%, but found -1.00%
+Error: Invalid input
+
+// Case: $10000 car with a 15% dealer markup, a -10% discount, and a 2% sales tax
+ListPrice.exe 10000 15 -10 2
+// Expect:
+Cars must be discounted between 0% and 100%, but found -10.00%
+Error: Invalid input
+
+// Case: $10000 car with a 15% dealer markup, a 101% discount, and a 2% sales tax
+ListPrice.exe 10000 15 101 2
+// Expect:
+Cars must be discounted between 0% and 100%, but found 101.00%
+Error: Invalid input
+
+// Case: $10000 car with a 15% dealer markup, a 10% discount, and a -1% sales tax
+ListPrice.exe 10000 15 10 -1
+// Expect:
+Sales tax must be at least 0%, but found -1.00%
+Error: Invalid input
+
+// Case: $Non-overflow car with 150% dealer markup with other valid parameters,
+// such that no inputs overflow, but the output does
+ListPrice.exe 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 150 10 2
+// Expect:
+Error: Output overflowed floating point
+
+// Case: $Overflow car, with other valid parameters
+ListPrice.exe 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 150 10 2
+// Expect:
+An input value is too large
+Error: Invalid input
+
+// Case: invalid inputs not scannable by sscanf
+ListPrice.exe aaa aaa aaa aaa
+// Expect:
+Error: Failed to scan arguments
