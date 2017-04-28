@@ -1,4 +1,5 @@
-module testBench;
+`include "LockSystem.v"
+module testBench();
 	wire clk, rst;
 	wire [3:0] q;
 
@@ -31,8 +32,8 @@ module Tester(clk, reset, arr_sw, dept_sw, toggle_outer_sw, toggle_inner_sw,
 
 
 		// Test vars
-		parameter delay = 20;
-		parameter nSteps;
+		reg delay = 20;
+		reg nSteps;
 		integer i;
 
 		initial begin
