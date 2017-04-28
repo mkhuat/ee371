@@ -1,7 +1,7 @@
 
 
 module TopLevelLockSystem
-		#( parameter INNER = 5,  parameter OUTER = 0, parameter TOLERANCE = 0.3)
+		#( parameter INNER = 5*560,  parameter OUTER = 0, parameter TOLERANCE = 0.3*560)
 		(/* Inputs */ clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level,
 		/* Outputs */ inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led);
 		
@@ -9,13 +9,13 @@ module TopLevelLockSystem
 	output inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led;
 	
 	// State
-	reg clk, rst, empty;
+	reg rst, empty;
 	
 	// We need water_level such that we can show the 0.3 boundary
-	reg real water_level;
+	wire [16:0] water_level;
 	
-	GondolaDoorLight gondolaDoorLight (inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk, inner_gondola_led, outer_gondola_led);
 	WaterSystem waterSystem (inc_water_level, dec_water_level, clk, reset, water_level, outer_door_openable_led, inner_door_openable_led);
+	GondolaDoorLight gondolaDoorLight (inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk, inner_gondola_led, outer_gondola_led);
 		
 
 endmodule
@@ -41,7 +41,7 @@ which turns on the corresponding side's LED
 LEDs can only cycle from "Arrival" to "Departure" except if the operator pressed the wrong direction key.
 */
 module GondolaDoorLight
-		#( parameter INNER = 5,  parameter OUTER = 0, parameter TOLERANCE = 0.3, parameter GONDOLA_ARR_DELAY = 300, parameter GONDOLA_DEPT_DELAY = 300)
+		#( parameter INNER = 5*560,  parameter OUTER = 0*560, parameter TOLERANCE = 0.3*560, parameter GONDOLA_ARR_DELAY = 300, parameter GONDOLA_DEPT_DELAY = 300)
 		(/* Inputs */ inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk,
 		/* Outputs */ inner_gondola_led, outer_gondola_led);
 		
@@ -51,10 +51,11 @@ module GondolaDoorLight
 		input inner_door_sw, outer_door_sw;
 		// Gondola arrival controls
 		input outer_gondola_arrival_sw, inner_gondola_arrival_sw;
-		
+		// Gondola LED output
+		output inner_gondola_led, outer_gondola_led;
+		reg inner_gondola_led, outer_gondola_led;
 		// Needed to respond to inner_door_sw and outer_door_sw
-		input water_level;
-		real water_level;
+		input [16:0] water_level;
 		
 		// Can change arrival switch only after 5 minutes, or 300
 		reg counter;
@@ -85,6 +86,8 @@ module GondolaDoorLight
 						to_outer = 0;
 						to_inner = 0;
 						position = 0;
+						inner_gondola_led = 0;
+						outer_gondola_led = 0;
 					end
 				else
 					// Only respond to inc/dec_water_level if not resetting
@@ -119,7 +122,7 @@ module GondolaDoorLight
 				// Boat is in the pound, only move forward if:
 				// 2. it's going to_inner
 				// 3. outer_door_openable is true
-					if (iner_door_openable && to_inner)
+					if (inner_door_openable && to_inner)
 					begin
 						position = 2;
 						// Restart counter as we need to wait for the boat to leave
@@ -195,8 +198,8 @@ module WaterSystem
 		input clk, reset;
 		
 		// water_level changes responding to the WaterSystem
-		output water_level;
-		reg water_level;
+		output [16:0] water_level;
+		reg [16:0] water_level;
 		
 		// Wires for continuous increment (not truly continuous as water increments only at clk boundary)
 		output outer_door_openable_led, inner_door_openable_led;
@@ -227,13 +230,13 @@ module WaterSystem
 						if (inc_pressed)
 							begin
 								// Bound the max water level to be INNER
-								water_level = water_level + (5/8) < INNER ? water_level + (5/8) : INNER;
+								water_level = water_level + (5/8 * 560) < INNER ? water_level + (5/8 * 560) : INNER;
 								inc_pressed = 1'b0;
 							end
 						if (dec_pressed)
 							begin
 								// Bound the min water level to be OUTER
-								water_level = water_level - (5/7) > OUTER ? water_level - (5/7) : OUTER;
+								water_level = water_level - (5/7 * 560) > OUTER ? water_level - (5/7 * 560) : OUTER;
 								dec_pressed = 1'b0;
 							end
 					end
@@ -263,39 +266,4 @@ to make the 5 minute deadline
 
 */
 
-/*
-Door system action depends on toggle_inner versus toggle_outer
-Listens to the water level so then you can open when the delta is 0.3.
-Disallows if you don't.
-*/ 
-module DoorSystem
-		#( parameter INNER = 5,  parameter OUTER = 0, parameter TOLERANCE = 0.3)
-		(/* Inputs */ outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset,
-		/* Outputs */ outer_door_openable_led, inner_door_openable_led);
-		
-	input outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset;
-	output outer_door_openable_led, inner_door_openable_led;
 	
-	// Door control based on past LED status:
-	// If outer on, the water level is low. Pressing the switch will:
-	
-	// *1. Turn off the led in 1 second (actually 0.3/(5/7) = 0.48 seconds if the
-	// water levels are 0.0 and 5.0, and the LEDs should illuminate/de-illuminate at 0.3 and 4.7
-	// 2. Turn off immediately if we just are alternating 
-	// between 0.3 and 5.3 with true water levels of 0.0 and 5.6)
-	
-	
-	// Switch behavior
-	// *1. NOP if LED not illuminated
-	// 2. Error state 
-	always @(posedge inner_gondola_arrival_sw)
-		if (water_level > INNER - TOLERANCE )
-			// Open inner door
-		// else err?
-	
-	always @(posedge outer_gondola_arrival_sw)
-		if (water_level < OUTER + TOLERANCE )
-			// Open outer door
-		// else err?
-endmodule
-
