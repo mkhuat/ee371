@@ -74,6 +74,9 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 			#stimDelay clk = 1'b1;
 			#stimDelay clk = ~clk;
 			reset = 1'b0;
+			
+			// TEST 1: Gondola arrives from outer, moves through pound, leaves.
+			
 			#stimDelay clk = ~clk;
 			#stimDelay clk = ~clk;
 			#stimDelay clk = ~clk;
@@ -120,6 +123,13 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 			for (j = 0; j < boat_delay*2; j++) begin
 				#stimDelay clk = ~clk;
 			end
+			
+			// TEST 2: While water is HIGH, Gondola arrives from outer as before, moves through pound, leaves.
+
+			// TEST 3: Gondola arrives from inner. Fiddle around with the water level to look at the LEDs.
+
+			// TEST 4: Gondola signals from outer. Open outer door before it arrives. Open the wrong door to make sure it doesn't go through.
+			
 			$finish; // finish simulation
 		end
 endmodule

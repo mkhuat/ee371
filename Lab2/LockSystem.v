@@ -70,16 +70,19 @@ module GondolaDoorLight
 		// We should only keep the counter incrementing until the highest value of the counter we care about
 		reg [16:0] counter_max = GONDOLA_ARR_DELAY > GONDOLA_DEPT_DELAY ? GONDOLA_ARR_DELAY : GONDOLA_DEPT_DELAY;
 		
-		// TODO: Perhaps reduce duplication with the LED
+		// TODO: Perhaps reduce duplication with the LED in the other module
 		assign outer_door_openable = water_level <= OUTER + TOLERANCE;
 		assign inner_door_openable = water_level >= INNER - TOLERANCE;
 		
 		always @ (posedge clk)
 			begin
-				if (reset)
+				// We need to mark the canal as clear and reset its state if:
+				// 1. The boat is in position 2 (leaving) and the counter is at least GONDOLA_DEPT_DELAY
+				// 2. We reset
+				if (reset || (position == 2 && counter >= GONDOLA_DEPT_DELAY))
 					begin
 						// Reset to default values
-						// counter = 0
+						// Do not reset water. It is handled by the WaterSystem module.
 						counter = 0;
 						to_outer = 0;
 						to_inner = 0;
@@ -88,22 +91,8 @@ module GondolaDoorLight
 						outer_gondola_led = 0;
 					end
 				else
-					// Only respond to inc/dec_water_level if not resetting
 					begin
 						counter = counter < counter_max ? counter + 1 : counter_max;
-						// We need to mark the canal as clear iff:
-						// 1. The boat is in position 2 (leaving)
-						// 2. The counter is at
-						if (position == 2 && counter >= GONDOLA_DEPT_DELAY)
-							begin
-								// TODO: Combine with reset case, maybe.
-								counter = 0;
-								to_outer = 0;
-								to_inner = 0;
-								position = 0;
-								inner_gondola_led = 0;
-								outer_gondola_led = 0;
-							end
 					end
 			end
 		
@@ -169,10 +158,10 @@ module GondolaDoorLight
 			end
 		
 		// No gondolas may arrive during the lock traversal procedure
-		// Start 5 minute timer, such that the pound becomes enter-able only after 5 minutes
+		// Start timer, such that the pound becomes enter-able only after GONDOLA_DEPT_DELAY units after the boat leaves the lock
 		always @ (posedge outer_gondola_arrival_sw)
 			begin
-				// reset must be low, and there needs to be no boats currently traversing
+				// reset must be low, and there needs to be no boats currently traversing (!to_outer && !to_inner)
 				if (!reset && !to_outer && !to_inner)
 					begin
 						counter = 0;
@@ -186,6 +175,7 @@ module GondolaDoorLight
 				
 		always @ (posedge inner_gondola_arrival_sw)
 			begin
+				// reset must be low, and there needs to be no boats currently traversing (!to_outer && !to_inner)
 				if (!reset && !to_outer && !to_inner)
 					begin
 						counter = 0;
@@ -264,22 +254,4 @@ module WaterSystem
 			dec_pressed = 1'b1;
 		
 endmodule
-
-
-/*
-Gondola signals 5 minutes before arrival.
-
-
-Basically:
-1. Water Level starts somewhere.
-2. You only care that you are thresholded above/below the bounds,
-so you want for Inner=6, Outer=4, to bounce <=4.3 and >=5.7
-3. Because these rates aren't symmetric, you need to keep track of the
-actual water level. 5/7 rate (5/7 feet per minute) for lowering, 5/8 for raising.
-4. We will have it conveniently such that, at these rates, you will be able
-to make the 5 minute deadline
-5. 
-
-*/
-
 	
