@@ -1,5 +1,3 @@
-
-
 module TopLevelLockSystem
 		#( parameter INNER = 5*560,  parameter OUTER = 0, parameter TOLERANCE = 0.3*560)
 		(/* Inputs */ clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level,
@@ -41,7 +39,7 @@ which turns on the corresponding side's LED
 LEDs can only cycle from "Arrival" to "Departure" except if the operator pressed the wrong direction key.
 */
 module GondolaDoorLight
-		#( parameter INNER = 5*560,  parameter OUTER = 0*560, parameter TOLERANCE = 0.3*560, parameter GONDOLA_ARR_DELAY = 300, parameter GONDOLA_DEPT_DELAY = 300)
+		#( parameter INNER = 5*560,  parameter OUTER = 0*560, parameter TOLERANCE = 0.3*560, parameter GONDOLA_ARR_DELAY = 5, parameter GONDOLA_DEPT_DELAY = 5)
 		(/* Inputs */ inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk,
 		/* Outputs */ inner_gondola_led, outer_gondola_led);
 		
@@ -57,8 +55,8 @@ module GondolaDoorLight
 		// Needed to respond to inner_door_sw and outer_door_sw
 		input [16:0] water_level;
 		
-		// Can change arrival switch only after 5 minutes, or 300
-		reg counter;
+		// Can change arrival switch only after 5
+		reg [16:0] counter;
 		
 		// Once the gondola enters the lock, we need to know what direction it needs to go
 		// Clear these once the gondolas leave the locks
@@ -67,14 +65,14 @@ module GondolaDoorLight
 		
 		// 0: arriving, 1: in pound, 2: departing
 		// TODO: Should we have position track clear state instead?
-		reg position;
+		reg [8:0] position;
 		
 		// We should only keep the counter incrementing until the highest value of the counter we care about
-		reg counter_max = GONDOLA_ARR_DELAY > GONDOLA_DEPT_DELAY ? GONDOLA_ARR_DELAY : GONDOLA_DEPT_DELAY;
+		reg [16:0] counter_max = GONDOLA_ARR_DELAY > GONDOLA_DEPT_DELAY ? GONDOLA_ARR_DELAY : GONDOLA_DEPT_DELAY;
 		
 		// TODO: Perhaps reduce duplication with the LED
-		assign outer_door_openable = water_level < OUTER + TOLERANCE;
-		assign inner_door_openable = water_level > INNER - TOLERANCE;
+		assign outer_door_openable = water_level <= OUTER + TOLERANCE;
+		assign inner_door_openable = water_level >= INNER - TOLERANCE;
 		
 		always @ (posedge clk)
 			begin
@@ -95,12 +93,16 @@ module GondolaDoorLight
 						counter = counter < counter_max ? counter + 1 : counter_max;
 						// We need to mark the canal as clear iff:
 						// 1. The boat is in position 2 (leaving)
-						// 2. The counter is at 
-						if (counter >= GONDOLA_DEPT_DELAY)
+						// 2. The counter is at
+						if (position == 2 && counter >= GONDOLA_DEPT_DELAY)
 							begin
+								// TODO: Combine with reset case, maybe.
+								counter = 0;
 								to_outer = 0;
 								to_inner = 0;
 								position = 0;
+								inner_gondola_led = 0;
+								outer_gondola_led = 0;
 							end
 					end
 			end
@@ -117,6 +119,9 @@ module GondolaDoorLight
 					if (inner_door_openable && counter >= GONDOLA_ARR_DELAY && to_outer)
 					begin
 						position = 1;
+						// Both lights on when boat is in the pound
+						outer_gondola_led = 1;
+						inner_gondola_led = 1;
 					end
 				1:
 				// Boat is in the pound, only move forward if:
@@ -125,6 +130,8 @@ module GondolaDoorLight
 					if (inner_door_openable && to_inner)
 					begin
 						position = 2;
+						outer_gondola_led = 0;
+						inner_gondola_led = 1;
 						// Restart counter as we need to wait for the boat to leave
 						counter = 0;
 					end
@@ -142,6 +149,9 @@ module GondolaDoorLight
 					if (outer_door_openable && counter >= GONDOLA_ARR_DELAY && to_inner)
 					begin
 						position = 1;
+						// Both lights on when boat is in the pound
+						outer_gondola_led = 1;
+						inner_gondola_led = 1;
 					end
 				1:
 				// Boat is in the pound, only move forward if:
@@ -152,6 +162,8 @@ module GondolaDoorLight
 						position = 2;
 						// Restart counter as we need to wait for the boat to leave
 						counter = 0;
+						inner_gondola_led = 0;
+						outer_gondola_led = 1;
 					end
 				endcase
 			end
@@ -164,19 +176,23 @@ module GondolaDoorLight
 				if (!reset && !to_outer && !to_inner)
 					begin
 						counter = 0;
+						position = 0;
 						to_outer = 0;
 						to_inner = 1;
+						outer_gondola_led = 1;
 					end
 
 			end
 				
 		always @ (posedge inner_gondola_arrival_sw)
 			begin
-				if (!to_outer && !to_inner)
+				if (!reset && !to_outer && !to_inner)
 					begin
 						counter = 0;
+						position = 0;
 						to_outer = 1;
 						to_inner = 0;
+						inner_gondola_led = 1;
 					end
 			end
 		
@@ -188,7 +204,7 @@ Updates water level at the correct rate.
 Stops updating water volume after Open/Close Inner/Outer is triggered.
 */
 module WaterSystem
-		#( parameter INNER = 5,  parameter OUTER = 0, parameter TOLERANCE = 0.3)
+		#( parameter INNER = 5*560,  parameter OUTER = 560*0, parameter TOLERANCE = 560*0.3, parameter INC_AMT = 5 * 560 / 8, parameter DEC_AMT = 5 * 560 / 7)
 		(/* Inputs */ inc_water_level, dec_water_level, clk, reset,
 		/* Outputs */ water_level, outer_door_openable_led, inner_door_openable_led);
 		
@@ -230,13 +246,13 @@ module WaterSystem
 						if (inc_pressed)
 							begin
 								// Bound the max water level to be INNER
-								water_level = water_level + (5/8 * 560) < INNER ? water_level + (5/8 * 560) : INNER;
+								water_level = water_level + INC_AMT < INNER ? water_level + INC_AMT : INNER;
 								inc_pressed = 1'b0;
 							end
 						if (dec_pressed)
 							begin
 								// Bound the min water level to be OUTER
-								water_level = water_level - (5/7 * 560) > OUTER ? water_level - (5/7 * 560) : OUTER;
+								water_level = water_level - DEC_AMT > OUTER ? water_level - DEC_AMT : OUTER;
 								dec_pressed = 1'b0;
 							end
 					end
