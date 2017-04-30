@@ -1,4 +1,5 @@
 `include "LockSystem.v"
+`include "DisplayState.v"
 module testBench();
 	
 	// Input
@@ -6,16 +7,19 @@ module testBench();
 	// Output
 	wire clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw,
 			inc_water_level, dec_water_level;
+	wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 		
 	// Declare instance of device under test
 	TopLevelLockSystem dut (clk, reset, inner_door_sw, outer_door_sw,
 		outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level,inner_gondola_led,
-		outer_gondola_led, outer_door_openable_led, inner_door_openable_led);
+		outer_gondola_led, outer_door_openable_led, inner_door_openable_led,
+		HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
 
 	// Declare an instance of the Tester module
 	Tester aTester (clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw,
-		 inc_water_level,dec_water_level, inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led);
+		 inc_water_level,dec_water_level, inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led,
+		 HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
 	// dumpfile for gtkwave
 	initial
@@ -27,7 +31,7 @@ endmodule
 
 module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw,
 	 inc_water_level,dec_water_level,inner_gondola_led, outer_gondola_led, outer_door_openable_led,
-	 inner_door_openable_led);
+	 inner_door_openable_led, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 	 
 		// Output
 		
@@ -42,17 +46,21 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 		output inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led;
 		wire inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led;
 		
+		output wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
+		
+		/*
 		// Declare instance of device under test
 		TopLevelLockSystem dut (clk, reset, inner_door_sw, outer_door_sw,
 			outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level,inner_gondola_led,
 			outer_gondola_led, outer_door_openable_led, inner_door_openable_led);	
+		*/
 		
 		// Instantiate a logging module
 		output reg log = 1;
 		output reg [7*8:0] level = "INITIAL";
-		Logger logger(log, level, clk, reset, inner_door_sw, outer_door_sw,
-            outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level,inner_gondola_led,
-            outer_gondola_led, outer_door_openable_led, inner_door_openable_led);
+		Logger logger(log, level, {inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw,
+		  inc_water_level, dec_water_level,inner_gondola_led, outer_gondola_led, outer_door_openable_led,
+		  inner_door_openable_led, clk, reset}, {HEX5, HEX4, HEX3, HEX2, HEX1, HEX0} );
 		
 		// Test vars
 		parameter stimDelay = 20;
@@ -150,10 +158,7 @@ endmodule
 module Logger
   #( parameter DUT="TopLevelLockSystem" )
   (
-    log, level, 
-    clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw,
-    inc_water_level,dec_water_level,inner_gondola_led, outer_gondola_led, outer_door_openable_led,
-    inner_door_openable_led
+    log, level, dutPort, HEX
   );
 
   // Toggling log sends a message
@@ -163,10 +168,9 @@ module Logger
   input [7*8:0] level;
 
   // DUT info
-  input clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw,
-    inc_water_level,dec_water_level,inner_gondola_led, outer_gondola_led, outer_door_openable_led,
-    inner_door_openable_led;
-
+  input [11:0] dutPort;
+  input [5:0][6:0] HEX;
+  
   always @ (posedge log or negedge log) begin
       $display({"%s:@%s  State:", 
         "{inner_door_sw:%b, ", 
@@ -179,10 +183,13 @@ module Logger
         "outer_gondola_led:%b, ",
         "outer_door_openable_led:%b, ",
         "inner_door_openable_led:%b, ",
-        "clk:%b, reset:%b}, %t|timestamp"},
-        DUT,level,inner_door_sw,outer_door_sw,outer_gondola_arrival_sw,
-        inner_gondola_arrival_sw,inc_water_level,dec_water_level,inner_gondola_led,
-        outer_gondola_led,outer_door_openable_led,inner_door_openable_led,clk,reset,
+        "clk:%b, reset:%b, ",
+		"HEX5:%b, HEX4:%b, HEX3:%b, HEX2:%b, HEX1:%b, HEX0:%b}", 
+		"%t|timestamp"},
+        DUT,level,dutPort[11],dutPort[10],dutPort[9],
+        dutPort[8],dutPort[7],dutPort[6],dutPort[5],dutPort[4],
+		dutPort[3],dutPort[2],dutPort[1],dutPort[0],
+		HEX[5],HEX[4],HEX[3],HEX[2],HEX[1],HEX[0],
         $time);
   end
 

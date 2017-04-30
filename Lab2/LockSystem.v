@@ -1,20 +1,23 @@
 module TopLevelLockSystem
 		#( parameter INNER = 5*560,  parameter OUTER = 0, parameter TOLERANCE = 0.3*560)
 		(/* Inputs */ clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level,
-		/* Outputs */ inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led);
+		/* Outputs */ inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led,
+		/* Display */ HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 		
 	input clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level;
 	output inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led;
+	output wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 	
 	// State
 	reg rst, empty;
+	wire [3:0] state;
 	
 	// We need water_level such that we can show the 0.3 boundary
 	wire [16:0] water_level;
 	
 	WaterSystem waterSystem (inc_water_level, dec_water_level, clk, reset, water_level, outer_door_openable_led, inner_door_openable_led);
-	GondolaDoorLight gondolaDoorLight (inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk, inner_gondola_led, outer_gondola_led);
-		
+	GondolaDoorLight gondolaDoorLight (inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk, inner_gondola_led, outer_gondola_led, state);
+	DisplayState displayState (state, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
 endmodule
 
@@ -41,7 +44,7 @@ LEDs can only cycle from "Arrival" to "Departure" except if the operator pressed
 module GondolaDoorLight
 		#( parameter INNER = 5*560,  parameter OUTER = 0*560, parameter TOLERANCE = 0.3*560, parameter GONDOLA_ARR_DELAY = 5, parameter GONDOLA_DEPT_DELAY = 5)
 		(/* Inputs */ inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk,
-		/* Outputs */ inner_gondola_led, outer_gondola_led);
+		/* Outputs */ inner_gondola_led, outer_gondola_led, state);
 		
 		// Clock and reset input
 		input clk, reset;
@@ -54,6 +57,9 @@ module GondolaDoorLight
 		reg inner_gondola_led, outer_gondola_led;
 		// Needed to respond to inner_door_sw and outer_door_sw
 		input [16:0] water_level;
+		
+		// Display state
+		output reg [3:0] state;
 		
 		// Can change arrival switch only after 5
 		reg [16:0] counter;
@@ -89,6 +95,7 @@ module GondolaDoorLight
 						position = 0;
 						inner_gondola_led = 0;
 						outer_gondola_led = 0;
+						state = 'd0;
 					end
 				else
 					begin
@@ -104,18 +111,19 @@ module GondolaDoorLight
 				// Boat is before the pound, only move forward if:
 				// 1. It's been long enough (>=GONDOLA_ARR_DELAY)
 				// 2. it's going to_outer
-				// 3. outer_door_openable is true
+				// 3. inner_door_openable is true
 					if (inner_door_openable && counter >= GONDOLA_ARR_DELAY && to_outer)
 					begin
 						position = 1;
 						// Both lights on when boat is in the pound
 						outer_gondola_led = 1;
 						inner_gondola_led = 1;
+						state = 'd3;
 					end
 				1:
 				// Boat is in the pound, only move forward if:
 				// 2. it's going to_inner
-				// 3. outer_door_openable is true
+				// 3. inner_door_openable is true
 					if (inner_door_openable && to_inner)
 					begin
 						position = 2;
@@ -123,6 +131,7 @@ module GondolaDoorLight
 						inner_gondola_led = 1;
 						// Restart counter as we need to wait for the boat to leave
 						counter = 0;
+						state = 'd9;
 					end
 				endcase
 			end
@@ -141,6 +150,7 @@ module GondolaDoorLight
 						// Both lights on when boat is in the pound
 						outer_gondola_led = 1;
 						inner_gondola_led = 1;
+						state = 'd10;
 					end
 				1:
 				// Boat is in the pound, only move forward if:
@@ -153,6 +163,7 @@ module GondolaDoorLight
 						counter = 0;
 						inner_gondola_led = 0;
 						outer_gondola_led = 1;
+						state = 'd6;
 					end
 				endcase
 			end
@@ -169,8 +180,8 @@ module GondolaDoorLight
 						to_outer = 0;
 						to_inner = 1;
 						outer_gondola_led = 1;
+						state = 'd8;
 					end
-
 			end
 				
 		always @ (posedge inner_gondola_arrival_sw)
@@ -183,6 +194,7 @@ module GondolaDoorLight
 						to_outer = 1;
 						to_inner = 0;
 						inner_gondola_led = 1;
+						state = 'd1;
 					end
 			end
 		
