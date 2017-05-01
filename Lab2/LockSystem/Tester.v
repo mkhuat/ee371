@@ -1,5 +1,7 @@
-`include "LockSystem.v"
+`include "TopLevelLockSystem.v"
 `include "DisplayState.v"
+`include "filter.v"
+
 module testBench();
 	
 	// Input
@@ -68,20 +70,12 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 		// Decrease these delays to verify specific amounts...
 		integer i = 0, j = 0, boat_delay = 10, rise_delay = 8, fall_delay = 7;
 
-		/* Kevin:Leaving this here incase y'all wanna revert
-		initial begin 
-			$display(" inner_door_sw  |  outer_door_sw |  outer_gondola_arrival_sw  |  inner_gondola_arrival_sw  |  inc_water_level  |  dec_water_level  |  inner_gondola_led  |  outer_gondola_led  |  outer_door_openable_led  |  inner_door_openable_led  |  Clock  |  Reset  |  Time ");
-			$monitor(" %b  |  %b  |  %b |  %b  |  %b  |  %b  |  %b  |  %b  |  %b  |  %b  |  %b  |  %b  |  %t",
-			inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level, inner_gondola_led,
-			outer_gondola_led, outer_door_openable_led, inner_door_openable_led, clk, reset, $time);
-		end
-        */
 		
 		initial
 		begin
 			// Prime the system
 			clk = 1'b0;
-			reset = 1'b1;
+			reset = 1'b0;
 			inner_door_sw = 1'b0;
 			outer_door_sw = 1'b0;
 			outer_gondola_arrival_sw = 1'b0;
@@ -90,7 +84,7 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 			dec_water_level = 1'b0;
 			#stimDelay clk = 1'b1;
 			#stimDelay clk = ~clk;
-			reset = 1'b0;
+			reset = 1'b1;
 
 			// Logging pattern
             level = "RESET--"; log = ~log;
@@ -101,10 +95,11 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 
 			// Signal a Gondola.
 			outer_gondola_arrival_sw = 1'b1;
+			level = "SIGNAL-"; log = ~log;
 			#stimDelay clk = ~clk;
-            level = "SIGNAL-"; log = ~log;
-			outer_gondola_arrival_sw = 1'b0;
+			outer_gondola_arrival_sw = 0'b1;
 			#stimDelay clk = ~clk;
+
 
 			// Wait for gondola to arrive
 			// Multiply by 2 since ticks are only on posedge
