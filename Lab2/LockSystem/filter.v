@@ -19,14 +19,14 @@ module filter(clk, reset, in, out);
 		end
 		else if (active && in) begin
 			active <= 0;
-			out <= in;
+			out <= 1;
 		end
-		else if (~( active || in)) begin 
+		else if (!( active || in)) begin 
 			active <= 1;
 			out <= 0;
 		end
 		else begin
-			active <= ~in;
+			active <= !in;
 			out <= 0;
 		end
 	end

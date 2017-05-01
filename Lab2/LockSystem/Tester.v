@@ -165,7 +165,7 @@ module Logger
   // DUT info
   input [11:0] dutPort;
   input [41:0] HEX;
-  
+  /*
   always @ (posedge log or negedge log) begin
       $display({"%s:@%s  State:", 
         "{inner_door_sw:%b, ", 
@@ -187,5 +187,5 @@ module Logger
 		HEX[41:35],HEX[34:28],HEX[27:21],HEX[20:14],HEX[13:7],HEX[6:0],
         $time);
   end
-
+*/
 endmodule

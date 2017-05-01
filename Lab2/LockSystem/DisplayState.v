@@ -3,10 +3,10 @@ module DisplayState(state, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     output reg [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
     
 	parameter boat = 7'b0111111;
-	parameter wall_in = 7'b1001111;
-	parameter wall_in_boat = 7'b1001110;
-	parameter wall_out = 7'b1111001;
-	parameter wall_out_boat = 7'b1111000;
+	parameter wall_in = 7'b1111001;
+	parameter wall_in_boat = 7'b0111001;
+	parameter wall_out = 7'b1001111;
+	parameter wall_out_boat = 7'b0001111;
 	parameter empty = 7'b1111111;
 	
 	always @(*)
