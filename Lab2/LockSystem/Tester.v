@@ -97,7 +97,7 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 			outer_gondola_arrival_sw = 1'b1;
 			level = "SIGNAL-"; log = ~log;
 			#stimDelay clk = ~clk;
-			outer_gondola_arrival_sw = 0'b1;
+			outer_gondola_arrival_sw = 1'b1;
 			#stimDelay clk = ~clk;
 
 
