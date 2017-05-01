@@ -11,15 +11,17 @@ module DisplayState(state, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 	
 	always @(state)
 		begin
-		// 1. 88|88|88
-		// 2. -8|88|88 
-		// 3. 8-|88|88
-		// 4. 88 -8|88
-		// 5. 88|-8|88
-		// 6. 88|8-|88
-		// 7. 88|88 -8
-		// 8. 88|88|-8
-		// 9. 88|88|8-
+		// 0. 88|88|88
+		// 1. -8|88|88 
+		// 2. 8-|88|88
+		// 3. 88 -8|88
+		// 4. 88|-8|88
+		// 5. 88|8-|88
+		// 6. 88|88 -8
+		// 7. 88|88|-8
+		// 8. 88|88|8-
+		// 9. 8- 88|88
+		// 10.88|8- 88
 			case(state)
 				'd0: begin
 					HEX5 <= empty;
@@ -93,7 +95,7 @@ module DisplayState(state, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 					HEX1 <= empty;
 					HEX0 <= boat;
 				end
-				'd9: begin
+				'd9: begin 
 					HEX5 <= empty;
 					HEX4 <= boat;
 					HEX3 <= empty;
