@@ -1,11 +1,11 @@
-module filter(clk, r, in, out);
-	input wire clk, r, in;
+module filter(clk, reset, in, out);
+	input wire clk, reset, in;
 	output reg out;
 	
 	reg active;
 	
 	always @ (posedge clk) begin
-		if (r) begin
+		if (reset) begin
 			active <= 1;
 			out <= 0;
 		end
