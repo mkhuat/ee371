@@ -15,7 +15,7 @@ module TopLevelLockSystem
 	filter inner_door_f (clk, reset, inner_door_sw, inner_door_en);
 	filter outer_door_f (clk, reset, outer_door_sw, outer_door_en);
 	filter outer_gondola_arrival_f (clk, reset, outer_gondola_arrival_sw, outer_gondola_arrival_en);
-	filter inner_gondola_arrival_f (clk, reset, inner_gondola_arrival_sw, inner_gondola_arrival_en);
+	filter inner_gondola_arrival_f (clok, reset, inner_gondola_arrival_sw, inner_gondola_arrival_en);
 	filter inc_water_level_f (clk, reset, inc_water_level, inc_water_level_en);
 	filter dec_water_level_f (clk, reset, dec_water_level, dec_water_level_en);
 	
@@ -55,7 +55,8 @@ which turns on the corresponding side's LED
 LEDs can only cycle from "Arrival" to "Departure" except if the operator pressed the wrong direction key.
 */
 module GondolaDoorLight
-		#( parameter INNER = 5*560,  parameter OUTER = 0*560, parameter TOLERANCE = 3*56, parameter GONDOLA_ARR_DELAY = 5, parameter GONDOLA_DEPT_DELAY = 5)
+		#( parameter INNER = 5*560,  
+			parameter OUTER = 0*560, parameter TOLERANCE = 3*56, parameter GONDOLA_ARR_DELAY = 5, parameter GONDOLA_DEPT_DELAY = 5, parameter ARRIVING = 0, parameter IN_POUND = 1, parameter DEPARTING = 2)
 		(/* Inputs */ inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk, outer_door_openable, inner_door_openable,
 		/* Outputs */ inner_gondola_led, outer_gondola_led, state);
 		
@@ -100,14 +101,14 @@ module GondolaDoorLight
 				// We need to mark the canal as clear and reset its state if:
 				// 1. The boat is in position 2 (leaving) and the counter is at least GONDOLA_DEPT_DELAY
 				// 2. We reset
-				if (reset || (position == 2 && counter >= GONDOLA_DEPT_DELAY))
+				if (reset || (position == DEPARTING && counter >= GONDOLA_DEPT_DELAY))
 					begin
 						// Reset to default values
 						// Do not reset water. It is handled by the WaterSystem module.
 						counter = 0;
 						to_outer = 0;
 						to_inner = 0;
-						position = 0;
+						position = ARRIVING;
 						inner_gondola_led = 0;
 						outer_gondola_led = 0;
 						state = 'd0;
@@ -126,7 +127,7 @@ module GondolaDoorLight
 							// 3. inner_door_openable is true
 								if (inner_door_openable && counter >= GONDOLA_ARR_DELAY && to_outer)
 								begin
-									position = 1;
+									position = IN_POUND;
 									// Both lights on when boat is in the pound
 									outer_gondola_led = 1;
 									inner_gondola_led = 1;
@@ -138,7 +139,7 @@ module GondolaDoorLight
 							// 3. inner_door_openable is true
 								if (inner_door_openable && to_inner)
 								begin
-									position = 2;
+									position = DEPARTING;
 									outer_gondola_led = 0;
 									inner_gondola_led = 1;
 									// Restart counter as we need to wait for the boat to leave
@@ -159,7 +160,7 @@ module GondolaDoorLight
 								// 3.  is true
 									if (outer_door_openable && counter >= GONDOLA_ARR_DELAY && to_inner)
 									begin
-										position = 1;
+										position = IN_POUND;
 										// Both lights on when boat is in the pound
 										outer_gondola_led = 1;
 										inner_gondola_led = 1;
@@ -171,7 +172,7 @@ module GondolaDoorLight
 								// 3. outer_door_openable is true
 									if (outer_door_openable && to_outer)
 									begin
-										position = 2;
+										position = DEPARTING;
 										// Restart counter as we need to wait for the boat to leave
 										counter = 0;
 										inner_gondola_led = 0;
@@ -190,7 +191,7 @@ module GondolaDoorLight
 									if (!reset && !to_outer && !to_inner)
 										begin
 											counter = 0;
-											position = 0;
+											position = ARRIVING;
 											to_outer = 0;
 											to_inner = 1;
 											outer_gondola_led = 1;
@@ -205,7 +206,7 @@ module GondolaDoorLight
 									if (!reset && !to_outer && !to_inner)
 										begin
 											counter = 0;
-											position = 0;
+											position = ARRIVING;
 											to_outer = 1;
 											to_inner = 0;
 											inner_gondola_led = 1;
