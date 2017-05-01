@@ -68,14 +68,13 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 		// Decrease these delays to verify specific amounts...
 		integer i = 0, j = 0, boat_delay = 10, rise_delay = 8, fall_delay = 7;
 
-		/* Kevin:Leaving this here incase y'all wanna revert
+		// Kevin:Leaving this here incase y'all wanna revert
 		initial begin 
-			$display(" inner_door_sw  |  outer_door_sw |  outer_gondola_arrival_sw  |  inner_gondola_arrival_sw  |  inc_water_level  |  dec_water_level  |  inner_gondola_led  |  outer_gondola_led  |  outer_door_openable_led  |  inner_door_openable_led  |  Clock  |  Reset  |  Time ");
-			$monitor(" %b  |  %b  |  %b |  %b  |  %b  |  %b  |  %b  |  %b  |  %b  |  %b  |  %b  |  %b  |  %t",
+			$display(" inner_door_sw,outer_door_sw,outer_gondola_arrival_sw,inner_gondola_arrival_sw,inc_water_level,dec_water_level,inner_gondola_led,outer_gondola_led,outer_door_openable_led,inner_door_openable_led,Clock,Reset,Time ");
+			$monitor(" %b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%t",
 			inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level, inner_gondola_led,
 			outer_gondola_led, outer_door_openable_led, inner_door_openable_led, clk, reset, $time);
 		end
-        */
 		
 		initial
 		begin
@@ -117,7 +116,7 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 			// Open the outer gate.
 			outer_door_sw = 1'b1;
 			#stimDelay clk = ~clk;
-            level = "GATEOPN"; log = ~log;
+            level = "INPOUND-"; log = ~log;
 			outer_door_sw = 1'b0;
 			#stimDelay clk = ~clk;
 
@@ -139,6 +138,8 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 			for (j = 0; j < boat_delay*2; j=j+1) begin
 				#stimDelay clk = ~clk;
 			end
+			
+            level = "DEPART-"; log = ~log;
 
 			// TODO: Start next test...
 			for (j = 0; j < boat_delay*2; j=j+1) begin
@@ -171,6 +172,7 @@ module Logger
   input [11:0] dutPort;
   input [41:0] HEX;
   
+  /*
   always @ (posedge log or negedge log) begin
       $display({"%s:@%s  State:", 
         "{inner_door_sw:%b, ", 
@@ -192,5 +194,6 @@ module Logger
 		HEX[41:35],HEX[34:28],HEX[27:21],HEX[20:14],HEX[13:7],HEX[6:0],
         $time);
   end
+  */
 
 endmodule

@@ -71,6 +71,13 @@ module Tester(clk, reset, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw
 		integer i = 0, j = 0, boat_delay = 10, rise_delay = 8, fall_delay = 7;
 
 		
+		initial begin 
+			$display(" inner_door_sw,outer_door_sw,outer_gondola_arrival_sw,inner_gondola_arrival_sw,inc_water_level,dec_water_level,inner_gondola_led,outer_gondola_led,outer_door_openable_led,inner_door_openable_led,Clock,Reset,Time ");
+			$monitor(" %b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%t",
+			inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level, inner_gondola_led,
+			outer_gondola_led, outer_door_openable_led, inner_door_openable_led, clk, reset, $time);
+		end
+		
 		initial
 		begin
 			// Prime the system
@@ -166,6 +173,7 @@ module Logger
   input [11:0] dutPort;
   input [41:0] HEX;
   
+  /*
   always @ (posedge log or negedge log) begin
       $display({"%s:@%s  State:", 
         "{inner_door_sw:%b, ", 
@@ -187,5 +195,6 @@ module Logger
 		HEX[41:35],HEX[34:28],HEX[27:21],HEX[20:14],HEX[13:7],HEX[6:0],
         $time);
   end
+  */
 
 endmodule

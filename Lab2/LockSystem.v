@@ -80,6 +80,9 @@ module GondolaDoorLight
 		assign outer_door_openable = water_level <= OUTER + TOLERANCE;
 		assign inner_door_openable = water_level >= INNER - TOLERANCE;
 		
+		
+		
+		
 		always @ (posedge clk)
 			begin
 				// We need to mark the canal as clear and reset its state if:

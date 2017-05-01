@@ -1,5 +1,5 @@
 module TopLevelLockSystem
-		#( parameter INNER = 5*560,  parameter OUTER = 0, parameter TOLERANCE = 0.3*560)
+		#( parameter INNER = 10*560,  parameter OUTER = 5*560, parameter TOLERANCE = 3*56)
 		(/* Inputs */ clk, rst, inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, inc_water_level, dec_water_level,
 		/* Outputs */ inner_gondola_led, outer_gondola_led, outer_door_openable_led, inner_door_openable_led,
 		/* Display */ HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
@@ -18,6 +18,9 @@ module TopLevelLockSystem
 	filter inner_gondola_arrival_f (clk, reset, inner_gondola_arrival_sw, inner_gondola_arrival_en);
 	filter inc_water_level_f (clk, reset, inc_water_level, inc_water_level_en);
 	filter dec_water_level_f (clk, reset, dec_water_level, dec_water_level_en);
+	
+	//always @ (posedge outer_door_sw)
+	//		$display("Outer door switch triggered");
 	
 	wire [3:0] state;
 	
@@ -55,7 +58,7 @@ which turns on the corresponding side's LED
 LEDs can only cycle from "Arrival" to "Departure" except if the operator pressed the wrong direction key.
 */
 module GondolaDoorLight
-		#( parameter INNER = 5*560,  parameter OUTER = 0*560, parameter TOLERANCE = 3*56, parameter GONDOLA_ARR_DELAY = 5, parameter GONDOLA_DEPT_DELAY = 5)
+		#( parameter INNER = 10*560,  parameter OUTER = 5*560, parameter TOLERANCE = 3*56, parameter GONDOLA_ARR_DELAY = 5, parameter GONDOLA_DEPT_DELAY = 5)
 		(/* Inputs */ inner_door_sw, outer_door_sw, outer_gondola_arrival_sw, inner_gondola_arrival_sw, water_level, reset, clk, outer_door_openable, inner_door_openable,
 		/* Outputs */ inner_gondola_led, outer_gondola_led, state);
 		
@@ -94,6 +97,9 @@ module GondolaDoorLight
 		// TODO: Perhaps reduce duplication with the LED in the other module
 		// assign outer_door_openable = water_level <= OUTER + TOLERANCE;
 		// assign inner_door_openable = water_level >= INNER - TOLERANCE;
+		
+		always @ (posedge outer_door_sw)
+			$display("Outer door switch triggered");
 		
 		always @ (posedge clk)
 			begin
@@ -151,19 +157,25 @@ module GondolaDoorLight
 						// OUTER SWITCH
 						if (outer_door_sw)
 							begin
+								$display("Outer door switch triggered");
 								case(position)
 								0:
-								// Boat is before the pound, only move forward if:
-								// 1. It's been long enough (>=GONDOLA_ARR_DELAY)
-								// 2. it's going to_inner
-								// 3.  is true
-									if (outer_door_openable && counter >= GONDOLA_ARR_DELAY && to_inner)
 									begin
-										position = 1;
-										// Both lights on when boat is in the pound
-										outer_gondola_led = 1;
-										inner_gondola_led = 1;
-										state = 'd10;
+									// Boat is before the pound, only move forward if:
+									// 1. It's been long enough (>=GONDOLA_ARR_DELAY)
+									// 2. it's going to_inner
+									// 3.  is true
+										if (outer_door_openable && counter >= GONDOLA_ARR_DELAY && to_inner)
+										begin
+											$display("We opened the outer door");
+											position = 1;
+											// Both lights on when boat is in the pound
+											outer_gondola_led = 1;
+											inner_gondola_led = 1;
+											state = 'd10;
+										end
+										else 
+											$display("We could not open the door");
 									end
 								1:
 								// Boat is in the pound, only move forward if:
@@ -222,7 +234,7 @@ Updates water level at the correct rate.
 Stops updating water volume after Open/Close Inner/Outer is triggered.
 */
 module WaterSystem
-		#( parameter INNER = 5*560,  parameter OUTER = 560*0, parameter TOLERANCE = 56*3, parameter INC_AMT = 5 * 560 / 8, parameter DEC_AMT = 5 * 560 / 7)
+		#( parameter INNER = 10*560,  parameter OUTER = 5*560, parameter TOLERANCE = 56*3, parameter INC_AMT = 5 * 560 / 8, parameter DEC_AMT = 5 * 560 / 7)
 		(/* Inputs */ inc_water_level, dec_water_level, clk, reset,
 		/* Outputs */ water_level, outer_door_openable_led, inner_door_openable_led);
 		
