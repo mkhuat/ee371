@@ -170,7 +170,7 @@ module GondolaDoorLight
 						
 						if (position == IN_POUND) begin
 							if ((to_inner && inner_door_openable) || (to_outer && !outer_door_openable)) state = 'd4;
-							else if ((to_outer && outer_door_openable) || (to_inner && !inner_door_openable)) state = 'd5;
+							else if ((to_outer && outer_door_openable) || (to_inner && inner_door_openable)) state = 'd5;
 						end
 						
 						if (to_inner && position == IN_POUND && inner_door_openable) begin

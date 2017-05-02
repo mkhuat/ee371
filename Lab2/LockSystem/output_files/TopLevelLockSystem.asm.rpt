@@ -1,5 +1,5 @@
 Assembler report for TopLevelLockSystem
-Mon May 01 15:06:07 2017
+Mon May 01 16:38:08 2017
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon May 01 15:06:07 2017 ;
+; Assembler Status      ; Successful - Mon May 01 16:38:08 2017 ;
 ; Revision Name         ; TopLevelLockSystem                    ;
 ; Top-level Entity Name ; TopLevelLockSystem                    ;
 ; Family                ; Cyclone V                             ;
@@ -79,8 +79,8 @@ agreement for further details.
 ; Option         ; Setting                                                                          ;
 +----------------+----------------------------------------------------------------------------------+
 ; Device         ; 5CSEMA5F31C6                                                                     ;
-; JTAG usercode  ; 0x00DCEF8D                                                                       ;
-; Checksum       ; 0x00DCEF8D                                                                       ;
+; JTAG usercode  ; 0x00DCFDBD                                                                       ;
+; Checksum       ; 0x00DCFDBD                                                                       ;
 +----------------+----------------------------------------------------------------------------------+
 
 
@@ -90,14 +90,14 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
-    Info: Processing started: Mon May 01 15:05:59 2017
+    Info: Processing started: Mon May 01 16:37:59 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off LockSystem -c TopLevelLockSystem
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 932 megabytes
-    Info: Processing ended: Mon May 01 15:06:07 2017
-    Info: Elapsed time: 00:00:08
+    Info: Processing ended: Mon May 01 16:38:08 2017
+    Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:08
 
 
