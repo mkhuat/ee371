@@ -1,15 +1,19 @@
 
 module TopLevelScannerSystem(
 	/* Inputs */ clk, reset, startScan, startTransfer,
-	/* Outputs: LED */ scan_1_transfer_me, scan_2_transfer_me, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_flush, scan_2_flush,
+	/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_flush, scan_2_flush, clk_led,
 	/* Outputs: HEX */ HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
 	input clk, reset, startScan, startTransfer;
 	output scan_1_transfer_me, scan_2_transfer_me, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_flush, scan_2_flush;
 	output wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
+	output wire clk_led;
 
 	parameter 
 		
+		// Clock index
+		CLOCK_INDEX = 24
+
 		// Hex display of numbers
 		HEX_0 = 7'b1000000,
 		HEX_1 = 7'b1111001,
@@ -35,13 +39,28 @@ module TopLevelScannerSystem(
 		HEX_F = 7'b0111000, // F = Flushing
 
 		// Encoding of states
-		lowPower = 4'b0000,
-		standby = 4'b0001,
-		collecting = 4'b0010,
-		idle = 4'b0011,
-		transferring = 4'b0100,
-		flushing = 4'b0101;
+		lowPower = 3'b000,
+		standby = 3'b001,
+		collecting = 3'b010,
+		idle = 3'b011,
+		transferring = 3'b100,
+		flushing = 3'b101;
 		// TODO: init state?
+
+		// Divide and display the 50MHz clock
+		reg [30:0] scan_clk;
+		always@(posedge clk) scan_clk <= scan_clk + 1'b1;
+		assign clk_led = scan_clk[CLOCK_INDEX];
+
+		// Communication wires?
+		wire [3:0] scan_1_state, scan_2_state,
+					scan_1_count, scan_2_count;
+
+		scanner scan_1 ();
+		scanner scan_2 ();
+
+		// DisplayState displayState (state, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0);
+
 
 endmodule
 
