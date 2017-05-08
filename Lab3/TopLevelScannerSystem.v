@@ -1,11 +1,10 @@
-
 module TopLevelScannerSystem(
 	/* Inputs */ clk, reset, startScan, startTransfer,
-	/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_flush, scan_2_flush, clk_led,
+	/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
 	/* Outputs: HEX */ HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
 	input clk, reset, startScan, startTransfer;
-	output scan_1_transfer_me, scan_2_transfer_me, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_flush, scan_2_flush;
+	output scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush;
 	output wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 	output wire clk_led;
 
@@ -39,12 +38,12 @@ module TopLevelScannerSystem(
 		HEX_F = 7'b0111000, // F = Flushing
 
 		// Encoding of states
-		lowPower = 3'b000,
-		standby = 3'b001,
-		collecting = 3'b010,
-		idle = 3'b011,
-		transferring = 3'b100,
-		flushing = 3'b101;
+		LOWPOWER = 3'b000,
+		STANDBY = 3'b001,
+		COLLECTING = 3'b010,
+		IDLE = 3'b011,
+		TRANSFERRING = 3'b100,
+		FLUSHING = 3'b101;
 		// TODO: init state?
 
 		// Divide and display the 50MHz clock
@@ -56,8 +55,18 @@ module TopLevelScannerSystem(
 		wire [3:0] scan_1_state, scan_2_state,
 					scan_1_count, scan_2_count;
 
-		scanner scan_1 ();
-		scanner scan_2 ();
+		Scanner scan_1 (clk, reset, 
+						/* Clocked buffer  */	scan_1_count, 
+						/* Info FRM scan 2 */	scan_2_go_to_standby, scan_2_start_scan, scan_2_transfer, scan_2_flush,
+						/* Info TO scan 2  */	scan_1_ready_to_transfer, scan_1_go_to_standby, scan_1_start_scan, scan_1_flush, 
+						/* Current state   */	scan_1_state);
+		
+		Scanner scan_2 (clk, reset, 
+						/* Clocked buffer  */	scan_2_count, 
+						/* Info FRM scan 1 */	scan_1_go_to_standby, scan_1_start_scan, scan_1_transfer, scan_1_flush,
+						/* Info TO scan 1  */	scan_2_ready_to_transfer, scan_2_go_to_standby, scan_2_start_scan, scan_2_flush, 
+						/* Current state   */	scan_2_state);
+
 
 		// DisplayState displayState (state, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0);
 
