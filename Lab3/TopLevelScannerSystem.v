@@ -68,8 +68,7 @@ module TopLevelScannerSystem(
 					/* Clocked buffer  */	scan_1_count, 
 					/* Info FRM scan 2 */	scan_2_comm,	// output wire[1:0] ===> scan_2_go_to_standby = 1, scan_2_start_scan = 2, scan_2_transfer = 3, scan_2_flush = 4,
 					/* Info TO scan 2  */	scan_1_comm,	// output wire[1:0] ===> scan_1_ready_to_transfer = 1, scan_1_go_to_standby = 2, scan_1_start_scan = 3, scan_1_flush = 4, 
-					/* Current state   */	scan_1_state,
-					/* Transfer ready  */	scan_1_ready_to_transfer);
+					/* Current state   */	scan_1_state);
 
 		
 	
@@ -77,8 +76,7 @@ module TopLevelScannerSystem(
 					/* Clocked buffer  */	scan_2_count, 
 					/* Info FRM scan 1 */	scan_1_comm,	// output wire[1:0] ===> scan_1_go_to_standby, scan_1_start_scan, scan_1_transfer, scan_1_flush,
 					/* Info TO scan 1  */	scan_2_comm,	// output wire[1:0] ===> scan_2_ready_to_transfer, scan_2_go_to_standby, scan_2_start_scan, scan_2_flush, 
-					/* Current state   */	scan_2_state,
-					/* Transfer ready  */	scan_2_ready_to_transfer);
+					/* Current state   */	scan_2_state);
 
 
 	// DisplayState displayState (scan_1_state, scan_2_state, scan_1_count, scan_2_count, stateHex1, stateHex2, countHex1, countHex2);
@@ -86,16 +84,20 @@ module TopLevelScannerSystem(
 	// TODO: Invest more time into thinking about test bench's clocked output with always @ (*) non-synchronous output
 	
 	// Go to Standby
-	assign scan_1_go_to_standby = scan_2_comm == GO_TO_STANDBY;
-	assign scan_2_go_to_standby = scan_1_comm == GO_TO_STANDBY;
+	assign scan_1_go_to_standby = (scan_2_comm == GO_TO_STANDBY);
+	assign scan_2_go_to_standby = (scan_1_comm == GO_TO_STANDBY);
+	
+	// Ready to Transfer
+	assign scan_1_ready_to_transfer = (scan_2_comm == GO_TO_STANDBY);
+	assign scan_2_ready_to_transfer = (scan_1_comm == GO_TO_STANDBY);
 	
 	// Start Scan
-	assign scan_1_start_scan = scan_2_comm == START_SCAN;
-	assign scan_2_start_scan = scan_1_comm == START_SCAN;
+	assign scan_1_start_scan = (scan_2_comm == START_SCAN);
+	assign scan_2_start_scan = (scan_1_comm == START_SCAN);
 	
 	// Flush
-	assign scan_1_flush = scan_2_comm == START_FLUSH;
-	assign scan_2_flush = scan_1_comm == START_FLUSH;
+	assign scan_1_flush = (scan_2_comm == START_FLUSH);
+	assign scan_2_flush = (scan_1_comm == START_FLUSH);
 	
 endmodule
 

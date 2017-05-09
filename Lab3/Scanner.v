@@ -1,6 +1,6 @@
 module Scanner(
 	/* Inputs */ clk, reset, userInput, count, receiveComm, // goToStandby, startScan, startTranfser, startFlush,
-	/* Outputs  signalReadyToTransfer, signalGoToStandby, signalStartScan, signalFlush,*/transmitComm, ps, transferReady);
+	/* Outputs  signalReadyToTransfer, signalGoToStandby, signalStartScan, signalFlush,*/transmitComm, ps);
 
 	// Inputs: used to determine this scanner's next state
 	input clk, reset;
@@ -13,8 +13,6 @@ module Scanner(
 	output reg [1:0] transmitComm;
 	output reg [2:0] ps; 	// Present State
 	
-	// Consider making this a reg
-	output transferReady;
 	reg [2:0] ns;			// Next state
 	
 
@@ -40,7 +38,6 @@ module Scanner(
 	// Counts for this scanner
 	reg resetCounter; // Maybe wire idk
 	Counter ctr (clk, resetCounter, count);
-	assign transferReady = count == 4'b0111; 
 	
 	// Next state logic
 	always @(*) begin
