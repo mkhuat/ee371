@@ -60,6 +60,8 @@ module TopLevelScannerSystem(
 						/* Info FRM scan 2 */	scan_2_go_to_standby, scan_2_start_scan, scan_2_transfer, scan_2_flush,
 						/* Info TO scan 2  */	scan_1_ready_to_transfer, scan_1_go_to_standby, scan_1_start_scan, scan_1_flush, 
 						/* Current state   */	scan_1_state);
+
+			
 		
 		Scanner scan_2 (clk, reset, 
 						/* Clocked buffer  */	scan_2_count, 
@@ -68,7 +70,7 @@ module TopLevelScannerSystem(
 						/* Current state   */	scan_2_state);
 
 
-		// DisplayState displayState (state, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0);
+		// DisplayState displayState (state1, state2, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0);
 
 
 endmodule

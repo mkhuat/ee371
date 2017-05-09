@@ -11,12 +11,13 @@ module Scanner(
 	output [2:0] state;
 
 	// Encoding of states
-	LOWPOWER = 3'b000,
-	STANDBY = 3'b001,
-	COLLECTING = 3'b010,
-	IDLE = 3'b011,
-	TRANSFERRING = 3'b100,
-	FLUSHING = 3'b101;
+	parameter
+		LOWPOWER = 3'b000,
+		STANDBY = 3'b001,
+		COLLECTING = 3'b010,
+		IDLE = 3'b011,
+		TRANSFERRING = 3'b100,
+		FLUSHING = 3'b101;
 
 	// Present state and next state
 	reg [2:0] ps, ns;
@@ -29,7 +30,7 @@ module Scanner(
 	// Next state logic
 	always @(*) begin
 
-		if (scanner_active) begin
+		//if (scanner_active) begin
 
 			case (ps)
 				LOWPOWER: 	begin
@@ -67,16 +68,17 @@ module Scanner(
 
 			endcase
 
-		end
+		//end
 	end
 
 	// Reset and state transition logic
 	always@(posedge clk) begin
 		if (reset) begin
-			scaner_active <= 0;
+			// scanner_active <= 0;
 			ps <= LOWPOWER;
 		end else begin
-			scaner_active <= scaner_active		
+			// if (scanner_id == 0) scanner_active <= 1;
+			// scanner_active <= scaner_active		
 			ps <= ns;
 		end
 	end
