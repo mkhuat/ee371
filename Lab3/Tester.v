@@ -4,42 +4,42 @@
 module TestBench();
 	
 	// Ports list
-	wire clk, reset, startScan, startTransfer;
+	wire clk, reset, startScan, startTransfer, startSystem; // KEY [2:0]
 	wire scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush;
-	wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
+	wire [6:0] stateHex1, stateHex2, countHex1, countHex2; // HEX 5, 4, 1, 0
 	wire clk_led;
 	
-	TopLevelScannerSystem dut(clk, reset, startScan, startTransfer, scan_1_ready_to_transfer,
-		scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby,
-		scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
-		HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+	TopLevelScannerSystem dut(
+		/* Inputs */ clk, reset, startScan, startTransfer, startSystem,
+		/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
+		/* Outputs: HEX */ stateHex1, stateHex2, countHex1, countHex2);
 	
-	Tester t(clk, reset, startScan, startTransfer, scan_1_ready_to_transfer,
-		scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby,
-		scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
-		HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+	Tester t(
+		/* Inputs */ clk, reset, startScan, startTransfer, startSystem,
+		/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
+		/* Outputs: HEX */ stateHex1, stateHex2, countHex1, countHex2);
 	
 endmodule
 
-module Tester(/* Outputs */ clk, reset, startScan, startTransfer,
-	/* Inputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
-	/* Inputs: HEX */ HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+module Tester(/* Inputs */ clk, reset, startScan, startTransfer, startSystem,
+		/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
+		/* Outputs: HEX */ stateHex1, stateHex2, countHex1, countHex2);
 	
-	output clk, reset, startScan, startTransfer;
+	output reg clk, reset, startScan, startTransfer, startSystem;
 	input scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush;
-	input wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
+	input wire [6:0] stateHex1, stateHex2, countHex1, countHex2;
 	input wire clk_led;
 	
+	integer i;
 	initial begin
-		monitor("%b", clk)
+		$monitor("%b", clk);
 	
 		clk = 1'b0;
 		
-		integer i;
 		for (i = 0; i < 10; i = i + 1) begin
 			clk = ~clk;
 		end
 		
-		$finish
+		$finish;
 	end
 endmodule
