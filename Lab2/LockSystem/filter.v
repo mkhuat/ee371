@@ -24,14 +24,22 @@ module filter(clk, reset, in, out);
 			active <= 0;
 			out <= 1;
 		end
+<<<<<<< HEAD
 		else if (~( active || in)) begin 
 			// $display("Filter output case 2");
+=======
+		else if (!( active || in)) begin 
+>>>>>>> 0e73d4f39567d8ca2190900e6697a1fd90b11b19
 			active <= 1;
 			out <= 0;
 		end
 		else begin
+<<<<<<< HEAD
 			// $display("Filter default");
 			active <= ~in;
+=======
+			active <= !in;
+>>>>>>> 0e73d4f39567d8ca2190900e6697a1fd90b11b19
 			out <= 0;
 		end
 	end

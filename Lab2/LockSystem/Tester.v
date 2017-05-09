@@ -172,7 +172,10 @@ module Logger
   // DUT info
   input [11:0] dutPort;
   input [41:0] HEX;
+<<<<<<< HEAD
   
+=======
+>>>>>>> 0e73d4f39567d8ca2190900e6697a1fd90b11b19
   /*
   always @ (posedge log or negedge log) begin
       $display({"%s:@%s  State:", 
@@ -195,6 +198,10 @@ module Logger
 		HEX[41:35],HEX[34:28],HEX[27:21],HEX[20:14],HEX[13:7],HEX[6:0],
         $time);
   end
+<<<<<<< HEAD
   */
 
+=======
+*/
+>>>>>>> 0e73d4f39567d8ca2190900e6697a1fd90b11b19
 endmodule
