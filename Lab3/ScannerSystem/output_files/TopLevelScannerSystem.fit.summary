@@ -1,15 +1,15 @@
-Fitter Status : Successful - Wed May 10 19:03:25 2017
+Fitter Status : Successful - Thu May 11 11:57:00 2017
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 Revision Name : TopLevelScannerSystem
 Top-level Entity Name : TopLevelScannerSystem
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 702 / 32,070 ( 2 % )
-Total registers : 1660
+Logic utilization (in ALMs) : 472 / 32,070 ( 1 % )
+Total registers : 1095
 Total pins : 42 / 457 ( 9 % )
 Total virtual pins : 0
-Total block memory bits : 9,600 / 4,065,280 ( < 1 % )
+Total block memory bits : 6,656 / 4,065,280 ( < 1 % )
 Total RAM Blocks : 2 / 397 ( < 1 % )
 Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0

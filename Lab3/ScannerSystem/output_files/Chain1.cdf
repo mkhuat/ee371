@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("C:/Users/nja4/Desktop/ee371/Lab3/ScannerSystem/output_files/") File("TopLevelScannerSystem.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("C:/Users/caravk/ee371/Lab3/ScannerSystem/output_files/") File("TopLevelScannerSystem.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
