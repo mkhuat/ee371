@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at Scanner.v(106): always construct contains both blocking and non-blocking assignments File: C:/Users/caravk/ee371/Lab3/ScannerSystem/Scanner.v Line: 106

@@ -35,101 +35,81 @@ module Scanner (
 	//reg scanner_active;
 
 	// Counts for this scanner
-	reg resetCounter; // Maybe wire idk
+	reg hold; // stop counting
 	DisplayState displayState (ps, count, stateHex, countHex);
 	
 	// Next state logic
-	always @(posedge clk) begin
-		// $display("Start next state logic");
-
+	always @(*) begin
+		
+		// System defaults (steady state)
+		hold = 1'b1;
+		ns = ps;
+		transmitComm = INACTIVE;
+		
 		case (ps)
-			LOWPOWER: 	begin
-							transmitComm = INACTIVE;
-							if (receiveComm == GO_TO_STANDBY || userInput[0]) begin
-								ns = STANDBY;
-								resetCounter = 1'b1;
-							end else begin
-								ns = ps;
-								resetCounter = 1'b0;
-							end
-						end
+			LOWPOWER:
+				if (receiveComm == GO_TO_STANDBY || userInput[0])
+					ns = STANDBY;
+							
+			STANDBY: 
+				if (receiveComm == START_SCAN || userInput[2])
+					ns = COLLECTING;
+					
+			COLLECTING:	
+				begin
+					hold = 1'b0;
+					
+					// Signal adjacent scanner
+					case (count)
+						4'b1001: ns = IDLE;
+						4'b0111: transmitComm = GO_TO_STANDBY; // 80%
+						4'b1000: transmitComm = START_SCAN;    // 90%
+						4'b0101: transmitComm = START_FLUSH;   // 50%
+						default: transmitComm = INACTIVE;   // 50%
+					endcase
+				end
 
-			STANDBY:  	begin
-							transmitComm = INACTIVE;
-							if (receiveComm == START_SCAN || userInput[2]) begin
-								ns = COLLECTING;
-								resetCounter = 1'b1;
-							end else begin
-								ns = ps;
-								resetCounter = 1'b0;
-							end
-						end
-
-			COLLECTING:	begin
-							resetCounter = 1'b0;
-							if (count == 4'b1001) begin
-								ns = IDLE;						 // 100%
-								transmitComm = INACTIVE;
-							end else begin  
-								if (count == 4'b0111) transmitComm = GO_TO_STANDBY; // 80%
-								else if (count == 4'b1000) transmitComm = START_SCAN;    // 90%
-								else if (count == 4'b0101) transmitComm = START_FLUSH;   // 50%
-								else transmitComm = INACTIVE;
-								ns = ps;
-							end
-						end
-
-			IDLE:  		begin
-							transmitComm = INACTIVE;
-							if (userInput[1]) begin
-								ns = TRANSFERRING;
-								resetCounter = 1'b1;
-							end else if (receiveComm == START_FLUSH) begin
-								ns = FLUSHING;
-								resetCounter = 1'b1;
-							end else begin
-								ns = ps;
-								resetCounter = 1'b0;
-							end
-						end
-
-			TRANSFERRING:	begin
-								transmitComm = INACTIVE;
-								resetCounter = 1'b0;
-								if (count == 4'b0010) ns = LOWPOWER; // After 2 cycles, go to low
-								else ns = ps;
-							end
-
-			FLUSHING: 	begin
-							transmitComm = INACTIVE;
-							resetCounter = 1'b0;
-							if (count == 4'b0010) ns = LOWPOWER; // After 2 cycles, go to low
-							else ns = ps;
-						end
-
-			default: 	begin
-							transmitComm = INACTIVE;
-							resetCounter = 1'b0;
-							ns = LOWPOWER;
-						end
+			IDLE: 
+				begin
+					if (userInput[1])
+						ns = TRANSFERRING;		
+				
+					else if (receiveComm == START_FLUSH)
+						ns = FLUSHING;				
+				end
+				
+			FLUSHING, TRANSFERRING:
+				begin
+					hold = 1'b0;
+					if (count == 4'b0010) ns = LOWPOWER; // After 2 cycles, go to low
+				end
+				
+			default: 
+				begin
+					hold = 1'b1;
+					ns = ps;
+					transmitComm = INACTIVE;
+				end
 		endcase
 	end
 
 	
-	// Reset and state transition logic
+	// state loading
 	always @(posedge clk) begin
-		if (reset) begin
+		if (reset)
 			ps <= LOWPOWER;
-			count <= 4'b0000;
-		end else if (count == 4'b1001) begin
-			count <= 4'b0000;
-		end else begin	
+		else
 			ps <= ns;
-			if (resetCounter == 1'b1) count <= 4'b0000;
-			else count <= count + 4'b0001;
-		end
 	end
-
+	
+	// counter counting
+	always @(posedge clk) begin
+		if (hold)
+			count <= 4'b1111;
+		else
+			count = (count != 4'b1111) ? count + 4'b0001 : 4'b0000;
+	end
+	
 endmodule
 
 
@@ -154,7 +134,7 @@ module DisplayState (state, count, stateHex, countHex);
 		HEX_10 = 7'b0001001,
 		
 		// Hex display of misc.
-		HEX_DASH = 7'b1111110,
+		HEX_DASH = 7'b0111111,
 		HEX_CLEAR = 7'b1111111,
 
 		// Hex display of states
@@ -198,6 +178,7 @@ module DisplayState (state, count, stateHex, countHex);
 			4'b0111: countHex = HEX_8;
 			4'b1000: countHex = HEX_9;
 			4'b1001: countHex = HEX_10;
+			4'b1111: countHex = HEX_DASH;
 			default: countHex = HEX_CLEAR;
 		endcase
 	end
