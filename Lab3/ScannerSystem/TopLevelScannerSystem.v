@@ -79,11 +79,3 @@ module TopLevelScannerSystem(
 	assign scan_2_flush = (scan_1_comm == START_FLUSH);
 	
 endmodule
-
-
-
-
-
-
-
-

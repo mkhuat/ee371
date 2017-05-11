@@ -10,30 +10,30 @@ module TestBench();
 	wire clk_led;
 	
 	TopLevelScannerSystem dut(
-		/* Inputs */ clk, reset, startScan, startTransfer, startSystem,
+		/* Inputs */ clk, reset, startSystem, startScan, startTransfer,
 		/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
 		/* Outputs: HEX */ stateHex1, stateHex2, countHex1, countHex2);
 	
 	Tester t(
-		/* Inputs */ clk, reset, startScan, startTransfer, startSystem,
+		/* Inputs */ clk, reset, startSystem, startScan, startTransfer,
 		/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
 		/* Outputs: HEX */ stateHex1, stateHex2, countHex1, countHex2);
 	
 endmodule
 
-module Tester(/* Inputs */ clk, reset, startScan, startTransfer, startSystem,
+module Tester(/* Inputs */ clk, reset, startSystem, startScan, startTransfer,
 		/* Outputs: LED */ scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, clk_led,
 		/* Outputs: HEX */ stateHex1, stateHex2, countHex1, countHex2);
 	
-	output reg clk, reset, startScan, startTransfer, startSystem;
+	output reg clk, reset, startSystem, startTransfer, startScan;
 	input scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush;
 	input wire [6:0] stateHex1, stateHex2, countHex1, countHex2;
 	input wire clk_led;
 	
 	initial begin 
-			$display("clk, reset, startScan, startTransfer, startSystem, scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush");
+			$display("clk, reset, startSystem, startTransfer, startScan, scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush");
 			$monitor(" %b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%b,%t",
-			clk, reset, startScan, startTransfer, startSystem,
+			clk, reset, startSystem, startScan, startTransfer,
 			scan_1_ready_to_transfer, scan_2_ready_to_transfer, scan_1_go_to_standby, scan_2_go_to_standby, scan_1_start_scan, scan_2_start_scan, scan_1_flush, scan_2_flush, $time);
 	end
 	
@@ -41,11 +41,19 @@ module Tester(/* Inputs */ clk, reset, startScan, startTransfer, startSystem,
 	parameter stimDelay = 20;
 	initial begin
 		// $monitor("%b", clk);
-		clk = 1'b0;
-		reset = 1;
+		
+		clk = 1'b0; reset = 1;
+		clk = 1'b1; reset = 0;
+		
 		startScan = 0;
 		startTransfer = 0;
 		startSystem = 1;
+	
+		for (i = 0; i < 2*2; i = i + 1) begin
+			#stimDelay clk = ~clk;
+		end
+		
+	
 		#stimDelay clk = ~clk;
 		#stimDelay clk = ~clk;
 		startSystem = 0;
