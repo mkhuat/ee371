@@ -1,4 +1,4 @@
-module Scanner #(parameter ID = 0) (
+module Scanner (
 	/* Inputs  */ clk, reset, userInput, count, receiveComm,
 	/* Outputs */ transmitComm, stateHex, countHex);
 
@@ -40,7 +40,7 @@ module Scanner #(parameter ID = 0) (
 	DisplayState displayState (ps, count, stateHex, countHex);
 	
 	// Next state logic
-	always @(*) begin
+	always @(posedge clk) begin
 		// $display("Start next state logic");
 
 		ns = ps;
@@ -48,7 +48,7 @@ module Scanner #(parameter ID = 0) (
 		transmitComm = INACTIVE;
 		case (ps)
 			LOWPOWER: 	begin
-							$display("LOWPOWER %d", ID);
+							$display("LOWPOWER");
 							if (receiveComm == GO_TO_STANDBY || userInput[0]) begin
 								ns = STANDBY;
 								resetCounter = 1'b1;
@@ -56,7 +56,7 @@ module Scanner #(parameter ID = 0) (
 						end
 
 			STANDBY:  	begin
-							$display("STANDBY %d", ID);
+							$display("STANDBY");
 							if (receiveComm == START_SCAN || userInput[2]) begin
 								ns = COLLECTING;
 								resetCounter = 1'b1;
@@ -64,7 +64,7 @@ module Scanner #(parameter ID = 0) (
 						end
 
 			COLLECTING:	begin
-							$display("COLLECTING %d", ID);
+							$display("COLLECTING");
 							if (count == 4'b1001) ns = IDLE;
 							if (count == 4'b0111) transmitComm = GO_TO_STANDBY;
 							if (count == 4'b1000) transmitComm = START_SCAN;
@@ -72,7 +72,7 @@ module Scanner #(parameter ID = 0) (
 						end
 
 			IDLE:  		begin
-							$display("IDLE %d", ID);
+							$display("IDLE");
 							if (userInput[1]) begin
 								ns = TRANSFERRING;
 								resetCounter = 1'b1;
@@ -83,17 +83,17 @@ module Scanner #(parameter ID = 0) (
 						end
 
 			TRANSFERRING:	begin
-								$display("TRANSFERRING %d", ID);
+								$display("TRANSFERRING");
 								if (count == 4'b0010) ns = LOWPOWER; // After 2 cycles, go to low
 							end
 
 			FLUSHING: 	begin
-							$display("FLUSHING %d", ID);
+							$display("FLUSHING");
 							if (count == 4'b0010) ns = LOWPOWER; // After 2 cycles, go to low
 						end
 
 			default: 	begin
-							$display("DEFAULT %d", ID);
+							$display("DEFAULT");
 							ns = LOWPOWER;
 						end
 		endcase
@@ -127,7 +127,7 @@ module Counter(clk, reset, count);
 		if (reset || count == 4'b1001) begin
 			count <= 4'b0000;
 		end else begin
-			count <= count + 4'b0001;			
+			count <= count + 4'b0001;
 		end
 	end
 
@@ -152,19 +152,19 @@ module DisplayState (state, count, stateHex, countHex);
 		HEX_7 = 7'b1111000,
 		HEX_8 = 7'b0000000,
 		HEX_9 = 7'b0010000,
-		HEX_10 = 7'b1001000,
+		HEX_10 = 7'b0001001,
 		
 		// Hex display of misc.
 		HEX_DASH = 7'b1111110,
 		HEX_CLEAR = 7'b1111111,
 
 		// Hex display of states
-		HEX_L = 7'b1110001, // L = Low Power
-		HEX_S = 7'b0100100, // S = Standby
-		HEX_C = 7'b0110001, // C = Collecting (Scanning)
-		HEX_I = 7'b1000010, // d = Idle
-		HEX_T = 7'b1110000, // t = Transferring
-		HEX_F = 7'b0111000, // F = Flushing
+		HEX_L = 7'b0001110, // L = Low Power
+		HEX_S = 7'b0010010, // S = Standby
+		HEX_C = 7'b1000110, // C = Collecting (Scanning)
+		HEX_I = 7'b0100001, // d = Idle
+		HEX_T = 7'b0000111, // t = Transferring
+		HEX_F = 7'b1000111, // F = Flushing
 		
 		// Encoding of states
 		LOWPOWER = 3'b000,
@@ -173,8 +173,9 @@ module DisplayState (state, count, stateHex, countHex);
 		IDLE = 3'b011,
 		TRANSFERRING = 3'b100,
 		FLUSHING = 3'b101;
+		
 	
-	always @(state) begin
+	always @(*) begin
 		case (state)
 			LOWPOWER: stateHex = HEX_L;
 			STANDBY: stateHex = HEX_S;
@@ -186,7 +187,7 @@ module DisplayState (state, count, stateHex, countHex);
 		endcase
 	end
 
-	always @(count) begin
+	always @(*) begin
 		case (count)
 			4'b0000: countHex = HEX_1;
 			4'b0001: countHex = HEX_2;

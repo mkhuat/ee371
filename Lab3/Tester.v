@@ -83,7 +83,7 @@ module Tester(/* Inputs */ clk, reset, startSystem, startScan, startTransfer,
 		Transfer the second state at 80%. This will end the oscillation between scanners.
 		*/
 		
-		for (i = 0; i < 10; i = i + 1) begin
+		for (i = 0; i < 2*10; i = i + 1) begin
 			#stimDelay clk = ~clk;
 		end
 		

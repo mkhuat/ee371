@@ -125,7 +125,7 @@ module Counter(clk, reset, count);
 
 	always @ (posedge clk) begin
 		if (reset || count == 4'b1001) begin
-			count <= 4'b0001;
+			count <= 4'b0000;
 		end else begin
 			count <= count + 1;			
 		end

@@ -44,7 +44,7 @@ module TopLevelScannerSystem(
 	wire [3:0]	scan_1_count, scan_2_count;
 	wire [1:0] scan_1_comm, scan_2_comm;
 	
-	wire [2:0] userInput = {!startScan, !startTransfer, !startSystem};
+	wire [2:0] userInput = {startScan, startTransfer, startSystem};
 	
 	Scanner #(1) scan_1 (clk, reset, userInput,
 					/* Clocked buffer  */	scan_1_count, 

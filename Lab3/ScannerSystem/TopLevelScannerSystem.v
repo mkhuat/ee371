@@ -44,20 +44,21 @@ module TopLevelScannerSystem(
 	wire [3:0]	scan_1_count, scan_2_count;
 	wire [1:0] scan_1_comm, scan_2_comm;
 	
-	wire [2:0] userInput = {!startScan, !startTransfer, !startSystem};
+	wire [2:0] userInput1 = {~startScan, ~startTransfer, ~startSystem};
+	wire [2:0] userInput2 = {1'b0, ~startTransfer, 1'b0};
 	
-	Scanner #(1) scan_1 (clk, reset, userInput,
+	Scanner scan_1 (scan_clk[CLOCK_INDEX], reset, userInput1,
 					/* Clocked buffer  */	scan_1_count, 
 					/* Info FRM scan 2 */	scan_2_comm,	// output wire[1:0] ===> scan_2_go_to_standby = 1, scan_2_start_scan = 2, scan_2_transfer = 3, scan_2_flush = 4,
 					/* Info TO scan 2  */	scan_1_comm,	// output wire[1:0] ===> scan_1_ready_to_transfer = 1, scan_1_go_to_standby = 2, scan_1_start_scan = 3, scan_1_flush = 4, 
-					/* Display HEX	   */	stateHex1, countHex1);
+					/* Display HEX	   */		stateHex1, countHex1);
 
 		
-	Scanner #(2) scan_2 (clk, reset, 3'b000,
+	Scanner scan_2 (scan_clk[CLOCK_INDEX], reset, userInput2,
 					/* Clocked buffer  */	scan_2_count, 
 					/* Info FRM scan 1 */	scan_1_comm,	// output wire[1:0] ===> scan_1_go_to_standby, scan_1_start_scan, scan_1_transfer, scan_1_flush,
 					/* Info TO scan 1  */	scan_2_comm,	// output wire[1:0] ===> scan_2_ready_to_transfer, scan_2_go_to_standby, scan_2_start_scan, scan_2_flush, 
-					/* Display HEX	   */	stateHex2, countHex2);
+					/* Display HEX	   */		stateHex2, countHex2);
 
 	
 	// TODO: Invest more time into thinking about test bench's clocked output with always @ (*) non-synchronous output
