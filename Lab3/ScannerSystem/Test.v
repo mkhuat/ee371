@@ -93,7 +93,7 @@ module Tester(clk, reset, startSystem, startScan, startTransfer,
 	// COMPILE CSV DATA
 	initial begin
 		$display("clk,reset,startTransfer,startScan,startSystem,stateHex1,countHex1,stateHex2,countHex2");
-		$monitor("%b,%b,%b,%b,%b,%s,%s,%s,%s", clk, reset, startTransfer, startScan, startSystem, stateChar1, countChar1, stateChar2, countChar2);
+		$monitor("%t,%b,%b,%b,%b,%s,%s,%s,%s", $time, reset, startTransfer, startScan, startSystem, stateChar1, countChar1, stateChar2, countChar2);
 	end
 	
 	// FACSIMILATE CLOCK
