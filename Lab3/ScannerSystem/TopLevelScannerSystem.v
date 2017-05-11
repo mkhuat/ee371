@@ -39,7 +39,7 @@ module TopLevelScannerSystem(
 	reg [30:0] scan_clk;
 	always@(posedge clk) scan_clk <= scan_clk + 1'b1;
 	assign clk_led = scan_clk[CLOCK_INDEX];
-
+	
 	// State and counters
 	wire [3:0]	scan_1_count, scan_2_count;
 	wire [1:0] scan_1_comm, scan_2_comm;
