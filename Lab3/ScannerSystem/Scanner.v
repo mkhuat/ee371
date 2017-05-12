@@ -52,8 +52,10 @@ module Scanner (
 					ns = STANDBY;
 							
 			STANDBY: 
-				if (receiveComm == START_SCAN || userInput[2])
+				if (receiveComm == START_SCAN || userInput[2]) begin
 					ns = COLLECTING;
+					hold = 1'b0;
+				end
 					
 			COLLECTING:	
 				begin
@@ -61,27 +63,34 @@ module Scanner (
 					
 					// Signal adjacent scanner
 					case (count)
-						4'b1001: ns = IDLE;
+						4'b1001: begin ns = IDLE; hold = 1'b1; end
 						4'b0111: transmitComm = GO_TO_STANDBY; // 80%
 						4'b1000: transmitComm = START_SCAN;    // 90%
-						4'b0101: transmitComm = START_FLUSH;   // 50%
-						default: transmitComm = INACTIVE;   // 50%
+						4'b0100: transmitComm = START_FLUSH;   // 50%
+						default: transmitComm = INACTIVE;
 					endcase
 				end
 
 			IDLE: 
 				begin
-					if (userInput[1])
-						ns = TRANSFERRING;		
+					if (userInput[1]) begin
+						ns = TRANSFERRING; 
+						hold = 1'b0;	
+					end
 				
-					else if (receiveComm == START_FLUSH)
-						ns = FLUSHING;				
+					else if (receiveComm == START_FLUSH) begin
+						ns = FLUSHING; 
+						hold = 1'b0;				
+					end
 				end
 				
 			FLUSHING, TRANSFERRING:
 				begin
 					hold = 1'b0;
-					if (count == 4'b0010) ns = LOWPOWER; // After 2 cycles, go to low
+					if (count == 4'b0001) begin
+						ns = LOWPOWER; // After 2 cycles, go to low
+						hold = 1'b1;
+					end
 				end
 				
 			default: 
@@ -107,7 +116,7 @@ module Scanner (
 		if (hold)
 			count <= 4'b1111;
 		else
-			count = (count != 4'b1111) ? count + 4'b0001 : 4'b0000;
+			count <= (count == 4'b1010) ? 4'b0000 : count + 4'b0001;
 	end
 	
 endmodule
