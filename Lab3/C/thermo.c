@@ -56,7 +56,7 @@ double conv(double temp_value, char* src_scale, char* dst_scale) {
     // Validation
     if (!validate_format_char(src_first_ch) || !validate_format_char(dst_first_ch)) {
         printf("Error: Failed to provide proper scale arguments.\n");
-        printf("Usage: Scale arguments must each be one of: Celsius, Fahrenheit, or Kelvin. ");
+        printf("Usage: Scale arguments must each be one of: Celsius, Fahrenheit, or Kelvin.\n");
         exit(1);
     }
 
@@ -74,8 +74,8 @@ double conv(double temp_value, char* src_scale, char* dst_scale) {
                 return dst_first_ch == 'c' ? c : c - 273.15;
                 break;
             case 'k':
-                c = c + 273.15;
-                return dst_first_ch == 'c' ? c : (temp_value * (9.0 / 5.0)) + 32;
+                c = temp_value - 273.15;
+                return dst_first_ch == 'c' ? c : (c * (9.0 / 5.0)) + 32;
                 break;
         }
     }
