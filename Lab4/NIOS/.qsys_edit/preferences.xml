@@ -8,10 +8,11 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/Memory Interfaces and Controllers/SDRAM,Library,Library/DSP,Library/DSP/Video and Image Processing,Library/Memory Interfaces and Controllers/Memory Interfaces with ALTMEMPHY,Library/University Program/Memory,Library/Basic Functions,Library/University Program/Clock,Library/Memory Interfaces and Controllers,Library/Basic Functions/On Chip Memory,Library/University Program,Library/Memory Interfaces and Controllers/Memory Interfaces with UniPHY,Project" />
- <window width="1920" height="1160" x="0" y="0" />
+   expandedCategories="Library/Basic Functions/Bridges and Adaptors,Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Library/Interface Protocols,Library/Basic Functions/Simulation; Debug and Verification,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Basic Functions,Library/Interface Protocols/Serial,Library,Project" />
+ <window width="974" height="1167" x="-7" y="0" />
  <generation
    synthesis="NONE"
    path="C:/Users/nja4/Desktop/ee371/Lab4/NIOS"
    block_symbol_file="1" />
+ <hdlexample language="VERILOG" />
 </preferences>
