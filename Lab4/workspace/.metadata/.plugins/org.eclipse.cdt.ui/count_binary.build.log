@@ -1,0 +1,20 @@
+18:25:09 **** Build of configuration Nios II for project count_binary ****
+make all 
+Info: Building ../count_binary_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../count_binary_bsp/
+[BSP build complete]
+Info: Compiling count_binary.c to obj/default/count_binary.o
+nios2-elf-gcc -xc -MP -MMD -c -I../count_binary_bsp//HAL/inc -I../count_binary_bsp/ -I../count_binary_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/count_binary.o count_binary.c
+Info: Linking count_binary.elf
+nios2-elf-g++  -T'../count_binary_bsp//linker.x' -msys-crt0='../count_binary_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../count_binary_bsp/  -msmallc  -Wl,-Map=count_binary.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o count_binary.elf obj/default/count_binary.o -lm -msys-lib=m
+c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: count_binary.elf section `.text' will not fit in region `onchip_memory'
+c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x257c of count_binary.elf section `.rwdata' is not within region `onchip_memory'
+c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2868 of count_binary.elf section `.bss' is not within region `onchip_memory'
+c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x257c of count_binary.elf section `.rwdata' is not within region `onchip_memory'
+c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x2868 of count_binary.elf section `.bss' is not within region `onchip_memory'
+c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: region `onchip_memory' overflowed by 6248 bytes
+collect2.exe: error: ld returned 1 exit status
+make: *** [count_binary.elf] Error 1
+
+18:25:10 Build Finished (took 890ms)
+

@@ -8,8 +8,7 @@
    <name preferredWidth="191" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/Basic Functions,Library/Basic Functions/Simulation; Debug and Verification,Library/Interface Protocols,Library/Interface Protocols/Serial,Library,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Basic Functions/Bridges and Adaptors,Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Project" />
- <window width="1167" height="1160" x="0" y="0" />
+ <library expandedCategories="Library,Project" />
+ <window width="1936" height="1176" x="-8" y="-8" />
  <generation path="nios_system" />
 </preferences>
