@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Mon May 22 18:06:03 2017
+Analysis & Synthesis Status : Successful - Tue May 23 10:12:09 2017
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 Revision Name : Nios_processor
 Top-level Entity Name : Nios_processor
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 909
+Total registers : 912
 Total pins : 18
 Total virtual pins : 0
-Total block memory bits : 44,032
+Total block memory bits : 273,408
 Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

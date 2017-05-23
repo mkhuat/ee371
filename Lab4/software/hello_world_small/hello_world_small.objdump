@@ -71,7 +71,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  26 .jdi          00004255  00000000  00000000  000042f5  2**0
                   CONTENTS, READONLY
- 27 .sopcinfo     0003500c  00000000  00000000  0000854a  2**0
+ 27 .sopcinfo     00035018  00000000  00000000  0000854a  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00000000 l    d  .entry	00000000 .entry
@@ -117,7 +117,7 @@ SYMBOL TABLE:
 00000000 g       *ABS*	00000000 __alt_mem_onchip_memory
 00000254 g       *ABS*	00000000 __ram_rodata_end
 00000268 g       *ABS*	00000000 end
-00001000 g       *ABS*	00000000 __alt_stack_pointer
+00008000 g       *ABS*	00000000 __alt_stack_pointer
 000001dc g     F .text	00000034 altera_avalon_jtag_uart_write
 00000020 g     F .text	0000003c _start
 000001d8 g     F .text	00000004 alt_sys_init
@@ -135,7 +135,7 @@ SYMBOL TABLE:
 00000268 g       *ABS*	00000000 _end
 00000020 g       *ABS*	00000000 __ram_exceptions_end
 00000218 g     F .text	00000008 altera_nios2_qsys_irq_init
-00001000 g       *ABS*	00000000 __alt_data_end
+00008000 g       *ABS*	00000000 __alt_data_end
 0000000c g       .entry	00000000 _exit
 00000220 g     F .text	0000001c strlen
 00000214 g     F .text	00000004 alt_icache_flush_all
@@ -172,7 +172,7 @@ Disassembly of section .text:
     movhi sp, %hi(__alt_stack_pointer)
   20:	06c00034 	movhi	sp,0
     ori sp, sp, %lo(__alt_stack_pointer)
-  24:	dec40014 	ori	sp,sp,4096
+  24:	dee00014 	ori	sp,sp,32768
     movhi gp, %hi(_gp)
   28:	06800034 	movhi	gp,0
     ori gp, gp, %lo(_gp)

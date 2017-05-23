@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_processor' in SOPC Builder design 'nios_sys'
  * SOPC Builder design path: ../../nios_sys.sopcinfo
  *
- * Generated: Mon May 22 19:12:44 PDT 2017
+ * Generated: Tue May 23 09:58:08 PDT 2017
  */
 
 /*
@@ -62,12 +62,12 @@
 
 #define ALT_CPU_ARCHITECTURE "altera_nios2_qsys"
 #define ALT_CPU_BIG_ENDIAN 0
-#define ALT_CPU_BREAK_ADDR 0x00001820
+#define ALT_CPU_BREAK_ADDR 0x00008820
 #define ALT_CPU_CPU_FREQ 50000000u
 #define ALT_CPU_CPU_ID_SIZE 1
 #define ALT_CPU_CPU_ID_VALUE 0x00000000
 #define ALT_CPU_CPU_IMPLEMENTATION "tiny"
-#define ALT_CPU_DATA_ADDR_WIDTH 0xe
+#define ALT_CPU_DATA_ADDR_WIDTH 0x10
 #define ALT_CPU_DCACHE_LINE_SIZE 0
 #define ALT_CPU_DCACHE_LINE_SIZE_LOG2 0
 #define ALT_CPU_DCACHE_SIZE 0
@@ -83,7 +83,7 @@
 #define ALT_CPU_ICACHE_LINE_SIZE 0
 #define ALT_CPU_ICACHE_LINE_SIZE_LOG2 0
 #define ALT_CPU_ICACHE_SIZE 0
-#define ALT_CPU_INST_ADDR_WIDTH 0xd
+#define ALT_CPU_INST_ADDR_WIDTH 0x10
 #define ALT_CPU_NAME "nios2_processor"
 #define ALT_CPU_RESET_ADDR 0x00000000
 
@@ -94,12 +94,12 @@
  */
 
 #define NIOS2_BIG_ENDIAN 0
-#define NIOS2_BREAK_ADDR 0x00001820
+#define NIOS2_BREAK_ADDR 0x00008820
 #define NIOS2_CPU_FREQ 50000000u
 #define NIOS2_CPU_ID_SIZE 1
 #define NIOS2_CPU_ID_VALUE 0x00000000
 #define NIOS2_CPU_IMPLEMENTATION "tiny"
-#define NIOS2_DATA_ADDR_WIDTH 0xe
+#define NIOS2_DATA_ADDR_WIDTH 0x10
 #define NIOS2_DCACHE_LINE_SIZE 0
 #define NIOS2_DCACHE_LINE_SIZE_LOG2 0
 #define NIOS2_DCACHE_SIZE 0
@@ -114,7 +114,7 @@
 #define NIOS2_ICACHE_LINE_SIZE 0
 #define NIOS2_ICACHE_LINE_SIZE_LOG2 0
 #define NIOS2_ICACHE_SIZE 0
-#define NIOS2_INST_ADDR_WIDTH 0xd
+#define NIOS2_INST_ADDR_WIDTH 0x10
 #define NIOS2_RESET_ADDR 0x00000000
 
 
@@ -135,7 +135,7 @@
  */
 
 #define ALT_MODULE_CLASS_LEDs altera_avalon_pio
-#define LEDS_BASE 0x2000
+#define LEDS_BASE 0x9000
 #define LEDS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_CAPTURE 0
@@ -172,19 +172,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x2020
+#define ALT_STDERR_BASE 0x9020
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x2020
+#define ALT_STDIN_BASE 0x9020
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x2020
+#define ALT_STDOUT_BASE 0x9020
 #define ALT_STDOUT_DEV jtag_uart
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -208,7 +208,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x2020
+#define JTAG_UART_BASE 0x9020
 #define JTAG_UART_IRQ 5
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
@@ -243,8 +243,8 @@
 #define ONCHIP_MEMORY_READ_DURING_WRITE_MODE "DONT_CARE"
 #define ONCHIP_MEMORY_SINGLE_CLOCK_OP 0
 #define ONCHIP_MEMORY_SIZE_MULTIPLE 1
-#define ONCHIP_MEMORY_SIZE_VALUE 4096
-#define ONCHIP_MEMORY_SPAN 4096
+#define ONCHIP_MEMORY_SIZE_VALUE 32768
+#define ONCHIP_MEMORY_SPAN 32768
 #define ONCHIP_MEMORY_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY_WRITABLE 1
 
@@ -255,7 +255,7 @@
  */
 
 #define ALT_MODULE_CLASS_switches altera_avalon_pio
-#define SWITCHES_BASE 0x2010
+#define SWITCHES_BASE 0x9010
 #define SWITCHES_BIT_CLEARING_EDGE_REGISTER 0
 #define SWITCHES_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SWITCHES_CAPTURE 0
