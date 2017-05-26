@@ -84,41 +84,46 @@
 #define leds (char *) 0x9000
 
 
-int main()
-{ 
+int main() { 
+
+  /* Prompt */
   alt_putstr("Hello from Nios II!\n");
+  alt_putstr("\n Enter a 'g' to start switches > \n");
+
+  /* Continue gathering input until we get a 'g' */
+  char in = 'x';
+  while (in != 'g') {
+    in = alt_getchar();
+  }
+
+  /* Assign leds via switches, indefinitely */
   while (1) {
     		  *leds = *switches;
   }
   char in;
-  /* Event loop never exits. */
-
-
-  alt_putstr("\n Enter a 'g' to start switches > \n");
-  in = alt_getchar();
-
-//  if (in == 'g') {
-//	alt_putstr("\n Found g! \n");
-//	while (1) {
-//	  *leds = *switches;
-//	}
-//  }
-
-    while (in = alt_getchar()) {
-  	  alt_putstr("\n Next: \n");
-  	  alt_putchar(in);
-  	  if (in == 'g') {
-  		alt_putstr("\n Found g! \n");
-  		while (1) {
-  		  *leds = *switches;
-  		}
-  	  }
-
-    }
 
   return 0;
 }
 
+
+//  if (in == 'g') {
+//  alt_putstr("\n Found g! \n");
+//  while (1) {
+//    *leds = *switches;
+//  }
+//  }
+
+    // while (in = alt_getchar()) {
+     //  alt_putstr("\n Next: \n");
+     //  alt_putchar(in);
+     //  if (in == 'g') {
+      // alt_putstr("\n Found g! \n");
+      // while (1) {
+      //   *leds = *switches;
+      // }
+     //  }
+
+    // }
 
 
 //#ifdef __cplusplus
