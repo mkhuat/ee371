@@ -1,36 +1,36 @@
-/* 
- * "Small Hello World" example. 
- * 
- * This example prints 'Hello from Nios II' to the STDOUT stream. It runs on
- * the Nios II 'standard', 'full_featured', 'fast', and 'low_cost' example 
- * designs. It requires a STDOUT  device in your system's hardware. 
+/*
+ * "Small Hello World" example.
  *
- * The purpose of this example is to demonstrate the smallest possible Hello 
+ * This example prints 'Hello from Nios II' to the STDOUT stream. It runs on
+ * the Nios II 'standard', 'full_featured', 'fast', and 'low_cost' example
+ * designs. It requires a STDOUT  device in your system's hardware.
+ *
+ * The purpose of this example is to demonstrate the smallest possible Hello
  * World application, using the Nios II HAL library.  The memory footprint
- * of this hosted application is ~332 bytes by default using the standard 
+ * of this hosted application is ~332 bytes by default using the standard
  * reference design.  For a more fully featured Hello World application
  * example, see the example titled "Hello World".
  *
  * The memory footprint of this example has been reduced by making the
  * following changes to the normal "Hello World" example.
- * Check in the Nios II Software Developers Manual for a more complete 
+ * Check in the Nios II Software Developers Manual for a more complete
  * description.
- * 
+ *
  * In the SW Application project (small_hello_world):
  *
  *  - In the C/C++ Build page
- * 
+ *
  *    - Set the Optimization Level to -Os
- * 
+ *
  * In System Library project (small_hello_world_syslib):
  *  - In the C/C++ Build page
- * 
+ *
  *    - Set the Optimization Level to -Os
- * 
- *    - Define the preprocessor option ALT_NO_INSTRUCTION_EMULATION 
- *      This removes software exception handling, which means that you cannot 
- *      run code compiled for Nios II cpu with a hardware multiplier on a core 
- *      without a the multiply unit. Check the Nios II Software Developers 
+ *
+ *    - Define the preprocessor option ALT_NO_INSTRUCTION_EMULATION
+ *      This removes software exception handling, which means that you cannot
+ *      run code compiled for Nios II cpu with a hardware multiplier on a core
+ *      without a the multiply unit. Check the Nios II Software Developers
  *      Manual for more details.
  *
  *  - In the System Library page:
@@ -49,14 +49,14 @@
  *      This builds without the C++ support code.
  *
  *    - Check Small C library
- *      This uses a reduced functionality C library, which lacks  
- *      support for buffering, file IO, floating point and getch(), etc. 
+ *      This uses a reduced functionality C library, which lacks
+ *      support for buffering, file IO, floating point and getch(), etc.
  *      Check the Nios II Software Developers Manual for a complete list.
  *
  *    - Check Reduced device drivers
  *      This uses reduced functionality drivers if they're available. For the
  *      standard design this means you get polled UART and JTAG UART drivers,
- *      no support for the LCD driver and you lose the ability to program 
+ *      no support for the LCD driver and you lose the ability to program
  *      CFI compliant flash devices.
  *
  *    - Check Access device drivers directly
@@ -84,56 +84,23 @@
 #define leds (char *) 0x9000
 
 
-int main()
-{ 
-  alt_putstr("Hello from Nios II!\n");
-  while (1) {
-    		  *leds = *switches;
-  }
-  char in;
-  /* Event loop never exits. */
+int main() {
 
+	/* Prompting */
+	alt_putstr("Hello from Nios II!\n");
+	alt_putstr("\n Enter a 'g' to start switches > \n");
 
-  alt_putstr("\n Enter a 'g' to start switches > \n");
-  in = alt_getchar();
+	/* Give input a dummy value */
+	char in = 'x';
 
-//  if (in == 'g') {
-//	alt_putstr("\n Found g! \n");
-//	while (1) {
-//	  *leds = *switches;
-//	}
-//  }
+	/* Wait until we receive a g before proceeding */
+	while (in != 'g') {
+		in = alt_getchar();
+	}
 
-    while (in = alt_getchar()) {
-  	  alt_putstr("\n Next: \n");
-  	  alt_putchar(in);
-  	  if (in == 'g') {
-  		alt_putstr("\n Found g! \n");
-  		while (1) {
-  		  *leds = *switches;
-  		}
-  	  }
+	/* Assign leds via switches, indefinitely. */
+	while (1) {
+		*leds = *switches;
+	}
 
-    }
-
-  return 0;
 }
-
-
-
-//#ifdef __cplusplus
-//extern "C" {
-//#endif
-//
-//int alt_getchar();
-//int alt_putchar(int c);
-//int alt_putstr(const char* str);
-//void alt_printf(const char *fmt, ...);
-//#ifdef ALT_SEMIHOSTING
-//int alt_putcharbuf(int c);
-//int alt_putstrbuf(const char* str);
-//int alt_putbufflush();
-//#endif
-//#ifdef __cplusplus
-//}
-//#endif

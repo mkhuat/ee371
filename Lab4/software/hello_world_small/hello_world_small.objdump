@@ -35,43 +35,43 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   8 .debug_aranges 00000168  00000000  00000000  00001280  2**3
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_info   00000ae0  00000000  00000000  000013e8  2**0
+  9 .debug_info   00000ae4  00000000  00000000  000013e8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 00000630  00000000  00000000  00001ec8  2**0
+ 10 .debug_abbrev 00000630  00000000  00000000  00001ecc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   00000717  00000000  00000000  000024f8  2**0
+ 11 .debug_line   00000717  00000000  00000000  000024fc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_frame  00000190  00000000  00000000  00002c10  2**2
+ 12 .debug_frame  00000190  00000000  00000000  00002c14  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    000005ed  00000000  00000000  00002da0  2**0
+ 13 .debug_str    00000635  00000000  00000000  00002da4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    00000101  00000000  00000000  0000338d  2**0
+ 14 .debug_loc    00000101  00000000  00000000  000033d9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_alt_sim_info 00000010  00000000  00000000  00003490  2**2
+ 15 .debug_alt_sim_info 00000010  00000000  00000000  000034dc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 00000088  00000000  00000000  000034a0  2**3
+ 16 .debug_ranges 00000088  00000000  00000000  000034f0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .thread_model 00000003  00000000  00000000  0000429e  2**0
+ 17 .thread_model 00000003  00000000  00000000  000042ee  2**0
                   CONTENTS, READONLY
- 18 .cpu          0000000f  00000000  00000000  000042a1  2**0
+ 18 .cpu          0000000f  00000000  00000000  000042f1  2**0
                   CONTENTS, READONLY
- 19 .qsys         00000001  00000000  00000000  000042b0  2**0
+ 19 .qsys         00000001  00000000  00000000  00004300  2**0
                   CONTENTS, READONLY
- 20 .simulation_enabled 00000001  00000000  00000000  000042b1  2**0
+ 20 .simulation_enabled 00000001  00000000  00000000  00004301  2**0
                   CONTENTS, READONLY
- 21 .stderr_dev   00000009  00000000  00000000  000042b2  2**0
+ 21 .stderr_dev   00000009  00000000  00000000  00004302  2**0
                   CONTENTS, READONLY
- 22 .stdin_dev    00000009  00000000  00000000  000042bb  2**0
+ 22 .stdin_dev    00000009  00000000  00000000  0000430b  2**0
                   CONTENTS, READONLY
- 23 .stdout_dev   00000009  00000000  00000000  000042c4  2**0
+ 23 .stdout_dev   00000009  00000000  00000000  00004314  2**0
                   CONTENTS, READONLY
- 24 .sopc_system_name 00000008  00000000  00000000  000042cd  2**0
+ 24 .sopc_system_name 00000008  00000000  00000000  0000431d  2**0
                   CONTENTS, READONLY
- 25 .quartus_project_dir 00000020  00000000  00000000  000042d5  2**0
+ 25 .quartus_project_dir 00000024  00000000  00000000  00004325  2**0
                   CONTENTS, READONLY
- 26 .jdi          00004255  00000000  00000000  000042f5  2**0
+ 26 .jdi          00004255  00000000  00000000  00004349  2**0
                   CONTENTS, READONLY
- 27 .sopcinfo     00035018  00000000  00000000  0000854a  2**0
+ 27 .sopcinfo     00036c4c  00000000  00000000  0000859e  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00000000 l    d  .entry	00000000 .entry
@@ -229,7 +229,7 @@ alt_after_alt_main:
 #include "sys/alt_stdio.h"
 
 int main()
-{ 
+{
   alt_putstr("Hello from Nios II!\n");
   5c:	01000034 	movhi	r4,0
  */
@@ -237,7 +237,7 @@ int main()
 #include "sys/alt_stdio.h"
 
 int main()
-{ 
+{
   60:	deffff04 	addi	sp,sp,-4
   alt_putstr("Hello from Nios II!\n");
   64:	21008f04 	addi	r4,r4,572
@@ -246,31 +246,19 @@ int main()
 #include "sys/alt_stdio.h"
 
 int main()
-{ 
+{
   68:	dfc00015 	stw	ra,0(sp)
   alt_putstr("Hello from Nios II!\n");
   6c:	00001800 	call	180 <alt_putstr>
   70:	003fff06 	br	70 <_gp+0xffff7e1c>
 
 00000074 <alt_load>:
- * there is no bootloader, so this application is responsible for loading to
- * RAM any sections that are required.
- */  
-
-void alt_load (void)
-{
   74:	deffff04 	addi	sp,sp,-4
   78:	01000034 	movhi	r4,0
   7c:	01400034 	movhi	r5,0
   80:	dfc00015 	stw	ra,0(sp)
   84:	21009504 	addi	r4,r4,596
   88:	29409604 	addi	r5,r5,600
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
   8c:	2140061e 	bne	r4,r5,a8 <alt_load+0x34>
   90:	01000034 	movhi	r4,0
   94:	01400034 	movhi	r5,0
@@ -282,11 +270,7 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
   ac:	18c09604 	addi	r3,r3,600
   b0:	1907c83a 	sub	r3,r3,r4
   b4:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
   b8:	10fff526 	beq	r2,r3,90 <_gp+0xffff7e3c>
-    {
-      *to++ = *from++;
   bc:	114f883a 	add	r7,r2,r5
   c0:	39c00017 	ldw	r7,0(r7)
   c4:	110d883a 	add	r6,r2,r4
@@ -297,62 +281,28 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
   d8:	01400034 	movhi	r5,0
   dc:	21008f04 	addi	r4,r4,572
   e0:	29408f04 	addi	r5,r5,572
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
   e4:	2140101e 	bne	r4,r5,128 <alt_load+0xb4>
   e8:	00000b06 	br	118 <alt_load+0xa4>
   ec:	00c00034 	movhi	r3,0
   f0:	18c00804 	addi	r3,r3,32
   f4:	1907c83a 	sub	r3,r3,r4
   f8:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
   fc:	10fff526 	beq	r2,r3,d4 <_gp+0xffff7e80>
-    {
-      *to++ = *from++;
  100:	114f883a 	add	r7,r2,r5
  104:	39c00017 	ldw	r7,0(r7)
  108:	110d883a 	add	r6,r2,r4
  10c:	10800104 	addi	r2,r2,4
  110:	31c00015 	stw	r7,0(r6)
  114:	003ff906 	br	fc <_gp+0xffff7ea8>
-  
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
  118:	00002100 	call	210 <alt_dcache_flush_all>
-  alt_icache_flush_all();
-}
  11c:	dfc00017 	ldw	ra,0(sp)
  120:	dec00104 	addi	sp,sp,4
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
-  alt_icache_flush_all();
  124:	00002141 	jmpi	214 <alt_icache_flush_all>
  128:	00c00034 	movhi	r3,0
  12c:	18c09504 	addi	r3,r3,596
  130:	1907c83a 	sub	r3,r3,r4
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
  134:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
  138:	18bff726 	beq	r3,r2,118 <_gp+0xffff7ec4>
-    {
-      *to++ = *from++;
  13c:	114f883a 	add	r7,r2,r5
  140:	39c00017 	ldw	r7,0(r7)
  144:	110d883a 	add	r6,r2,r4

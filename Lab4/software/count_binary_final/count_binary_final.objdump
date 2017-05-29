@@ -35,43 +35,43 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   8 .debug_aranges 00000520  00000000  00000000  00002e58  2**3
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_info   000086cf  00000000  00000000  00003378  2**0
+  9 .debug_info   000086d3  00000000  00000000  00003378  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 00002b83  00000000  00000000  0000ba47  2**0
+ 10 .debug_abbrev 00002b83  00000000  00000000  0000ba4b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   00002f13  00000000  00000000  0000e5ca  2**0
+ 11 .debug_line   00002f13  00000000  00000000  0000e5ce  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_frame  000008ec  00000000  00000000  000114e0  2**2
+ 12 .debug_frame  000008ec  00000000  00000000  000114e4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    00001813  00000000  00000000  00011dcc  2**0
+ 13 .debug_str    0000185c  00000000  00000000  00011dd0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    00001eb3  00000000  00000000  000135df  2**0
+ 14 .debug_loc    00001eb3  00000000  00000000  0001362c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_alt_sim_info 00000040  00000000  00000000  00015494  2**2
+ 15 .debug_alt_sim_info 00000040  00000000  00000000  000154e0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 000002f0  00000000  00000000  000154d8  2**3
+ 16 .debug_ranges 000002f0  00000000  00000000  00015520  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .thread_model 00000003  00000000  00000000  00016ebe  2**0
+ 17 .thread_model 00000003  00000000  00000000  00016f06  2**0
                   CONTENTS, READONLY
- 18 .cpu          0000000f  00000000  00000000  00016ec1  2**0
+ 18 .cpu          0000000f  00000000  00000000  00016f09  2**0
                   CONTENTS, READONLY
- 19 .qsys         00000001  00000000  00000000  00016ed0  2**0
+ 19 .qsys         00000001  00000000  00000000  00016f18  2**0
                   CONTENTS, READONLY
- 20 .simulation_enabled 00000001  00000000  00000000  00016ed1  2**0
+ 20 .simulation_enabled 00000001  00000000  00000000  00016f19  2**0
                   CONTENTS, READONLY
- 21 .stderr_dev   00000009  00000000  00000000  00016ed2  2**0
+ 21 .stderr_dev   00000009  00000000  00000000  00016f1a  2**0
                   CONTENTS, READONLY
- 22 .stdin_dev    00000009  00000000  00000000  00016edb  2**0
+ 22 .stdin_dev    00000009  00000000  00000000  00016f23  2**0
                   CONTENTS, READONLY
- 23 .stdout_dev   00000009  00000000  00000000  00016ee4  2**0
+ 23 .stdout_dev   00000009  00000000  00000000  00016f2c  2**0
                   CONTENTS, READONLY
- 24 .sopc_system_name 00000008  00000000  00000000  00016eed  2**0
+ 24 .sopc_system_name 00000008  00000000  00000000  00016f35  2**0
                   CONTENTS, READONLY
- 25 .quartus_project_dir 00000020  00000000  00000000  00016ef5  2**0
+ 25 .quartus_project_dir 00000024  00000000  00000000  00016f3d  2**0
                   CONTENTS, READONLY
- 26 .jdi          00004255  00000000  00000000  00016f15  2**0
+ 26 .jdi          00004255  00000000  00000000  00016f61  2**0
                   CONTENTS, READONLY
- 27 .sopcinfo     00035018  00000000  00000000  0001b16a  2**0
+ 27 .sopcinfo     00036c4c  00000000  00000000  0001b1b6  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00000000 l    d  .entry	00000000 .entry
@@ -1484,24 +1484,12 @@ int main(void)
      ec0:	f800283a 	ret
 
 00000ec4 <alt_load>:
- * there is no bootloader, so this application is responsible for loading to
- * RAM any sections that are required.
- */  
-
-void alt_load (void)
-{
      ec4:	deffff04 	addi	sp,sp,-4
      ec8:	01000034 	movhi	r4,0
      ecc:	01400034 	movhi	r5,0
      ed0:	dfc00015 	stw	ra,0(sp)
      ed4:	2106d804 	addi	r4,r4,7008
      ed8:	29478d04 	addi	r5,r5,7732
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
      edc:	2140061e 	bne	r4,r5,ef8 <alt_load+0x34>
      ee0:	01000034 	movhi	r4,0
      ee4:	01400034 	movhi	r5,0
@@ -1513,11 +1501,7 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
      efc:	18c78d04 	addi	r3,r3,7732
      f00:	1907c83a 	sub	r3,r3,r4
      f04:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
      f08:	10fff526 	beq	r2,r3,ee0 <_gp+0xffff70cc>
-    {
-      *to++ = *from++;
      f0c:	114f883a 	add	r7,r2,r5
      f10:	39c00017 	ldw	r7,0(r7)
      f14:	110d883a 	add	r6,r2,r4
@@ -1528,62 +1512,28 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
      f28:	01400034 	movhi	r5,0
      f2c:	21069804 	addi	r4,r4,6752
      f30:	29469804 	addi	r5,r5,6752
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
      f34:	2140101e 	bne	r4,r5,f78 <alt_load+0xb4>
      f38:	00000b06 	br	f68 <alt_load+0xa4>
      f3c:	00c00034 	movhi	r3,0
      f40:	18c00804 	addi	r3,r3,32
      f44:	1907c83a 	sub	r3,r3,r4
      f48:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
      f4c:	10fff526 	beq	r2,r3,f24 <_gp+0xffff7110>
-    {
-      *to++ = *from++;
      f50:	114f883a 	add	r7,r2,r5
      f54:	39c00017 	ldw	r7,0(r7)
      f58:	110d883a 	add	r6,r2,r4
      f5c:	10800104 	addi	r2,r2,4
      f60:	31c00015 	stw	r7,0(r6)
      f64:	003ff906 	br	f4c <_gp+0xffff7138>
-  
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
      f68:	00013200 	call	1320 <alt_dcache_flush_all>
-  alt_icache_flush_all();
-}
      f6c:	dfc00017 	ldw	ra,0(sp)
      f70:	dec00104 	addi	sp,sp,4
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
-  alt_icache_flush_all();
      f74:	00013a41 	jmpi	13a4 <alt_icache_flush_all>
      f78:	00c00034 	movhi	r3,0
      f7c:	18c6d804 	addi	r3,r3,7008
      f80:	1907c83a 	sub	r3,r3,r4
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
      f84:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
      f88:	18bff726 	beq	r3,r2,f68 <_gp+0xffff7154>
-    {
-      *to++ = *from++;
      f8c:	114f883a 	add	r7,r2,r5
      f90:	39c00017 	ldw	r7,0(r7)
      f94:	110d883a 	add	r6,r2,r4
@@ -1665,12 +1615,6 @@ void alt_main (void)
      ff0:	000186c0 	call	186c <exit>
 
 00000ff4 <usleep>:
-int ALT_USLEEP (useconds_t us)
-#else
-unsigned int ALT_USLEEP (unsigned int us)
-#endif
-{
-  return alt_busy_sleep(us);
      ff4:	00011d01 	jmpi	11d0 <alt_busy_sleep>
 
 00000ff8 <alt_get_errno>:
@@ -2238,12 +2182,6 @@ static int alt_dev_null_write (alt_fd* fd, const char* ptr, int len)
     1328:	f800283a 	ret
 
 0000132c <alt_dev_llist_insert>:
-{
-  /*
-   * check that the device exists, and that it has a valid name.
-   */
-
-  if (!dev || !dev->name)
     132c:	20000226 	beq	r4,zero,1338 <alt_dev_llist_insert+0xc>
     1330:	20800217 	ldw	r2,8(r4)
     1334:	1000131e 	bne	r2,zero,1384 <alt_dev_llist_insert+0x58>
@@ -2251,81 +2189,27 @@ static int alt_dev_null_write (alt_fd* fd, const char* ptr, int len)
     133c:	10878c04 	addi	r2,r2,7728
     1340:	10800017 	ldw	r2,0(r2)
     1344:	10000926 	beq	r2,zero,136c <alt_dev_llist_insert+0x40>
-/*
- *
- */
-
-int alt_dev_llist_insert (alt_dev_llist* dev, alt_llist* list)
-{
     1348:	deffff04 	addi	sp,sp,-4
     134c:	dfc00015 	stw	ra,0(sp)
     1350:	103ee83a 	callr	r2
-   * check that the device exists, and that it has a valid name.
-   */
-
-  if (!dev || !dev->name)
-  {
-    ALT_ERRNO = EINVAL;
     1354:	00c00584 	movi	r3,22
     1358:	10c00015 	stw	r3,0(r2)
-    return -EINVAL;
     135c:	00bffa84 	movi	r2,-22
-   */
-  
-  alt_llist_insert(list, &dev->llist);
-
-  return 0;  
-}
     1360:	dfc00017 	ldw	ra,0(sp)
     1364:	dec00104 	addi	sp,sp,4
     1368:	f800283a 	ret
     136c:	00800034 	movhi	r2,0
     1370:	10884404 	addi	r2,r2,8464
-   * check that the device exists, and that it has a valid name.
-   */
-
-  if (!dev || !dev->name)
-  {
-    ALT_ERRNO = EINVAL;
     1374:	00c00584 	movi	r3,22
     1378:	10c00015 	stw	r3,0(r2)
-    return -EINVAL;
     137c:	00bffa84 	movi	r2,-22
-   */
-  
-  alt_llist_insert(list, &dev->llist);
-
-  return 0;  
-}
     1380:	f800283a 	ret
-
-static ALT_INLINE void ALT_ALWAYS_INLINE alt_llist_insert(alt_llist* list, 
-                alt_llist* entry)
-{
-  entry->previous = list;
-  entry->next     = list->next;
     1384:	28800017 	ldw	r2,0(r5)
- */
-
-static ALT_INLINE void ALT_ALWAYS_INLINE alt_llist_insert(alt_llist* list, 
-                alt_llist* entry)
-{
-  entry->previous = list;
     1388:	21400115 	stw	r5,4(r4)
-  entry->next     = list->next;
     138c:	20800015 	stw	r2,0(r4)
-
-  list->next->previous = entry;
     1390:	28800017 	ldw	r2,0(r5)
     1394:	11000115 	stw	r4,4(r2)
-  list->next           = entry;
     1398:	29000015 	stw	r4,0(r5)
-   * register the device.
-   */
-  
-  alt_llist_insert(list, &dev->llist);
-
-  return 0;  
     139c:	0005883a 	mov	r2,zero
     13a0:	f800283a 	ret
 
