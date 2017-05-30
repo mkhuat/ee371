@@ -45,7 +45,6 @@ module TopLevelSerialCommSystem(
 	reg[7:0] buffer_transmit, buffer_receive; // "Shift Registers"
 	
 	// Modules
-	assign 
 	
 endmodule
 
