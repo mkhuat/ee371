@@ -1,15 +1,15 @@
 module SerialComm(
-	/* Inputs */ clk, serial_in, parallel_in, load, transmit_enable,
+	/* Inputs */ clock, rst, serial_in, parallel_in, load, transmit_enable,
 	/* Outputs: */ led_clk, serial_out, parallel_out, char_received, char_sent);
 	
 	/*
 	Inputs
 		
 	*/
-	input clk, serial_in, load, transmit_enable;
-	input [7:0] paralell_in; // From Nios II Proc to Transmission
+	input clock, rst, serial_in, load, transmit_enable;
+	input [7:0] parallel_in; // From Nios II Proc to Transmission
 	output wire led_clk, serial_out, char_received, char_sent;
-	output [7:0] paralell_out; // To Nios II Proc from Serial Receive
+	output [7:0] parallel_out; // To Nios II Proc from Serial Receive
 
 	parameter 
 		
@@ -17,26 +17,23 @@ module SerialComm(
 		CLOCK_INDEX = 24,
 		
 		// Sample index: subtract 4 because 16x faster
-		SAMPLE_INDEX = CLOCK_INDEX - 4,
-
-		// Encoding of states
-		
-		// BIC states
-		// 0-based Indexing makes along with "Pointing to next write"
-		START_BIC = 4'b0000,
-		END_READ_BIC = 4'b1010, // When pointing to 11th bit, we have read everything
-		END_WRITE_BIC = 4'b1000, // When pointing to the 9th bit, we have read everything
-
-		
-		// BSC States
-		START_BSC = 4'b0000,
-		MIDDLE_BSC = 4'b0111, // When to sample
-		END_BSC = 4'b1111;
+		SAMPLE_INDEX = CLOCK_INDEX - 4;
 
 
 	// Divide and display the 50MHz clock
-	reg [30:0] scan_clk;
-	always@(posedge clk) scan_clk <= scan_clk + 1'b1
+	
+	reg [30:0] clock_buff;
+	always@(posedge clock) clock_buff <= clock_buff + 1'b1;	
+	
+	
+	// Tap at our CLOCK_INDEX for our desired speed
+	reg clk;
+	always@(posedge clock_buff[CLOCK_INDEX]) clk <= clk + 1;
+	// scan_clk is 16x faster than clk
+	reg scan_clk;
+	always@(posedge clock_buff[SAMPLE_INDEX]) scan_clk <= scan_clk + 1'b1;
+
+	
 	assign clk_led = scan_clk[CLOCK_INDEX];
 
 	// State and counters
@@ -44,19 +41,21 @@ module SerialComm(
 	reg[7:0] buffer_transmit, buffer_receive; // "Shift Registers"
 	
 	// Modules
+	Loader loader(clk, rst, load, parallel_in, buffer_transmit, bic_transmit);
+	Transmitter transmitter(clk, rst, buffer_transmit, bic_transmit, transmit_enable, serial_out);
+	Receiver receiver(clk, rst, serial_in, bic_receive, buffer_receive, clk_scan);
+	
 	
 endmodule
 
-module Loader(clk, load, parallel_in, buffer_transmit, bic_transmit) begin
+module Loader(clk, rst, load, parallel_in, buffer_transmit, bic_transmit);
+	input clk, rst, load;
+	input[3:0] bic_tra;
+	output[7:0] buffer_transmit;
+	
 	
 	// TODO: Add as parameter
 	parameter 
-		
-		// Clock index
-		CLOCK_INDEX = 24,
-		
-		// Sample index: subtract 4 because 16x faster
-		SAMPLE_INDEX = CLOCK_INDEX - 4,
 
 		// Encoding of states
 		
@@ -64,31 +63,26 @@ module Loader(clk, load, parallel_in, buffer_transmit, bic_transmit) begin
 		// 0-based Indexing makes along with "Pointing to next write"
 		START_BIC = 4'b0000,
 		END_READ_BIC = 4'b1010, // When pointing to 11th bit, we have read everything
-		END_WRITE_BIC = 4'b1000, // When pointing to the 9th bit, we have read everything
-
-		
-		// BSC States
-		START_BSC = 4'b0000,
-		MIDDLE_BSC = 4'b0111, // When to sample
-		END_BSC = 4'b1111;
+		END_WRITE_BIC = 4'b1000; // When pointing to the 9th bit, we have read everything
 
 	always@(posedge load) begin
 		// Load message if the last message can be discarded, due to already being sent
-		if bic_transmit == END_WRITE_BIC
-			buffer_transmit = paralell_in
+		if (bic_transmit == END_WRITE_BIC) begin
+			buffer_transmit = parallel_in;
+			bic_transmit = START_BIC;
+		end
 	end
-end
+endmodule
 
-module Transmitter(clk, buffer_transmit, bic_transmit, transmit_enable, serial_out);
+module Transmitter(clk, rst, buffer_transmit, bic_transmit, transmit_enable, serial_out);
+	input clk, rst, transmit_enable;
+	input[7:0] buffer_transmit;
+	output[3:0] bic_transmit;
+	output serial_out;
+	
 	
 	// TODO: Add as parameter
 	parameter 
-		
-		// Clock index
-		CLOCK_INDEX = 24,
-		
-		// Sample index: subtract 4 because 16x faster
-		SAMPLE_INDEX = CLOCK_INDEX - 4,
 
 		// Encoding of states
 		
@@ -96,71 +90,71 @@ module Transmitter(clk, buffer_transmit, bic_transmit, transmit_enable, serial_o
 		// 0-based Indexing makes along with "Pointing to next write"
 		START_BIC = 4'b0000,
 		END_READ_BIC = 4'b1010, // When pointing to 11th bit, we have read everything
-		END_WRITE_BIC = 4'b1000, // When pointing to the 9th bit, we have read everything
-
-		
-		// BSC States
-		START_BSC = 4'b0000,
-		MIDDLE_BSC = 4'b0111, // When to sample
-		END_BSC = 4'b1111;
+		END_WRITE_BIC = 4'b1000; // When pointing to the 9th bit, we have read everything
 
 
 	always@(posedge clk) begin
 		// Clock out the parallel signal while transmit_enable is high and the
 		// message has not been read out fully.
 		if (transmit_enable && bic_transmit < END_WRITE_BIC) begin
-			serial_out = buffer_transmit[bic_transmit]
-			bic_transmit = bic_transmit + 1
+			serial_out = buffer_transmit[bic_transmit];
+			bic_transmit = bic_transmit + 1;
 		end
 	end
 endmodule
 
-module Receiver(clk, bic_receive, buffer_receive, start_bit_received);
-	
+module Receiver(clk, rst, serial_in, bic_receive, buffer_receive, clk_scan);
+	input clk, rst, serial_in, clk_scan;
+	output [3:0] bic_receive;	
 	output[7:0] buffer_receive;
+	
+		// TODO: Add as parameter
+	parameter 
+		// Encoding of states
+		
+		// BIC states
+		// 0-based Indexing makes along with "Pointing to next write"
+		// TODO: Check for Off by One errors!
+		START_BIC = 4'b0000,
+		END_READ_BIC = 4'b1010, // When pointing to 11th bit, we have read everything
+		END_WRITE_BIC = 4'b1000, // When pointing to the 9th bit, we have read everything
+
+		
+		// BSC States
+		START_BSC = 4'b0000,
+		MIDDLE_BSC = 4'b0111, // When to sample
+		END_BSC = 4'b1111;
+	
+	
 
 	// When to sample
 	reg[3:0] bsc;
-
-	// TODO: When can we start reading? When do we track when "Start Bit Detect" 
-	always@(posedge clk) begin
-		// Clock in the serial signal while the signal has not been read in fully
-		if (transmit_enable && bic_transmit < END_WRITE_BIC) begin
-			serial_out = buffer_transmit[bic_transmit]
-			bic_transmit = bic_transmit + 1
+	
+	reg startBitReceived;
+	
+	always@(posedge clk_scan) begin
+	
+		// TODO: Check for bsc off by one here as well!
+		if (bsc == MIDDLE_BSC) begin
+				if (startBitReceived) begin
+					// We can now sample the trasmitted bit from the wire
+					buffer_receive[bic_receive] = serial_in;
+					bic_receive = bic_receive + 1;
+					
+					if (bic_receive == END_READ_BIC) begin
+						// TODO: Evaluate Off by one because this should toggle after the END BIT, NOT AFTER JUST THE MESSAGE!
+						startBitReceived = 0;
+						bic_receive = 0; // This is sketchy, because we don't know yet if the Processor has read this. There is no feedback!
+					end
+				end
+				else begin
+					if (!serial_in) begin
+						// Start bit received!!!
+						startBitReceived = 1;
+					end
+				end
 		end
-
+		
+		bsc <= bsc + 1'b1;
 	end
-
 endmodule
-
-// module BSC();
-// 	always@(posedge clk) begin
-	
-	
-// 	end
-// endmodule
-
-
-// module BIC();
-// 	always@(posedge clk) begin
-	
-	
-// 	end
-// endmodule
-
-
-
-// module StartBitDetect();
-// 	// Look for start sequence if not currently reading for transmitting
-	
-// 	always@(posedge clk) begin
-	
-// 	end
-// endmodule
-
-// module TransmitEnable();
-// 	//
-// endmodule
-
-// // TODO: Add Shift Registers and Clock Control
