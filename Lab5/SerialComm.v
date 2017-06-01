@@ -13,7 +13,7 @@ module SerialComm(
 
 	parameter 
 		
-		// Clock index
+		// Clock index	
 		CLOCK_INDEX = 24,
 		
 		// Sample index: subtract 4 because 16x faster

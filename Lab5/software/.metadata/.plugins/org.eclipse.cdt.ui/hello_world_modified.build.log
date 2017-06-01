@@ -1,0 +1,18 @@
+15:59:39 **** Incremental Build of configuration Nios II for project hello_world_modified ****
+make all 
+Info: Building ../hello_world_modified_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hello_world_modified_bsp/
+[BSP build complete]
+Info: Compiling hello_world_small.c to obj/default/hello_world_small.o
+nios2-elf-gcc -xc -MP -MMD -c -I../hello_world_modified_bsp//HAL/inc -I../hello_world_modified_bsp/ -I../hello_world_modified_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world_small.o hello_world_small.c
+Info: Linking hello_world_modified.elf
+nios2-elf-g++  -T'../hello_world_modified_bsp//linker.x' -msys-crt0='../hello_world_modified_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../hello_world_modified_bsp/   -Wl,-Map=hello_world_modified.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o hello_world_modified.elf obj/default/hello_world_small.o -lm -msys-lib=m
+nios2-elf-insert hello_world_modified.elf --thread_model hal --cpu_name nios2_processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_sys --quartus_project_dir "C:/Users/mkhuat/Documents/ee371/Lab4" --jdi ../..//output_files/Nios_processor.jdi --sopcinfo C:/Users/mkhuat/Documents/ee371/Lab4/software/hello_world_modified_bsp/../../nios_sys.sopcinfo
+Info: (hello_world_modified.elf) 1108 Bytes program size (code + initialized data).
+Info:                            30 KBytes free for stack + heap.
+Info: Creating hello_world_modified.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source hello_world_modified.elf >hello_world_modified.objdump
+[hello_world_modified build complete]
+
+15:59:40 Build Finished (took 1s.247ms)
+
