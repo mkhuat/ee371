@@ -1,17 +1,14 @@
-module SerialCommSystem(
-	/* Inputs */ clk, serial_in, parallel_in,
-	/* Outputs: */ led_clk, serial_out, parallel_out);
+module SerialComm(
+	/* Inputs */ clk, serial_in, parallel_in, load, transmit_enable,
+	/* Outputs: */ led_clk, serial_out, parallel_out, char_received, char_sent);
 	
 	/*
 	Inputs
-		reset: sets all scanners to a low power state
-		startSystem: transitions first scanner from low power to standby
-		startScan: transitions first scanner from standby to scanning
-		startTransfer: transitions an idle scanner to transferring
+		
 	*/
-	input clk, serial_in;
+	input clk, serial_in, load, transmit_enable;
 	input [7:0] paralell_in; // From Nios II Proc to Transmission
-	output wire serial_out, led_clk;
+	output wire led_clk, serial_out, char_received, char_sent;
 	output [7:0] paralell_out; // To Nios II Proc from Serial Receive
 
 	parameter 
@@ -26,7 +23,11 @@ module SerialCommSystem(
 		
 		
 		// BIC states
-		START_BIC = 4'b0000, // Incremented as 
+		START_BIC = 4'b0000, // Bit inded
+
+		// 0-based Indexing makes 
+		END_READ_BIC = 4'b1010, // When pointing to 11th bit, we have read everything
+		END_WRITE_BIC = 4'b1000, // When pointing to the 9th bit, we have read everything
 
 		
 		// BSC States
@@ -41,41 +42,65 @@ module SerialCommSystem(
 	assign clk_led = scan_clk[CLOCK_INDEX];
 
 	// State and counters
-	reg[3:0] bic, bsc;
+	reg[3:0] bic_transmit, bic_receive;
 	reg[7:0] buffer_transmit, buffer_receive; // "Shift Registers"
 	
 	// Modules
 	
 endmodule
 
+module Loader(clk, load, parallel_in, bic_transmit) begin
+	always@(posedge load) begin
+		// Load message if the last message can be discarded, due to already being sent
+		if bic_transmit == 
 
-module BSC();
+	end
+end
+
+module Transmitter(clk, buffer_transmit);
 	always@(posedge clk) begin
-	
-	
+		
+
 	end
 endmodule
 
+module Receiver(clk, buffer_receive);
+	
+	output[7:0] buffer_receive;
 
-module BIC();
-	always@(posedge clk) begin
-	
-	
-	end
+	// When to sample
+	reg[3:0] bsc;
+
+
 endmodule
 
-
-
-module StartBitDetect();
-	// Look for start sequence if not currently reading for transmitting
+// module BSC();
+// 	always@(posedge clk) begin
 	
-	always@(posedge clk) begin
 	
-	end
-endmodule
+// 	end
+// endmodule
 
-module TransmitEnable();
-	//
-endmodule
 
-// TODO: Add Shift Registers and Clock Control
+// module BIC();
+// 	always@(posedge clk) begin
+	
+	
+// 	end
+// endmodule
+
+
+
+// module StartBitDetect();
+// 	// Look for start sequence if not currently reading for transmitting
+	
+// 	always@(posedge clk) begin
+	
+// 	end
+// endmodule
+
+// module TransmitEnable();
+// 	//
+// endmodule
+
+// // TODO: Add Shift Registers and Clock Control
