@@ -1,4 +1,4 @@
-module TopLevelSerialCommSystem(
+module SerialCommSystem(
 	/* Inputs */ clk, serial_in, parallel_in,
 	/* Outputs: */ led_clk, serial_out, parallel_out);
 	
@@ -16,7 +16,7 @@ module TopLevelSerialCommSystem(
 
 	parameter 
 		
-		// Clock index
+		// Clock index	
 		CLOCK_INDEX = 24,
 		
 		// Sample index: subtract 4 because 16x faster

@@ -8,7 +8,8 @@
    <name preferredWidth="191" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="974" height="1167" x="953" y="0" />
+ <library
+   expandedCategories="Library/Interface Protocols/PCI Express/QSYS Example Designs,Project,Library/Processors and Peripherals,Library,Library/Interface Protocols,Library/Processors and Peripherals/Peripherals,Library/Interface Protocols/PCI Express" />
+ <window width="1936" height="1176" x="-8" y="-8" />
  <generation path="nios_system" />
 </preferences>

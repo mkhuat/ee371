@@ -1,0 +1,6 @@
+09:55:23 **** Clean-only build of configuration Nios II for project switches ****
+make clean 
+[switches clean complete]
+
+09:55:23 Build Finished (took 284ms)
+
