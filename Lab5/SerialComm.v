@@ -27,14 +27,12 @@ module SerialComm(
 	
 	
 	// Tap at our CLOCK_INDEX for our desired speed
-	reg clk;
-	always@(posedge clock_buff[CLOCK_INDEX]) clk <= clk + 1;
-	// scan_clk is 16x faster than clk
-	reg scan_clk;
-	always@(posedge clock_buff[SAMPLE_INDEX]) scan_clk <= scan_clk + 1'b1;
-
+	wire clk, scan_clk;
 	
-	assign clk_led = scan_clk[CLOCK_INDEX];
+	assign clk = clock_buff[CLOCK_INDEX];
+	assign scan_clk = clock_buff[SAMPLE_INDEX];
+	assign led_clk = clock_buff[CLOCK_INDEX];
+	
 
 	// State and counters
 	reg[3:0] bic_transmit, bic_receive;
@@ -43,16 +41,16 @@ module SerialComm(
 	// Modules
 	Loader loader(clk, rst, load, parallel_in, buffer_transmit, bic_transmit);
 	Transmitter transmitter(clk, rst, buffer_transmit, bic_transmit, transmit_enable, serial_out);
-	Receiver receiver(clk, rst, serial_in, bic_receive, buffer_receive, clk_scan);
+	Receiver receiver(clk, rst, serial_in, bic_receive, buffer_receive, scan_clk);
 	
 	
 endmodule
 
 module Loader(clk, rst, load, parallel_in, buffer_transmit, bic_transmit);
 	input clk, rst, load;
-	input[3:0] bic_tra;
-	output[7:0] buffer_transmit;
-	
+	input[7:0] parallel_in;
+	output reg [7:0] buffer_transmit;
+	output reg [3:0] bic_transmit;
 	
 	// TODO: Add as parameter
 	parameter 
@@ -77,8 +75,8 @@ endmodule
 module Transmitter(clk, rst, buffer_transmit, bic_transmit, transmit_enable, serial_out);
 	input clk, rst, transmit_enable;
 	input[7:0] buffer_transmit;
-	output[3:0] bic_transmit;
-	output serial_out;
+	output reg [3:0] bic_transmit;
+	output reg serial_out;
 	
 	
 	// TODO: Add as parameter
@@ -105,8 +103,8 @@ endmodule
 
 module Receiver(clk, rst, serial_in, bic_receive, buffer_receive, clk_scan);
 	input clk, rst, serial_in, clk_scan;
-	output [3:0] bic_receive;	
-	output[7:0] buffer_receive;
+	output reg [3:0] bic_receive;	
+	output reg [7:0] buffer_receive;
 	
 		// TODO: Add as parameter
 	parameter 
