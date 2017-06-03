@@ -1,37 +1,15 @@
 module SerialComm(
-	/* Inputs */ clock, rst, serial_in, parallel_in, load, transmit_enable,
-	/* Outputs: */ led_clk, serial_out, parallel_out, char_received, char_sent);
+	/* Inputs */ clock, scan_clk, rst, serial_in, parallel_in, load, transmit_enable,
+	/* Outputs: */ serial_out, parallel_out, char_received, char_sent);
 	
 	/*
 	Inputs
 		
 	*/
-	input clock, rst, serial_in, load, transmit_enable;
+	input clock, scan_clk, rst, serial_in, load, transmit_enable;
 	input [7:0] parallel_in; // From Nios II Proc to Transmission
-	output wire led_clk, serial_out, char_received, char_sent;
+	output wire serial_out, char_received, char_sent;
 	output [7:0] parallel_out; // To Nios II Proc from Serial Receive
-
-	parameter 
-		
-		// Clock index	
-		CLOCK_INDEX = 24,
-		
-		// Sample index: subtract 4 because 16x faster
-		SAMPLE_INDEX = CLOCK_INDEX - 4;
-
-
-	// Divide and display the 50MHz clock
-	
-	reg [30:0] clock_buff;
-	always@(posedge clock) clock_buff <= clock_buff + 1'b1;	
-	
-	
-	// Tap at our CLOCK_INDEX for our desired speed
-	wire clk, scan_clk;
-	
-	assign clk = clock_buff[CLOCK_INDEX];
-	assign scan_clk = clock_buff[SAMPLE_INDEX];
-	assign led_clk = clock_buff[CLOCK_INDEX];
 	
 
 	// State and counters
@@ -39,9 +17,9 @@ module SerialComm(
 	reg[7:0] buffer_transmit, buffer_receive; // "Shift Registers"
 	
 	// Modules
-	Loader loader(clk, rst, load, parallel_in, buffer_transmit, bic_transmit);
-	Transmitter transmitter(clk, rst, buffer_transmit, bic_transmit, transmit_enable, serial_out);
-	Receiver receiver(clk, rst, serial_in, bic_receive, buffer_receive, scan_clk);
+	Loader loader(clock, rst, load, parallel_in, buffer_transmit, bic_transmit);
+	Transmitter transmitter(clock, rst, buffer_transmit, bic_transmit, transmit_enable, serial_out);
+	Receiver receiver(clock, rst, serial_in, bic_receive, buffer_receive, scan_clk);
 	
 	
 endmodule
@@ -101,6 +79,7 @@ module Transmitter(clk, rst, buffer_transmit, bic_transmit, transmit_enable, ser
 	end
 endmodule
 
+
 module Receiver(clk, rst, serial_in, bic_receive, buffer_receive, clk_scan);
 	input clk, rst, serial_in, clk_scan;
 	output reg [3:0] bic_receive;	
@@ -109,6 +88,9 @@ module Receiver(clk, rst, serial_in, bic_receive, buffer_receive, clk_scan);
 		// TODO: Add as parameter
 	parameter 
 		// Encoding of states
+		
+		IDLE = 4'b01,
+		// TODO: Add more states...
 		
 		// BIC states
 		// 0-based Indexing makes along with "Pointing to next write"
@@ -130,7 +112,7 @@ module Receiver(clk, rst, serial_in, bic_receive, buffer_receive, clk_scan);
 	
 	reg startBitReceived;
 	
-	always@(posedge clk_scan) begin
+	always@(posedge clk_scan, ~serial_in) begin
 	
 		// TODO: Check for bsc off by one here as well!
 		if (bsc == MIDDLE_BSC) begin
