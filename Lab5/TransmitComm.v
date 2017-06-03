@@ -71,7 +71,7 @@ module TransmitComm(clk, reset, transmit_en, load, parallel_in, serial_out, char
 	
 	end
 	
-	// 4-bit Counter due to lack of 16x clock
+	// Counter for BSC
 	always @(posedge clk) begin
 		if (hold)
 			bsc <= 4'b0000;
@@ -80,7 +80,7 @@ module TransmitComm(clk, reset, transmit_en, load, parallel_in, serial_out, char
 	end
 	
 		
-	// Update Bit Identification Count (BIC)
+	// Update BIC
 	always @(posedge clk) begin
 		if (bsc == BIT_SENT)
 			bic <= bic + 4'b0001; // Increment BIC if we're done sending a bit
@@ -96,13 +96,12 @@ module TransmitComm(clk, reset, transmit_en, load, parallel_in, serial_out, char
 		end
 		 
 		if (load)
-			data = {0, parallel_in, 1};
+			data = {1'b0, parallel_in, 1'b1};
 		else if (clear)
 			data = 10'b1111111111;
 		
 	end	
 	
-		
 	// State logic
 	always @(posedge clk) begin
 		if (reset) begin

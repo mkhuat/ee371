@@ -54,7 +54,7 @@ module ReceiveComm(clk, reset, serial_in, parallel_out, char_received);
 					if (bic == BIC_END) begin
 						ns = IDLE;
 						char_received = 1'b1;
-						parallel_out = data[1:8];
+						parallel_out = data[8:1];
 				
 					// Sample bits for our byte
 					end else begin
