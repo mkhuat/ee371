@@ -1,0 +1,62 @@
+module ReceiveComm(clk, baud, reset, transmit_en, load, serial_in, parallel_in,
+		serial_out, parallel_out);
+
+	input wire clk, baud, reset, transmit_en, load;
+	input wire serial_in;
+	input wire [7:0] parallel_in; //char
+	output wire serial_out;
+	output wire parallel_out;
+
+	reg [3:0] ps, ns;
+	reg [7:0] data;
+	reg [2:0] idx;
+
+	parameter
+		INITIAL = 4'b0000,
+		STARTING = 4'b0001,
+		
+
+	// Combinational logic
+	always @(*) begin
+		
+		// Steady-state instructions
+		ns = ps;
+		
+		case (ps)
+			INITIAL:
+				begin
+					if (~serial_in) begin
+						ns = STARTING;
+					end
+				end
+			STARTING:
+				begin
+					
+				end
+		
+		endcase
+	end
+
+	// Comm-loop
+	always @(posedge baud) begin
+		case (ps)
+			INITIAL: idx = 3'b0;
+			STARTING:
+				begin
+					data[idx] = serial_in;
+					idx = idx + 3'd1;
+				end
+		endcase
+	
+	end
+
+	// State logic
+	always @(posedge clk) begin
+		if (reset) begin
+			ps <= INITIAL;
+		end else begin
+			ps <= ns;
+		end
+	end
+
+endmodule
