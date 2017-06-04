@@ -29,7 +29,7 @@ module TransmitComm(clk, reset, transmit_en, load, parallel_in, serial_out, char
 		BIT_SENT = 4'b1111;
 
 
-	assign serial_out = data[0];
+	assign serial_out = data[9];
 
 	always @(*) begin
 
@@ -92,8 +92,8 @@ module TransmitComm(clk, reset, transmit_en, load, parallel_in, serial_out, char
 	// Shift right register
 	always @(posedge clk) begin
 		if (shift) begin
-			data = data >> 1;
-			data[9] = 1'b1;
+			data = data << 1;
+			data[0] = 1'b1;
 		end
 
 		if (load)

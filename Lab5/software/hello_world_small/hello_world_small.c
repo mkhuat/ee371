@@ -79,16 +79,15 @@
  */
 
 #include "sys/alt_stdio.h"
+#define sent_char (volatile char *) 0x9000
+#define transmit_enable (volatile char *) 0x9010
+#define received_char (volatile char *) 0x9020
+#define load (volatile char *) 0x9030
+#define parallel_out (volatile char *) 0x9040
+#define parallel_in (volatile char *) 0x9050
+#define leds (char *) 0x9060
+#define switches (volatile char *) 0x9070
 
-#define switches (volatile char *) 0x9010
-#define leds (char *) 0x9000
-
-#define load (volatile char *) 0x9010
-#define sent_char (volatile char *) 0x9010
-#define received_char (volatile char *) 0x9010
-
-#define parallel_in (volatile char *) 0x9010
-#define parallel_out (volatile char *) 0x9010
 
 #define START_GAME 's'
 #define WIN_GAME 'w'
@@ -96,17 +95,23 @@
 
 int main()
 {	
+	// NOTE: To run this, I disabled a few checks.
+	// There is likely something wrong with our config!
+	// Look at messed up System ID Checks.
+
 	alt_putstr("\nLetter Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
+
 	char in = alt_getchar();
 	if (in == 'g') {
 		// Guesser
+		alt_putstr("\nYou chose guesser! \n");
 
 		// Listen for game start, then clear buffer
 		while (!*received_char);
 		in = *received_char;
 		*received_char = 0;
 
-		if in != START_GAME {
+		if (in != START_GAME){
 			alt_printf("\nWanted Game Start=%c, but found %c \n", START_GAME, in);
 			exit(0);
 		}
@@ -120,10 +125,12 @@ int main()
 		// Load guess character
 		*parallel_out = in;
 		*load = 1;
-
+		*transmit_enable = 1;
 		// Wait for send...
 		while (!*sent_char);
 		*sent_char = 0;
+		*transmit_enable = 0;
+
 
 		// Listen for game status - win or lose
 		while (!*received_char);
@@ -143,6 +150,7 @@ int main()
 
 	} else {
 		// Proposer
+		alt_printf("\nYou chose proposer, because you entered %c. \n", in);
 
 		alt_putstr("\nEnter a letter for an opponent to guess: \n");
 		char to_guess = alt_getchar();
@@ -153,10 +161,12 @@ int main()
 		// Load start game character
 		*parallel_out = START_GAME;
 		*load = 1;
+		*transmit_enable = 1;
 
 		// Wait for send...
 		while (!*sent_char);
 		*sent_char = 0;
+		*transmit_enable = 0;
 
 		// Listen for game start ack/guess, then clear buffer
 		while (!*received_char);
@@ -167,7 +177,7 @@ int main()
 		alt_printf("\nReceived guess: %c \n", received_guess);
 
 
-		if to_guess == received_guess {
+		if (to_guess == received_guess) {
 			alt_putstr("\nGuess was correct!\n");
 			*parallel_out = WIN_GAME;
 		} else {
@@ -177,10 +187,13 @@ int main()
 
 		// Load game win or loss
 		*load = 1;
+		*transmit_enable = 1;
 
 		// Wait for send...
 		while (!*sent_char);
 		*sent_char = 0;
+		*transmit_enable = 0;
+
 	}
 	
 	return 0;

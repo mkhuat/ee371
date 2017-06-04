@@ -1,10 +1,9 @@
-module ReceiveComm(clk, reset, serial_in, parallel_out, char_received, data);
+module ReceiveComm(clk, reset, serial_in, parallel_out, char_received, data, bic);
 
 	input wire clk, reset;
 	input wire serial_in;
-	output reg [7:0] parallel_out;
+	output wire [7:0] parallel_out;
 	output reg char_received;
-
 
 	// Enable signals
 	reg hold, shift;
@@ -12,7 +11,7 @@ module ReceiveComm(clk, reset, serial_in, parallel_out, char_received, data);
 	reg [3:0] ps, ns;
 	output reg [9:0] data;
 
-	reg [3:0] bic;
+	output reg [3:0] bic;
 	reg [3:0] bsc;
 
 	parameter
@@ -22,14 +21,16 @@ module ReceiveComm(clk, reset, serial_in, parallel_out, char_received, data);
 		SAMPLING = 4'b0001,
 
 		// BIC encodings
-		BIC_END = 4'b1011,
+		BIC_END = 4'b1010,
 
 		// BSC encodings
 		BSC_START = 4'b0000,
 		BSC_MIDDLE = 4'b0111,
 		BSC_END = 4'b1111;
 
-
+	assign parallel_out = data[8:1];
+	
+		
 	// Combinational logic
 	always @(*) begin
 
@@ -45,7 +46,7 @@ module ReceiveComm(clk, reset, serial_in, parallel_out, char_received, data);
 						ns = SAMPLING;
 						hold = 1'b1;
 						//shift = 1'b1;
-						char_received =1'b0;
+						char_received = 1'b0;
 					end
 				end
 			SAMPLING:
@@ -55,7 +56,7 @@ module ReceiveComm(clk, reset, serial_in, parallel_out, char_received, data);
 					if (bic == BIC_END) begin
 						ns = IDLE;
 						char_received = 1'b1;
-						parallel_out = data[8:1];
+						// parallel_out = data[8:1];
 
 					// Sample bits for our byte
 					end else begin
@@ -77,7 +78,9 @@ module ReceiveComm(clk, reset, serial_in, parallel_out, char_received, data);
 
 	// Update Bit Identification Count (BIC)
 	always @(posedge clk) begin
-		if (bsc == BSC_END)
+		if (reset || (~serial_in && bic == BIC_END))
+			bic <= 4'b0000;
+		else if (bsc == BSC_END && bic < BIC_END)
 			bic <= bic + 4'b0001;
 	end
 

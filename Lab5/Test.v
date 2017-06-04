@@ -6,17 +6,18 @@ module testbench();
   wire transmit_en, load;
   wire [7:0] parallel_in, parallel_out;
   wire [9:0] data_r, data_t;
-
-  ReceiveComm receiver(clk, reset, serial_io, parallel_out, char_received, data_r);
+  wire [3:0] bic;
+  
+  ReceiveComm receiver(clk, reset, serial_io, parallel_out, char_received, data_r, bic);
   TransmitComm sender(clk, reset, transmit_en, load, parallel_in, serial_io, char_sent, data_t);
 
 	Tester tester (clk, reset, serial_io, parallel_in, parallel_out,
-    char_received, char_sent, transmit_en, load, data_r, data_t);
+    char_received, char_sent, transmit_en, load, data_r, data_t, bic);
 
 endmodule
 
 module Tester(clk, reset, serial_io, parallel_in, parallel_out,
-  char_received, char_sent, transmit_en, load, data_r, data_t);
+  char_received, char_sent, transmit_en, load, data_r, data_t, bic);
 
 	// PORTS
   input wire serial_io, char_received, char_sent;
@@ -25,6 +26,8 @@ module Tester(clk, reset, serial_io, parallel_in, parallel_out,
   output reg [7:0] parallel_in;
 
   input [9:0] data_r, data_t;
+  
+  input [3:0] bic;
 
 	// Iterative var
 	integer i;
@@ -33,8 +36,8 @@ module Tester(clk, reset, serial_io, parallel_in, parallel_out,
 
 	// COMPILE CSV DATA
 	initial begin
-		$display("time,serial_io,parallel_in,parallel_out,char_sent,char_received,transmit_en,load");
-		$monitor("%t,%b,%b,%s,%b,%b", $time, serial_io, parallel_in, parallel_out, data_r, data_t);//, char_sent, char_received, transmit_en, load);
+		$display("serial_io,parallel_in,parallel_out, data_r, data_t, bic, char_sent, char_received ,transmit_en, load");
+		$monitor("%b,%b,%b,%b,%b,%b,%b,%b,%b,%b", serial_io, parallel_in, parallel_out, data_r, data_t, bic, char_sent, char_received, transmit_en, load);
 	end
 
 	// FACSIMILATE CLOCK
@@ -47,16 +50,24 @@ module Tester(clk, reset, serial_io, parallel_in, parallel_out,
 	// STIMULATE SYSTEM
 	initial begin
     parallel_in = "k";
-		reset <= 1;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
+	reset <= 1;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
     reset <= 1;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
-		reset <= 0;		load <= 1;	transmit_en <= 0; 	@(posedge clk);
+	reset <= 0;		load <= 1;	transmit_en <= 0; 	@(posedge clk);
     reset <= 0;		load <= 1;	transmit_en <= 1; 	@(posedge clk);
     reset <= 0;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
 
-		// Step 24 times
-		for (i = 0; i < 640; i = i + 1)  @(posedge clk);
+	// Step 24 times
+	for (i = 0; i < 640; i = i + 1)  @(posedge clk);
 
-		$finish;
+    parallel_in = 0;
+	reset <= 0;		load <= 1;	transmit_en <= 0; 	@(posedge clk);
+    reset <= 0;		load <= 1;	transmit_en <= 1; 	@(posedge clk);
+    reset <= 0;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
+
+	// Step 24 times
+	for (i = 0; i < 640; i = i + 1)  @(posedge clk);
+	
+	$finish;
 	end
 
 endmodule

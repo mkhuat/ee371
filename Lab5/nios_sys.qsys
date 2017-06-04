@@ -21,7 +21,39 @@
    {
       datum baseAddress
       {
-         value = "36944";
+         value = "36960";
+         type = "String";
+      }
+   }
+   element char_received
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element char_received.s1
+   {
+      datum baseAddress
+      {
+         value = "36896";
+         type = "String";
+      }
+   }
+   element char_sent
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element char_sent.s1
+   {
+      datum baseAddress
+      {
+         value = "36864";
          type = "String";
       }
    }
@@ -31,22 +63,6 @@
       {
          value = "0";
          type = "int";
-      }
-   }
-   element data_received
-   {
-      datum _sortIndex
-      {
-         value = "9";
-         type = "int";
-      }
-   }
-   element data_received.s1
-   {
-      datum baseAddress
-      {
-         value = "36880";
-         type = "String";
       }
    }
    element jtag_uart
@@ -61,7 +77,7 @@
    {
       datum baseAddress
       {
-         value = "36976";
+         value = "36992";
          type = "String";
       }
    }
@@ -77,7 +93,7 @@
    {
       datum baseAddress
       {
-         value = "36896";
+         value = "36912";
          type = "String";
       }
    }
@@ -130,7 +146,7 @@
    {
       datum baseAddress
       {
-         value = "36928";
+         value = "36944";
          type = "String";
       }
    }
@@ -144,9 +160,14 @@
    }
    element parallel_output.s1
    {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
       datum baseAddress
       {
-         value = "36912";
+         value = "36928";
          type = "String";
       }
    }
@@ -162,7 +183,7 @@
    {
       datum baseAddress
       {
-         value = "36960";
+         value = "36976";
          type = "String";
       }
    }
@@ -178,16 +199,16 @@
    {
       datum baseAddress
       {
-         value = "36864";
+         value = "36880";
          type = "String";
       }
    }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
- <parameter name="device" value="5CGXFC7C7F23C8" />
+ <parameter name="device" value="5CSEMA5F31C6" />
  <parameter name="deviceFamily" value="Cyclone V" />
- <parameter name="deviceSpeedGrade" value="8_H7" />
+ <parameter name="deviceSpeedGrade" value="6" />
  <parameter name="fabricMode" value="QSYS" />
  <parameter name="generateLegacySim" value="false" />
  <parameter name="generationId" value="0" />
@@ -203,10 +224,15 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
+ <interface
+   name="char_sent_external_connection"
+   internal="char_sent.external_connection"
+   type="conduit"
+   dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
    name="data_received_external_connection"
-   internal="data_received.external_connection"
+   internal="char_received.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -254,14 +280,8 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="8" />
  </module>
- <module name="clk_0" kind="clock_source" version="16.0" enabled="1">
-  <parameter name="clockFrequency" value="50000000" />
-  <parameter name="clockFrequencyKnown" value="true" />
-  <parameter name="inputClockFrequency" value="0" />
-  <parameter name="resetSynchronousEdges" value="NONE" />
- </module>
  <module
-   name="data_received"
+   name="char_received"
    kind="altera_avalon_pio"
    version="16.0"
    enabled="1">
@@ -277,6 +297,26 @@
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
+ </module>
+ <module name="char_sent" kind="altera_avalon_pio" version="16.0" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="8" />
+ </module>
+ <module name="clk_0" kind="clock_source" version="16.0" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
  <module
    name="jtag_uart"
@@ -325,7 +365,7 @@
   <parameter name="cpuReset" value="false" />
   <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
   <parameter name="dataAddrWidth" value="16" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory.s1' start='0x0' end='0x8000' /><slave name='nios2_processor.jtag_debug_module' start='0x8800' end='0x9000' /><slave name='transmit_enable.s1' start='0x9000' end='0x9010' /><slave name='data_received.s1' start='0x9010' end='0x9020' /><slave name='load.s1' start='0x9020' end='0x9030' /><slave name='parallel_output.s1' start='0x9030' end='0x9040' /><slave name='parallel_input.s1' start='0x9040' end='0x9050' /><slave name='LEDs.s1' start='0x9050' end='0x9060' /><slave name='switches.s1' start='0x9060' end='0x9070' /><slave name='jtag_uart.avalon_jtag_slave' start='0x9070' end='0x9078' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory.s1' start='0x0' end='0x8000' /><slave name='nios2_processor.jtag_debug_module' start='0x8800' end='0x9000' /><slave name='char_sent.s1' start='0x9000' end='0x9010' /><slave name='transmit_enable.s1' start='0x9010' end='0x9020' /><slave name='char_received.s1' start='0x9020' end='0x9030' /><slave name='load.s1' start='0x9030' end='0x9040' /><slave name='parallel_output.s1' start='0x9040' end='0x9050' /><slave name='parallel_input.s1' start='0x9050' end='0x9060' /><slave name='LEDs.s1' start='0x9060' end='0x9070' /><slave name='switches.s1' start='0x9070' end='0x9080' /><slave name='jtag_uart.avalon_jtag_slave' start='0x9080' end='0x9088' /></address-map>]]></parameter>
   <parameter name="dcache_bursts" value="false" />
   <parameter name="dcache_lineSize" value="32" />
   <parameter name="dcache_numTCDM" value="0" />
@@ -547,7 +587,7 @@
    start="nios2_processor.data_master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x9070" />
+  <parameter name="baseAddress" value="0x9080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -574,7 +614,7 @@
    start="nios2_processor.data_master"
    end="switches.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x9060" />
+  <parameter name="baseAddress" value="0x9070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -583,7 +623,7 @@
    start="nios2_processor.data_master"
    end="LEDs.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x9050" />
+  <parameter name="baseAddress" value="0x9060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -592,7 +632,7 @@
    start="nios2_processor.data_master"
    end="parallel_input.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x9040" />
+  <parameter name="baseAddress" value="0x9050" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -601,7 +641,7 @@
    start="nios2_processor.data_master"
    end="parallel_output.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x9030" />
+  <parameter name="baseAddress" value="0x9040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -610,6 +650,15 @@
    start="nios2_processor.data_master"
    end="load.s1">
   <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x9030" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.0"
+   start="nios2_processor.data_master"
+   end="char_received.s1">
+  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x9020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
@@ -617,7 +666,7 @@
    kind="avalon"
    version="16.0"
    start="nios2_processor.data_master"
-   end="data_received.s1">
+   end="transmit_enable.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x9010" />
   <parameter name="defaultConnection" value="false" />
@@ -626,7 +675,7 @@
    kind="avalon"
    version="16.0"
    start="nios2_processor.data_master"
-   end="transmit_enable.s1">
+   end="char_sent.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x9000" />
   <parameter name="defaultConnection" value="false" />
@@ -668,12 +717,13 @@
    start="clk_0.clk"
    end="parallel_output.clk" />
  <connection kind="clock" version="16.0" start="clk_0.clk" end="load.clk" />
- <connection kind="clock" version="16.0" start="clk_0.clk" end="data_received.clk" />
+ <connection kind="clock" version="16.0" start="clk_0.clk" end="char_received.clk" />
  <connection
    kind="clock"
    version="16.0"
    start="clk_0.clk"
    end="transmit_enable.clk" />
+ <connection kind="clock" version="16.0" start="clk_0.clk" end="char_sent.clk" />
  <connection
    kind="clock"
    version="16.0"
@@ -712,12 +762,17 @@
    kind="reset"
    version="16.0"
    start="clk_0.clk_reset"
-   end="data_received.reset" />
+   end="char_received.reset" />
  <connection
    kind="reset"
    version="16.0"
    start="clk_0.clk_reset"
    end="transmit_enable.reset" />
+ <connection
+   kind="reset"
+   version="16.0"
+   start="clk_0.clk_reset"
+   end="char_sent.reset" />
  <connection
    kind="reset"
    version="16.0"
@@ -762,12 +817,17 @@
    kind="reset"
    version="16.0"
    start="nios2_processor.jtag_debug_module_reset"
-   end="data_received.reset" />
+   end="char_received.reset" />
  <connection
    kind="reset"
    version="16.0"
    start="nios2_processor.jtag_debug_module_reset"
    end="transmit_enable.reset" />
+ <connection
+   kind="reset"
+   version="16.0"
+   start="nios2_processor.jtag_debug_module_reset"
+   end="char_sent.reset" />
  <connection
    kind="reset"
    version="16.0"

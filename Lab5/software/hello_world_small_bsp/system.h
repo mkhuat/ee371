@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_processor' in SOPC Builder design 'nios_sys'
  * SOPC Builder design path: ../../nios_sys.sopcinfo
  *
- * Generated: Fri May 26 11:11:03 PDT 2017
+ * Generated: Sat Jun 03 20:22:59 PDT 2017
  */
 
 /*
@@ -135,7 +135,7 @@
  */
 
 #define ALT_MODULE_CLASS_LEDs altera_avalon_pio
-#define LEDS_BASE 0x9000
+#define LEDS_BASE 0x9060
 #define LEDS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_CAPTURE 0
@@ -172,24 +172,78 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x9020
+#define ALT_STDERR_BASE 0x9080
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x9020
+#define ALT_STDIN_BASE 0x9080
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x9020
+#define ALT_STDOUT_BASE 0x9080
 #define ALT_STDOUT_DEV jtag_uart
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "nios_sys"
+
+
+/*
+ * char_received configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_char_received altera_avalon_pio
+#define CHAR_RECEIVED_BASE 0x9020
+#define CHAR_RECEIVED_BIT_CLEARING_EDGE_REGISTER 0
+#define CHAR_RECEIVED_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define CHAR_RECEIVED_CAPTURE 0
+#define CHAR_RECEIVED_DATA_WIDTH 1
+#define CHAR_RECEIVED_DO_TEST_BENCH_WIRING 0
+#define CHAR_RECEIVED_DRIVEN_SIM_VALUE 0
+#define CHAR_RECEIVED_EDGE_TYPE "NONE"
+#define CHAR_RECEIVED_FREQ 50000000
+#define CHAR_RECEIVED_HAS_IN 1
+#define CHAR_RECEIVED_HAS_OUT 0
+#define CHAR_RECEIVED_HAS_TRI 0
+#define CHAR_RECEIVED_IRQ -1
+#define CHAR_RECEIVED_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define CHAR_RECEIVED_IRQ_TYPE "NONE"
+#define CHAR_RECEIVED_NAME "/dev/char_received"
+#define CHAR_RECEIVED_RESET_VALUE 0
+#define CHAR_RECEIVED_SPAN 16
+#define CHAR_RECEIVED_TYPE "altera_avalon_pio"
+
+
+/*
+ * char_sent configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_char_sent altera_avalon_pio
+#define CHAR_SENT_BASE 0x9000
+#define CHAR_SENT_BIT_CLEARING_EDGE_REGISTER 0
+#define CHAR_SENT_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define CHAR_SENT_CAPTURE 0
+#define CHAR_SENT_DATA_WIDTH 8
+#define CHAR_SENT_DO_TEST_BENCH_WIRING 0
+#define CHAR_SENT_DRIVEN_SIM_VALUE 0
+#define CHAR_SENT_EDGE_TYPE "NONE"
+#define CHAR_SENT_FREQ 50000000
+#define CHAR_SENT_HAS_IN 0
+#define CHAR_SENT_HAS_OUT 1
+#define CHAR_SENT_HAS_TRI 0
+#define CHAR_SENT_IRQ -1
+#define CHAR_SENT_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define CHAR_SENT_IRQ_TYPE "NONE"
+#define CHAR_SENT_NAME "/dev/char_sent"
+#define CHAR_SENT_RESET_VALUE 0
+#define CHAR_SENT_SPAN 16
+#define CHAR_SENT_TYPE "altera_avalon_pio"
 
 
 /*
@@ -208,7 +262,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x9020
+#define JTAG_UART_BASE 0x9080
 #define JTAG_UART_IRQ 5
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
@@ -218,6 +272,33 @@
 #define JTAG_UART_TYPE "altera_avalon_jtag_uart"
 #define JTAG_UART_WRITE_DEPTH 64
 #define JTAG_UART_WRITE_THRESHOLD 8
+
+
+/*
+ * load configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_load altera_avalon_pio
+#define LOAD_BASE 0x9030
+#define LOAD_BIT_CLEARING_EDGE_REGISTER 0
+#define LOAD_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define LOAD_CAPTURE 0
+#define LOAD_DATA_WIDTH 1
+#define LOAD_DO_TEST_BENCH_WIRING 0
+#define LOAD_DRIVEN_SIM_VALUE 0
+#define LOAD_EDGE_TYPE "NONE"
+#define LOAD_FREQ 50000000
+#define LOAD_HAS_IN 0
+#define LOAD_HAS_OUT 1
+#define LOAD_HAS_TRI 0
+#define LOAD_IRQ -1
+#define LOAD_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define LOAD_IRQ_TYPE "NONE"
+#define LOAD_NAME "/dev/load"
+#define LOAD_RESET_VALUE 0
+#define LOAD_SPAN 16
+#define LOAD_TYPE "altera_avalon_pio"
 
 
 /*
@@ -250,12 +331,66 @@
 
 
 /*
+ * parallel_input configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_parallel_input altera_avalon_pio
+#define PARALLEL_INPUT_BASE 0x9050
+#define PARALLEL_INPUT_BIT_CLEARING_EDGE_REGISTER 0
+#define PARALLEL_INPUT_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARALLEL_INPUT_CAPTURE 0
+#define PARALLEL_INPUT_DATA_WIDTH 8
+#define PARALLEL_INPUT_DO_TEST_BENCH_WIRING 0
+#define PARALLEL_INPUT_DRIVEN_SIM_VALUE 0
+#define PARALLEL_INPUT_EDGE_TYPE "NONE"
+#define PARALLEL_INPUT_FREQ 50000000
+#define PARALLEL_INPUT_HAS_IN 1
+#define PARALLEL_INPUT_HAS_OUT 0
+#define PARALLEL_INPUT_HAS_TRI 0
+#define PARALLEL_INPUT_IRQ -1
+#define PARALLEL_INPUT_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PARALLEL_INPUT_IRQ_TYPE "NONE"
+#define PARALLEL_INPUT_NAME "/dev/parallel_input"
+#define PARALLEL_INPUT_RESET_VALUE 0
+#define PARALLEL_INPUT_SPAN 16
+#define PARALLEL_INPUT_TYPE "altera_avalon_pio"
+
+
+/*
+ * parallel_output configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_parallel_output altera_avalon_pio
+#define PARALLEL_OUTPUT_BASE 0x9040
+#define PARALLEL_OUTPUT_BIT_CLEARING_EDGE_REGISTER 0
+#define PARALLEL_OUTPUT_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARALLEL_OUTPUT_CAPTURE 0
+#define PARALLEL_OUTPUT_DATA_WIDTH 8
+#define PARALLEL_OUTPUT_DO_TEST_BENCH_WIRING 0
+#define PARALLEL_OUTPUT_DRIVEN_SIM_VALUE 0
+#define PARALLEL_OUTPUT_EDGE_TYPE "NONE"
+#define PARALLEL_OUTPUT_FREQ 50000000
+#define PARALLEL_OUTPUT_HAS_IN 0
+#define PARALLEL_OUTPUT_HAS_OUT 1
+#define PARALLEL_OUTPUT_HAS_TRI 0
+#define PARALLEL_OUTPUT_IRQ -1
+#define PARALLEL_OUTPUT_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PARALLEL_OUTPUT_IRQ_TYPE "NONE"
+#define PARALLEL_OUTPUT_NAME "/dev/parallel_output"
+#define PARALLEL_OUTPUT_RESET_VALUE 0
+#define PARALLEL_OUTPUT_SPAN 16
+#define PARALLEL_OUTPUT_TYPE "altera_avalon_pio"
+
+
+/*
  * switches configuration
  *
  */
 
 #define ALT_MODULE_CLASS_switches altera_avalon_pio
-#define SWITCHES_BASE 0x9010
+#define SWITCHES_BASE 0x9070
 #define SWITCHES_BIT_CLEARING_EDGE_REGISTER 0
 #define SWITCHES_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SWITCHES_CAPTURE 0
@@ -274,5 +409,32 @@
 #define SWITCHES_RESET_VALUE 0
 #define SWITCHES_SPAN 16
 #define SWITCHES_TYPE "altera_avalon_pio"
+
+
+/*
+ * transmit_enable configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_transmit_enable altera_avalon_pio
+#define TRANSMIT_ENABLE_BASE 0x9010
+#define TRANSMIT_ENABLE_BIT_CLEARING_EDGE_REGISTER 0
+#define TRANSMIT_ENABLE_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TRANSMIT_ENABLE_CAPTURE 0
+#define TRANSMIT_ENABLE_DATA_WIDTH 1
+#define TRANSMIT_ENABLE_DO_TEST_BENCH_WIRING 0
+#define TRANSMIT_ENABLE_DRIVEN_SIM_VALUE 0
+#define TRANSMIT_ENABLE_EDGE_TYPE "NONE"
+#define TRANSMIT_ENABLE_FREQ 50000000
+#define TRANSMIT_ENABLE_HAS_IN 0
+#define TRANSMIT_ENABLE_HAS_OUT 1
+#define TRANSMIT_ENABLE_HAS_TRI 0
+#define TRANSMIT_ENABLE_IRQ -1
+#define TRANSMIT_ENABLE_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define TRANSMIT_ENABLE_IRQ_TYPE "NONE"
+#define TRANSMIT_ENABLE_NAME "/dev/transmit_enable"
+#define TRANSMIT_ENABLE_RESET_VALUE 0
+#define TRANSMIT_ENABLE_SPAN 16
+#define TRANSMIT_ENABLE_TYPE "altera_avalon_pio"
 
 #endif /* __SYSTEM_H_ */
