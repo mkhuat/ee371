@@ -87,6 +87,7 @@
 #define parallel_in (volatile char *) 0x9050
 #define leds (char *) 0x9060
 #define switches (volatile char *) 0x9070
+#define hex (char *) 0x9080 // TODO: Find what this actually is
 
 int main()
 {
@@ -127,6 +128,7 @@ int main()
 		// Load guess characters one by one
 		for (int i = 0; i < in; i++) {
 			*parallel_in = input_buffer[i];
+			*(hex + i) = input_buffer[i];
 			*load = 1;
 			*transmit_enable = 1;
 			// Wait for send...
@@ -178,6 +180,7 @@ int main()
 		alt_printf("Word to Guess: ");
 		for (int i = 0; i < length; i++) {
 			alt_printf("%c", input_buffer[i]);
+			*(hex + i) = input_buffer[i];
 		}
 		alt_printf("\n");
 
@@ -204,6 +207,7 @@ int main()
 			char received_guess = *parallel_out;
 			*leds = received_guess;
 			guess_buffer[i] = received_guess;
+			*(hex + i) = guess_buffer[i];
 
 			// Received OK - we can accept another character after sending a response
 
