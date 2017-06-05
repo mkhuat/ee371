@@ -79,6 +79,8 @@
  */
 
 #include "sys/alt_stdio.h"
+<<<<<<< HEAD
+=======
 #define sent_char (volatile char *) 0x9020
 #define transmit_enable (volatile char *) 0x9010
 #define received_char (volatile char *) 0x9030

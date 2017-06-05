@@ -79,6 +79,8 @@
  */
 
 #include "sys/alt_stdio.h"
+<<<<<<< HEAD
+=======
 #define sent_char (volatile char *) 0x9020
 #define transmit_enable (volatile char *) 0x9010
 #define received_char (volatile char *) 0x9030
@@ -88,9 +90,18 @@
 #define leds (char *) 0x9060
 #define switches (volatile char *) 0x9070
 #define hex (char *) 0x9080 // TODO: Find what this actually is
+>>>>>>> 83215e9b194defed73a287436a44e667058c5658
+
 int main()
 {
+  alt_putstr("Hello from Nios II!\n");
 
+  /* Event loop never exits. */
+  while (1);
+
+<<<<<<< HEAD
+  return 0;
+=======
 	alt_putstr("\nHEX Word Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
 
 	char in = alt_getchar();
@@ -249,4 +260,5 @@ int main()
 	}
 
 	return 0;
+>>>>>>> 83215e9b194defed73a287436a44e667058c5658
 }
