@@ -11,7 +11,8 @@
    <description preferredWidth="84" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library
+   expandedCategories="Library/Processors and Peripherals,Library,Library/Interface Protocols/PCI Express,Library/Interface Protocols,Project,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Processors and Peripherals/Peripherals" />
  <window width="1936" height="1176" x="-8" y="-8" />
  <generation path="nios_system" />
 </preferences>

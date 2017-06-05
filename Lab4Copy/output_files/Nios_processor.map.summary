@@ -1,4 +1,4 @@
-Analysis & Synthesis Status : Successful - Mon Jun 05 13:24:45 2017
+Analysis & Elaboration Status : Successful - Mon Jun 05 16:00:46 2017
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 Revision Name : Nios_processor
 Top-level Entity Name : TopLevelCommSystem
@@ -8,10 +8,5 @@ Total registers : N/A until Partition Merge
 Total pins : N/A until Partition Merge
 Total virtual pins : N/A until Partition Merge
 Total block memory bits : N/A until Partition Merge
-Total DSP Blocks : N/A until Partition Merge
-Total HSSI RX PCSs : N/A until Partition Merge
-Total HSSI PMA RX Deserializers : N/A until Partition Merge
-Total HSSI TX PCSs : N/A until Partition Merge
-Total HSSI PMA TX Serializers : N/A until Partition Merge
 Total PLLs : N/A until Partition Merge
 Total DLLs : N/A until Partition Merge

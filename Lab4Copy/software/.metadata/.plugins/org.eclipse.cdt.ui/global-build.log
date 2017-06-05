@@ -223,3 +223,39 @@ Info: Building ../hangman_word_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_word_bsp/
 [BSP build complete]
 [hangman_word build complete]
+14:59:43 **** Build of configuration Nios II for project hangman_word ****
+make all 
+Info: Building ../hangman_word_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_word_bsp/
+[BSP build complete]
+[hangman_word build complete]
+14:59:44 **** Incremental Build of configuration Nios II for project hangman_word ****
+make all 
+Info: Building ../hangman_word_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_word_bsp/
+[BSP build complete]
+[hangman_word build complete]
+15:00:57 **** Build of configuration Nios II for project hangman_word ****
+make all 
+Info: Building ../hangman_word_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_word_bsp/
+[BSP build complete]
+[hangman_word build complete]
+15:00:58 **** Incremental Build of configuration Nios II for project hangman_word ****
+make all 
+Info: Building ../hangman_word_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_word_bsp/
+[BSP build complete]
+[hangman_word build complete]
+15:01:27 **** Incremental Build of configuration Nios II for project hangman ****
+make all 
+Info: Building ../hangman_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_bsp/
+[BSP build complete]
+[hangman build complete]
+15:01:32 **** Incremental Build of configuration Nios II for project hangman ****
+make all 
+Info: Building ../hangman_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_bsp/
+[BSP build complete]
+[hangman build complete]

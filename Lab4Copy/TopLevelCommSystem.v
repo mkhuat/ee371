@@ -7,7 +7,7 @@ KEY0 is the active-low system reset
 Outputs: LEDR7−0 are parallel port outputs from the Nios II system
 
 */
-module TopLevelCommSystem (CLOCK_50, SW, KEY, LEDR, serial_in, serial_out, ps);
+module TopLevelCommSystem (CLOCK_50, SW, KEY, LEDR, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0, serial_in, serial_out, ps);
 	
 		
 	parameter 
@@ -22,6 +22,7 @@ module TopLevelCommSystem (CLOCK_50, SW, KEY, LEDR, serial_in, serial_out, ps);
 	input [7:0] SW;
 	input [0:0] KEY;
 	output [9:0] LEDR;
+	output [6:0] HEX5, HEX4, HEX3, HEX2, HEX1, HEX0;
 	output serial_out;
 	output [3:0] ps;
 	
@@ -45,7 +46,7 @@ module TopLevelCommSystem (CLOCK_50, SW, KEY, LEDR, serial_in, serial_out, ps);
 	wire[10:0] data_trans, data_receive;
 	wire[3:0] bic_trans, bic_receive;
 	wire char_received, char_sent, transmit_en, load;	// For nios communication
-	
+	wire[7:0] hex_value_5, hex_value_4, hex_value_3, hex_value_2, hex_value_1, hex_value_0;
 	
 	TransmitComm transmit(.clk(clk), .sample_clk(scan_clk), .reset(~KEY), .transmit_en(transmit_en), .load(load), .parallel_in(parallel_in), 
 										.serial_out(serial_out), .char_sent(char_sent), .data(data_trans), .ps(ps), .bic(bic_trans));
@@ -65,8 +66,22 @@ module TopLevelCommSystem (CLOCK_50, SW, KEY, LEDR, serial_in, serial_out, ps);
 		.char_received_external_connection_export(char_received),
 		.char_sent_external_connection_export(char_sent),
 		.transmit_enable_external_connection_export(transmit_en),
-		.load_external_connection_export(load)
+		.load_external_connection_export(load),
+		.hex5_external_connection_export(hex_value_5),
+		.hex4_external_connection_export(hex_value_4),
+		.hex3_external_connection_export(hex_value_3),
+		.hex2_external_connection_export(hex_value_2),
+		.hex1_external_connection_export(hex_value_1),
+		.hex0_external_connection_export(hex_value_0)
 		);
 
+		
+	// Display hex
+	HexEncoder hexencoder5 (hex_values_5, HEX5);
+	HexEncoder hexencoder4 (hex_values_4, HEX4);
+	HexEncoder hexencoder3 (hex_values_3, HEX3);
+	HexEncoder hexencoder2 (hex_values_2, HEX2);
+	HexEncoder hexencoder1 (hex_values_1, HEX1);
+	HexEncoder hexencoder0 (hex_values_0, HEX0);
 		
 endmodule
