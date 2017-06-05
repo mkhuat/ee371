@@ -58,12 +58,12 @@ module nios_sys_mm_interconnect_0 (
 		output wire        onchip_memory_s1_chipselect,                         //                                              .chipselect
 		output wire        onchip_memory_s1_clken,                              //                                              .clken
 		output wire [1:0]  parallel_input_s1_address,                           //                             parallel_input_s1.address
+		output wire        parallel_input_s1_write,                             //                                              .write
 		input  wire [31:0] parallel_input_s1_readdata,                          //                                              .readdata
+		output wire [31:0] parallel_input_s1_writedata,                         //                                              .writedata
+		output wire        parallel_input_s1_chipselect,                        //                                              .chipselect
 		output wire [1:0]  parallel_output_s1_address,                          //                            parallel_output_s1.address
-		output wire        parallel_output_s1_write,                            //                                              .write
 		input  wire [31:0] parallel_output_s1_readdata,                         //                                              .readdata
-		output wire [31:0] parallel_output_s1_writedata,                        //                                              .writedata
-		output wire        parallel_output_s1_chipselect,                       //                                              .chipselect
 		output wire [1:0]  switches_s1_address,                                 //                                   switches_s1.address
 		input  wire [31:0] switches_s1_readdata,                                //                                              .readdata
 		output wire [1:0]  transmit_enable_s1_address,                          //                            transmit_enable_s1.address
@@ -1262,10 +1262,11 @@ module nios_sys_mm_interconnect_0 (
 		.uav_lock               (parallel_input_s1_agent_m0_lock),                     //                         .lock
 		.uav_debugaccess        (parallel_input_s1_agent_m0_debugaccess),              //                         .debugaccess
 		.av_address             (parallel_input_s1_address),                           //      avalon_anti_slave_0.address
+		.av_write               (parallel_input_s1_write),                             //                         .write
 		.av_readdata            (parallel_input_s1_readdata),                          //                         .readdata
-		.av_write               (),                                                    //              (terminated)
+		.av_writedata           (parallel_input_s1_writedata),                         //                         .writedata
+		.av_chipselect          (parallel_input_s1_chipselect),                        //                         .chipselect
 		.av_read                (),                                                    //              (terminated)
-		.av_writedata           (),                                                    //              (terminated)
 		.av_begintransfer       (),                                                    //              (terminated)
 		.av_beginbursttransfer  (),                                                    //              (terminated)
 		.av_burstcount          (),                                                    //              (terminated)
@@ -1274,7 +1275,6 @@ module nios_sys_mm_interconnect_0 (
 		.av_waitrequest         (1'b0),                                                //              (terminated)
 		.av_writebyteenable     (),                                                    //              (terminated)
 		.av_lock                (),                                                    //              (terminated)
-		.av_chipselect          (),                                                    //              (terminated)
 		.av_clken               (),                                                    //              (terminated)
 		.uav_clken              (1'b0),                                                //              (terminated)
 		.av_debugaccess         (),                                                    //              (terminated)
@@ -1326,11 +1326,10 @@ module nios_sys_mm_interconnect_0 (
 		.uav_lock               (parallel_output_s1_agent_m0_lock),                    //                         .lock
 		.uav_debugaccess        (parallel_output_s1_agent_m0_debugaccess),             //                         .debugaccess
 		.av_address             (parallel_output_s1_address),                          //      avalon_anti_slave_0.address
-		.av_write               (parallel_output_s1_write),                            //                         .write
 		.av_readdata            (parallel_output_s1_readdata),                         //                         .readdata
-		.av_writedata           (parallel_output_s1_writedata),                        //                         .writedata
-		.av_chipselect          (parallel_output_s1_chipselect),                       //                         .chipselect
+		.av_write               (),                                                    //              (terminated)
 		.av_read                (),                                                    //              (terminated)
+		.av_writedata           (),                                                    //              (terminated)
 		.av_begintransfer       (),                                                    //              (terminated)
 		.av_beginbursttransfer  (),                                                    //              (terminated)
 		.av_burstcount          (),                                                    //              (terminated)
@@ -1339,6 +1338,7 @@ module nios_sys_mm_interconnect_0 (
 		.av_waitrequest         (1'b0),                                                //              (terminated)
 		.av_writebyteenable     (),                                                    //              (terminated)
 		.av_lock                (),                                                    //              (terminated)
+		.av_chipselect          (),                                                    //              (terminated)
 		.av_clken               (),                                                    //              (terminated)
 		.uav_clken              (1'b0),                                                //              (terminated)
 		.av_debugaccess         (),                                                    //              (terminated)

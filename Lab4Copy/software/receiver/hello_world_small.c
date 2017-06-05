@@ -93,9 +93,9 @@ int main()
 { 
 	// Receiver
 	while (1) {
-		alt_printf("parallel_in=%d \n", *parallel_in);
+		// alt_printf("parallel_out=%d \n", *parallel_out);
 		if (*received_char) {
-			alt_printf("parallel_in=%d \n", *parallel_in);
+			alt_printf("parallel_out=%d \n", *parallel_out);
 		}
 	}
 

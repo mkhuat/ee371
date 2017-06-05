@@ -46,11 +46,11 @@ agreement for further details.
 		(line (pt 0 152)(pt 256 152)(line_width 1))
 	)
 	(port
-		(pt 0 272)
+		(pt 0 312)
 		(input)
-		(text "parallel_input_external_connection_export[7..0]" (rect 0 0 184 12)(font "Arial" (font_size 8)))
-		(text "parallel_input_external_connection_export[7..0]" (rect 4 261 286 272)(font "Arial" (font_size 8)))
-		(line (pt 0 272)(pt 256 272)(line_width 3))
+		(text "parallel_output_external_connection_export[7..0]" (rect 0 0 189 12)(font "Arial" (font_size 8)))
+		(text "parallel_output_external_connection_export[7..0]" (rect 4 301 292 312)(font "Arial" (font_size 8)))
+		(line (pt 0 312)(pt 256 312)(line_width 3))
 	)
 	(port
 		(pt 0 352)
@@ -81,11 +81,11 @@ agreement for further details.
 		(line (pt 0 232)(pt 256 232)(line_width 1))
 	)
 	(port
-		(pt 0 312)
+		(pt 0 272)
 		(output)
-		(text "parallel_output_external_connection_export[7..0]" (rect 0 0 189 12)(font "Arial" (font_size 8)))
-		(text "parallel_output_external_connection_export[7..0]" (rect 4 301 292 312)(font "Arial" (font_size 8)))
-		(line (pt 0 312)(pt 256 312)(line_width 3))
+		(text "parallel_input_external_connection_export[7..0]" (rect 0 0 184 12)(font "Arial" (font_size 8)))
+		(text "parallel_input_external_connection_export[7..0]" (rect 4 261 286 272)(font "Arial" (font_size 8)))
+		(line (pt 0 272)(pt 256 272)(line_width 3))
 	)
 	(port
 		(pt 0 432)

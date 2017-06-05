@@ -9,8 +9,8 @@ module nios_sys (
 		input  wire       clk_clk,                                    //                                 clk.clk
 		output wire [7:0] leds_external_connection_export,            //            leds_external_connection.export
 		output wire       load_external_connection_export,            //            load_external_connection.export
-		input  wire [7:0] parallel_input_external_connection_export,  //  parallel_input_external_connection.export
-		output wire [7:0] parallel_output_external_connection_export, // parallel_output_external_connection.export
+		output wire [7:0] parallel_input_external_connection_export,  //  parallel_input_external_connection.export
+		input  wire [7:0] parallel_output_external_connection_export, // parallel_output_external_connection.export
 		input  wire       reset_reset_n,                              //                               reset.reset_n
 		input  wire [7:0] switches_external_connection_export,        //        switches_external_connection.export
 		output wire       transmit_enable_external_connection_export  // transmit_enable_external_connection.export
@@ -57,13 +57,13 @@ module nios_sys (
 	wire   [1:0] mm_interconnect_0_leds_s1_address;                               // mm_interconnect_0:LEDs_s1_address -> LEDs:address
 	wire         mm_interconnect_0_leds_s1_write;                                 // mm_interconnect_0:LEDs_s1_write -> LEDs:write_n
 	wire  [31:0] mm_interconnect_0_leds_s1_writedata;                             // mm_interconnect_0:LEDs_s1_writedata -> LEDs:writedata
+	wire         mm_interconnect_0_parallel_input_s1_chipselect;                  // mm_interconnect_0:parallel_input_s1_chipselect -> parallel_input:chipselect
 	wire  [31:0] mm_interconnect_0_parallel_input_s1_readdata;                    // parallel_input:readdata -> mm_interconnect_0:parallel_input_s1_readdata
 	wire   [1:0] mm_interconnect_0_parallel_input_s1_address;                     // mm_interconnect_0:parallel_input_s1_address -> parallel_input:address
-	wire         mm_interconnect_0_parallel_output_s1_chipselect;                 // mm_interconnect_0:parallel_output_s1_chipselect -> parallel_output:chipselect
+	wire         mm_interconnect_0_parallel_input_s1_write;                       // mm_interconnect_0:parallel_input_s1_write -> parallel_input:write_n
+	wire  [31:0] mm_interconnect_0_parallel_input_s1_writedata;                   // mm_interconnect_0:parallel_input_s1_writedata -> parallel_input:writedata
 	wire  [31:0] mm_interconnect_0_parallel_output_s1_readdata;                   // parallel_output:readdata -> mm_interconnect_0:parallel_output_s1_readdata
 	wire   [1:0] mm_interconnect_0_parallel_output_s1_address;                    // mm_interconnect_0:parallel_output_s1_address -> parallel_output:address
-	wire         mm_interconnect_0_parallel_output_s1_write;                      // mm_interconnect_0:parallel_output_s1_write -> parallel_output:write_n
-	wire  [31:0] mm_interconnect_0_parallel_output_s1_writedata;                  // mm_interconnect_0:parallel_output_s1_writedata -> parallel_output:writedata
 	wire  [31:0] mm_interconnect_0_char_received_s1_readdata;                     // char_received:readdata -> mm_interconnect_0:char_received_s1_readdata
 	wire   [1:0] mm_interconnect_0_char_received_s1_address;                      // mm_interconnect_0:char_received_s1_address -> char_received:address
 	wire  [31:0] mm_interconnect_0_char_sent_s1_readdata;                         // char_sent:readdata -> mm_interconnect_0:char_sent_s1_readdata
@@ -177,26 +177,26 @@ module nios_sys (
 		.reset_req  (rst_controller_reset_out_reset_req)             //       .reset_req
 	);
 
-	nios_sys_parallel_input parallel_input (
-		.clk      (clk_clk),                                      //                 clk.clk
-		.reset_n  (~rst_controller_reset_out_reset),              //               reset.reset_n
-		.address  (mm_interconnect_0_parallel_input_s1_address),  //                  s1.address
-		.readdata (mm_interconnect_0_parallel_input_s1_readdata), //                    .readdata
-		.in_port  (parallel_input_external_connection_export)     // external_connection.export
+	nios_sys_LEDs parallel_input (
+		.clk        (clk_clk),                                        //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_parallel_input_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_parallel_input_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_parallel_input_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_parallel_input_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_parallel_input_s1_readdata),   //                    .readdata
+		.out_port   (parallel_input_external_connection_export)       // external_connection.export
 	);
 
-	nios_sys_LEDs parallel_output (
-		.clk        (clk_clk),                                         //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
-		.address    (mm_interconnect_0_parallel_output_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_parallel_output_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_parallel_output_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_parallel_output_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_parallel_output_s1_readdata),   //                    .readdata
-		.out_port   (parallel_output_external_connection_export)       // external_connection.export
+	nios_sys_parallel_output parallel_output (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_0_parallel_output_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_parallel_output_s1_readdata), //                    .readdata
+		.in_port  (parallel_output_external_connection_export)     // external_connection.export
 	);
 
-	nios_sys_parallel_input switches (
+	nios_sys_parallel_output switches (
 		.clk      (clk_clk),                                //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),        //               reset.reset_n
 		.address  (mm_interconnect_0_switches_s1_address),  //                  s1.address
@@ -267,12 +267,12 @@ module nios_sys (
 		.onchip_memory_s1_chipselect                         (mm_interconnect_0_onchip_memory_s1_chipselect),                   //                                              .chipselect
 		.onchip_memory_s1_clken                              (mm_interconnect_0_onchip_memory_s1_clken),                        //                                              .clken
 		.parallel_input_s1_address                           (mm_interconnect_0_parallel_input_s1_address),                     //                             parallel_input_s1.address
+		.parallel_input_s1_write                             (mm_interconnect_0_parallel_input_s1_write),                       //                                              .write
 		.parallel_input_s1_readdata                          (mm_interconnect_0_parallel_input_s1_readdata),                    //                                              .readdata
+		.parallel_input_s1_writedata                         (mm_interconnect_0_parallel_input_s1_writedata),                   //                                              .writedata
+		.parallel_input_s1_chipselect                        (mm_interconnect_0_parallel_input_s1_chipselect),                  //                                              .chipselect
 		.parallel_output_s1_address                          (mm_interconnect_0_parallel_output_s1_address),                    //                            parallel_output_s1.address
-		.parallel_output_s1_write                            (mm_interconnect_0_parallel_output_s1_write),                      //                                              .write
 		.parallel_output_s1_readdata                         (mm_interconnect_0_parallel_output_s1_readdata),                   //                                              .readdata
-		.parallel_output_s1_writedata                        (mm_interconnect_0_parallel_output_s1_writedata),                  //                                              .writedata
-		.parallel_output_s1_chipselect                       (mm_interconnect_0_parallel_output_s1_chipselect),                 //                                              .chipselect
 		.switches_s1_address                                 (mm_interconnect_0_switches_s1_address),                           //                                   switches_s1.address
 		.switches_s1_readdata                                (mm_interconnect_0_switches_s1_readdata),                          //                                              .readdata
 		.transmit_enable_s1_address                          (mm_interconnect_0_transmit_enable_s1_address),                    //                            transmit_enable_s1.address

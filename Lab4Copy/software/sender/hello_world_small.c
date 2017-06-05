@@ -94,16 +94,14 @@ int main()
 {
 	char in;
 	// Sender
-	char c = 'k';
+	char c = 'k'; // \0
 	*parallel_out = c;
 	*parallel_in = c;
 	*load = 1;
 	*transmit_enable = 1;
+	alt_printf("parallel_in=%c\n", *parallel_in);
 
-	while (1) {
-		*parallel_out = c;
-		*parallel_in = c;
-	}
+	while (1);
 
 
 //	while (1) {
