@@ -88,13 +88,11 @@
 #define leds (char *) 0x9060
 #define switches (volatile char *) 0x9070
 
-
-#define START_GAME 's'
-#define WIN_GAME 'w'
-#define LOSE_GAME 'l'
-
 int main()
 {
+	char START_GAME = 's';
+	char WIN_GAME = 'w';
+	char LOSE_GAME = 'l';
 
 	// NOTE: To run this, I disabled a few checks.
 	// There is likely something wrong with our config!
@@ -109,11 +107,9 @@ int main()
 
 		// Listen for game start, then clear buffer
 		while (!*received_char);
-		in = *received_char;
-		*received_char = 0;
 
-		if (in != START_GAME){
-			alt_printf("\nWanted Game Start=%c, but found %c \n", START_GAME, in);
+		if (*parallel_out != START_GAME){
+			alt_printf("\nWanted Game Start=%c, but found %c \n", START_GAME, *parallel_out);
 			exit(0);
 		}
 
@@ -124,7 +120,7 @@ int main()
 		alt_printf("Letter Guessed: %c \n", in);
 
 		// Load guess character
-		*parallel_out = in;
+		*parallel_in = in;
 		*load = 1;
 		*transmit_enable = 1;
 		// Wait for send...
@@ -132,11 +128,9 @@ int main()
 		*sent_char = 0;
 		*transmit_enable = 0;
 
-
 		// Listen for game status - win or lose
 		while (!*received_char);
-		in = *received_char;
-		*received_char = 0;
+		in = *parallel_out;
 
 		if (in != WIN_GAME || in != LOSE_GAME) {
 			alt_printf("\nWanted Game Win=%c or Game Lose=%c, but found %c \n", WIN_GAME, LOSE_GAME, in);
@@ -160,19 +154,18 @@ int main()
 		// Send game start
 
 		// Load start game character
-		*parallel_out = START_GAME;
+		*parallel_in = START_GAME;
 		*load = 1;
 		*transmit_enable = 1;
 
 		// Wait for send...
 		while (!*sent_char);
-		*sent_char = 0;
+		*load = 0;
 		*transmit_enable = 0;
 
 		// Listen for game start ack/guess, then clear buffer
 		while (!*received_char);
-		char received_guess = *received_char;
-		*received_char = 0;
+		char received_guess = *parallel_out;
 
 		alt_putstr("\nGame start as proposer! \n");
 		alt_printf("\nReceived guess: %c \n", received_guess);
@@ -180,10 +173,10 @@ int main()
 
 		if (to_guess == received_guess) {
 			alt_putstr("\nGuess was correct!\n");
-			*parallel_out = WIN_GAME;
+			*parallel_in = WIN_GAME;
 		} else {
 			alt_putstr("\nGuess was wrong!\n");
-			*parallel_out = LOSE_GAME;
+			*parallel_in = LOSE_GAME;
 		}
 
 		// Load game win or loss
@@ -192,7 +185,7 @@ int main()
 
 		// Wait for send...
 		while (!*sent_char);
-		*sent_char = 0;
+		*load = 0;
 		*transmit_enable = 0;
 
 	}

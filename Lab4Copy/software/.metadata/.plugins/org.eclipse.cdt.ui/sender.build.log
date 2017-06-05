@@ -1,9 +1,9 @@
-13:09:59 **** Incremental Build of configuration Nios II for project sender ****
+13:52:59 **** Build of configuration Nios II for project sender ****
 make all 
 Info: Building ../sender_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../sender_bsp/
 [BSP build complete]
 [sender build complete]
 
-13:10:00 Build Finished (took 737ms)
+13:53:00 Build Finished (took 748ms)
 

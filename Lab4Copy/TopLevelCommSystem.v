@@ -21,11 +21,13 @@ module TopLevelCommSystem (CLOCK_50, SW, KEY, LEDR, serial_in, serial_out, ps);
 	input CLOCK_50, serial_in;
 	input [7:0] SW;
 	input [0:0] KEY;
-	output [7:0] LEDR;
+	output [9:0] LEDR;
 	output serial_out;
 	output [3:0] ps;
 	
 	
+	assign LEDR[8] = serial_in;
+	assign LEDR[9] = serial_out;
 	
 	// Divide the 50MHz clock
 	reg [30:0] clock_buff;

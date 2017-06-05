@@ -95,7 +95,8 @@ int main()
 	while (1) {
 		// alt_printf("parallel_out=%d \n", *parallel_out);
 		if (*received_char) {
-			alt_printf("parallel_out=%d \n", *parallel_out);
+			alt_printf("parallel_out=%c \n", *parallel_out);
+			break;
 		}
 	}
 
