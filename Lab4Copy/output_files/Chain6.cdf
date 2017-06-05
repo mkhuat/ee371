@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA6F31) Path("C:/Users/nja4/Desktop/ee371/Lab4/output_files/") File("Nios_processor.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("C:/Users/mkhuat/Documents/ee371/Lab4Copy/output_files/") File("Nios_processor.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

@@ -7,7 +7,8 @@ module ReceiveComm(clk, sample_clk, reset, serial_in, parallel_out, char_receive
 
 	reg [3:0] ps;
 	output reg [9:0] data;
-
+	reg [9:0] buff;
+	
 	output reg [3:0] bic;
 	reg [3:0] bsc;
 
@@ -20,13 +21,13 @@ module ReceiveComm(clk, sample_clk, reset, serial_in, parallel_out, char_receive
 
 		// BIC encodings
 		BIC_END = 4'b1010,
-
+		
 		// BSC encodings
 		BSC_START = 4'b0000,
 		BSC_MIDDLE = 4'b0111,
 		BSC_END = 4'b1111;
 
-	assign parallel_out = data[8:1];
+	assign parallel_out = buff[8:1];
 
 	// Bit Sampling Count (BSC) counter
 	always @(posedge sample_clk)
@@ -38,7 +39,8 @@ module ReceiveComm(clk, sample_clk, reset, serial_in, parallel_out, char_receive
 					bic <= 4'b0000;
 					ps <= INIT;
 					char_received <= 1'b0;
-					data <= 0;
+					data <= 10'b1111111111;
+					buff <= 10'b1111111111;
 				end
 			else
 				begin
@@ -49,6 +51,8 @@ module ReceiveComm(clk, sample_clk, reset, serial_in, parallel_out, char_receive
 								bic <= 4'b0000;
 								char_received <= 1'b0;
 								ps <= IDLE;
+								data <= 10'b1111111111;
+								buff <= 10'b1111111111;
 							end
 						IDLE:
 							begin
@@ -76,6 +80,8 @@ module ReceiveComm(clk, sample_clk, reset, serial_in, parallel_out, char_receive
 											begin
 												ps <= IDLE;
 												char_received <= 1'b1;
+												buff <= data;
+												bic <= 4'b0000;
 											end
 									end
 								bsc <= bsc + 4'b0001;

@@ -10,7 +10,8 @@ module TransmitComm(clk, sample_clk, reset, transmit_en, load, parallel_in, seri
 
 	output reg [3:0] ps, bic;
 	reg [3:0] ns;
-	output reg [9:0] data, buff;
+	output reg [9:0] data;
+	reg [9:0] buff;
 
 	reg [3:0] bsc;
 
@@ -38,8 +39,8 @@ module TransmitComm(clk, sample_clk, reset, transmit_en, load, parallel_in, seri
 				bic <= 4'b0000;
 				char_sent <= 1'b0;
 				ps <= IDLE;
-				buff <= 1;
-				data <= 1;
+				buff <= 10'b1111111111;
+				data <= 10'b1111111111;
 			end
 		else
 			begin
@@ -50,8 +51,8 @@ module TransmitComm(clk, sample_clk, reset, transmit_en, load, parallel_in, seri
 							bic <= 4'b0000;
 							char_sent <= 1'b0;
 							ps <= IDLE;
-							buff <= 1;
-							data <= 1;
+							buff <= 10'b1111111111;
+							data <= 10'b1111111111;
 						end
 					IDLE:
 						begin
@@ -76,7 +77,7 @@ module TransmitComm(clk, sample_clk, reset, transmit_en, load, parallel_in, seri
 								begin
 									bic <= 4'b0000;
 									char_sent <= 1'b1;
-									data <= 1; // Should have shifted in all 1's already
+									data <= 10'b1111111111; // Should have shifted in all 1's already
 									ps <= IDLE;
 								end
 							else

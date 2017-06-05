@@ -66,7 +66,7 @@ module Tester(clk, sample_clk, reset, serial_io, parallel_in, parallel_out,
 
     parallel_in = 0;
 	reset <= 0;		load <= 1;	transmit_en <= 0; 	@(posedge clk);
-    reset <= 0;		load <= 1;	transmit_en <= 1; 	@(posedge clk);
+    reset <= 0;		load <= 0;	transmit_en <= 1; 	@(posedge clk);
     reset <= 0;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
 
 	// Step 24 times
