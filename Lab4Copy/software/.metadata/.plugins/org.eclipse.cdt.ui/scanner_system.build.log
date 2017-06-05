@@ -1,0 +1,16 @@
+15:51:01 **** Build of configuration Nios II for project scanner_system ****
+make all 
+Info: Building ../scanner_system_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../scanner_system_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -I../scanner_system_bsp//HAL/inc -I../scanner_system_bsp/ -I../scanner_system_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world.o hello_world.c
+Info: Linking scanner_system.elf
+nios2-elf-g++  -T'../scanner_system_bsp//linker.x' -msys-crt0='../scanner_system_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../scanner_system_bsp/  -msmallc  -Wl,-Map=scanner_system.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o scanner_system.elf obj/default/hello_world.o -lm -msys-lib=m
+../scanner_system_bsp/\libhal_bsp.a(alt_getchar.o): In function `alt_getchar':
+C:\Users\mkhuat\Documents\ee371\Lab4\software\scanner_system_bsp/HAL/src/alt_getchar.c:67: undefined reference to `getc'
+collect2.exe: error: ld returned 1 exit status
+make: *** [scanner_system.elf] Error 1
+
+15:51:01 Build Finished (took 939ms)
+

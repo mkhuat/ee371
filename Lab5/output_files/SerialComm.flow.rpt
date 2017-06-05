@@ -1,5 +1,5 @@
 Flow report for SerialComm
-Sat Jun 03 21:32:42 2017
+Sun Jun 04 16:07:23 2017
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 
 
@@ -41,14 +41,14 @@ agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Sat Jun 03 21:32:42 2017           ;
+; Flow Status                     ; Successful - Sun Jun 04 16:07:23 2017           ;
 ; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Standard Edition ;
 ; Revision Name                   ; SerialComm                                      ;
 ; Top-level Entity Name           ; TopLevelCommSystem                              ;
 ; Family                          ; Cyclone V                                       ;
 ; Device                          ; 5CSEMA5F31C6                                    ;
 ; Timing Models                   ; Final                                           ;
-; Logic utilization (in ALMs)     ; 726 / 32,070 ( 2 % )                            ;
+; Logic utilization (in ALMs)     ; 744 / 32,070 ( 2 % )                            ;
 ; Total registers                 ; 1042                                            ;
 ; Total pins                      ; 19 / 457 ( 4 % )                                ;
 ; Total virtual pins              ; 0                                               ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/03/2017 21:30:46 ;
+; Start date & time ; 06/04/2017 16:05:27 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SerialComm          ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ agreement for further details.
 +-------------------------------------+------------------------------------------------------------+---------------+--------------------+----------------+
 ; Assignment Name                     ; Value                                                      ; Default Value ; Entity Name        ; Section Id     ;
 +-------------------------------------+------------------------------------------------------------+---------------+--------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 273440549381799.149655064507012                            ; --            ; --                 ; --             ;
+; COMPILER_SIGNATURE_ID               ; 203178703705194.149661752622020                            ; --            ; --                 ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                ; --            ; --                 ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                  ; <None>        ; --                 ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                                       ; --            ; --                 ; eda_simulation ;
@@ -97,7 +97,7 @@ agreement for further details.
 ; SLD_FILE                            ; nios_sys/synthesis/nios_sys.regmap                         ; --            ; --                 ; --             ;
 ; SLD_FILE                            ; nios_sys/synthesis/nios_sys.debuginfo                      ; --            ; --                 ; --             ;
 ; SLD_FILE                            ; db/stp3_auto_stripped.stp                                  ; --            ; --                 ; --             ;
-; SLD_INFO                            ; QSYS_NAME nios_sys HAS_SOPCINFO 1 GENERATION_ID 1496549148 ; --            ; nios_sys           ; --             ;
+; SLD_INFO                            ; QSYS_NAME nios_sys HAS_SOPCINFO 1 GENERATION_ID 1496617511 ; --            ; nios_sys           ; --             ;
 ; SOPCINFO_FILE                       ; nios_sys/synthesis/../../nios_sys.sopcinfo                 ; --            ; --                 ; --             ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                         ; --            ; --                 ; --             ;
 ; TOP_LEVEL_ENTITY                    ; TopLevelCommSystem                                         ; SerialComm    ; --                 ; --             ;
@@ -110,12 +110,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:31     ; 1.0                     ; 1083 MB             ; 00:00:57                           ;
-; Fitter                    ; 00:00:59     ; 1.1                     ; 2831 MB             ; 00:02:05                           ;
-; Assembler                 ; 00:00:08     ; 1.0                     ; 946 MB              ; 00:00:08                           ;
-; TimeQuest Timing Analyzer ; 00:00:08     ; 1.6                     ; 1302 MB             ; 00:00:12                           ;
+; Analysis & Synthesis      ; 00:00:32     ; 1.0                     ; 1083 MB             ; 00:00:59                           ;
+; Fitter                    ; 00:00:57     ; 1.1                     ; 2836 MB             ; 00:02:12                           ;
+; Assembler                 ; 00:00:08     ; 1.0                     ; 948 MB              ; 00:00:08                           ;
+; TimeQuest Timing Analyzer ; 00:00:09     ; 1.6                     ; 1307 MB             ; 00:00:12                           ;
 ; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 867 MB              ; 00:00:03                           ;
-; Total                     ; 00:01:49     ; --                      ; --                  ; 00:03:25                           ;
+; Total                     ; 00:01:49     ; --                      ; --                  ; 00:03:34                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -124,11 +124,11 @@ agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; EE-137PC20       ; Windows 8 ; 6.2        ; x86_64         ;
-; Fitter                    ; EE-137PC20       ; Windows 8 ; 6.2        ; x86_64         ;
-; Assembler                 ; EE-137PC20       ; Windows 8 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; EE-137PC20       ; Windows 8 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; EE-137PC20       ; Windows 8 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Fitter                    ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Assembler                 ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="143" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library/Basic Functions/Bridges and Adaptors,Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Library/Interface Protocols,Library/Basic Functions/Simulation; Debug and Verification,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Basic Functions,Library/Interface Protocols/Serial,Library,Project" />
+ <window width="974" height="1167" x="-7" y="0" />
+ <generation
+   synthesis="NONE"
+   path="C:/Users/nja4/Desktop/ee371/Lab4/NIOS"
+   block_symbol_file="1" />
+ <hdlexample language="VERILOG" />
+</preferences>

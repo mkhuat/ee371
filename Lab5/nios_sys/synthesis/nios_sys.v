@@ -4,7 +4,7 @@
 
 `timescale 1 ps / 1 ps
 module nios_sys (
-		output wire [7:0] char_sent_external_connection_export,       //       char_sent_external_connection.export
+		input  wire [7:0] char_sent_external_connection_export,       //       char_sent_external_connection.export
 		input  wire       clk_clk,                                    //                                 clk.clk
 		input  wire       data_received_external_connection_export,   //   data_received_external_connection.export
 		output wire [7:0] leds_external_connection_export,            //            leds_external_connection.export
@@ -69,21 +69,18 @@ module nios_sys (
 	wire   [1:0] mm_interconnect_0_load_s1_address;                               // mm_interconnect_0:load_s1_address -> load:address
 	wire         mm_interconnect_0_load_s1_write;                                 // mm_interconnect_0:load_s1_write -> load:write_n
 	wire  [31:0] mm_interconnect_0_load_s1_writedata;                             // mm_interconnect_0:load_s1_writedata -> load:writedata
-	wire  [31:0] mm_interconnect_0_char_received_s1_readdata;                     // char_received:readdata -> mm_interconnect_0:char_received_s1_readdata
-	wire   [1:0] mm_interconnect_0_char_received_s1_address;                      // mm_interconnect_0:char_received_s1_address -> char_received:address
+	wire  [31:0] mm_interconnect_0_data_received_s1_readdata;                     // data_received:readdata -> mm_interconnect_0:data_received_s1_readdata
+	wire   [1:0] mm_interconnect_0_data_received_s1_address;                      // mm_interconnect_0:data_received_s1_address -> data_received:address
 	wire         mm_interconnect_0_transmit_enable_s1_chipselect;                 // mm_interconnect_0:transmit_enable_s1_chipselect -> transmit_enable:chipselect
 	wire  [31:0] mm_interconnect_0_transmit_enable_s1_readdata;                   // transmit_enable:readdata -> mm_interconnect_0:transmit_enable_s1_readdata
 	wire   [1:0] mm_interconnect_0_transmit_enable_s1_address;                    // mm_interconnect_0:transmit_enable_s1_address -> transmit_enable:address
 	wire         mm_interconnect_0_transmit_enable_s1_write;                      // mm_interconnect_0:transmit_enable_s1_write -> transmit_enable:write_n
 	wire  [31:0] mm_interconnect_0_transmit_enable_s1_writedata;                  // mm_interconnect_0:transmit_enable_s1_writedata -> transmit_enable:writedata
-	wire         mm_interconnect_0_char_sent_s1_chipselect;                       // mm_interconnect_0:char_sent_s1_chipselect -> char_sent:chipselect
 	wire  [31:0] mm_interconnect_0_char_sent_s1_readdata;                         // char_sent:readdata -> mm_interconnect_0:char_sent_s1_readdata
 	wire   [1:0] mm_interconnect_0_char_sent_s1_address;                          // mm_interconnect_0:char_sent_s1_address -> char_sent:address
-	wire         mm_interconnect_0_char_sent_s1_write;                            // mm_interconnect_0:char_sent_s1_write -> char_sent:write_n
-	wire  [31:0] mm_interconnect_0_char_sent_s1_writedata;                        // mm_interconnect_0:char_sent_s1_writedata -> char_sent:writedata
 	wire         irq_mapper_receiver0_irq;                                        // jtag_uart:av_irq -> irq_mapper:receiver0_irq
 	wire  [31:0] nios2_processor_d_irq_irq;                                       // irq_mapper:sender_irq -> nios2_processor:d_irq
-	wire         rst_controller_reset_out_reset;                                  // rst_controller:reset_out -> [LEDs:reset_n, char_received:reset_n, char_sent:reset_n, irq_mapper:reset, jtag_uart:rst_n, load:reset_n, mm_interconnect_0:nios2_processor_reset_n_reset_bridge_in_reset_reset, nios2_processor:reset_n, onchip_memory:reset, parallel_input:reset_n, parallel_output:reset_n, rst_translator:in_reset, switches:reset_n, transmit_enable:reset_n]
+	wire         rst_controller_reset_out_reset;                                  // rst_controller:reset_out -> [LEDs:reset_n, char_sent:reset_n, data_received:reset_n, irq_mapper:reset, jtag_uart:rst_n, load:reset_n, mm_interconnect_0:nios2_processor_reset_n_reset_bridge_in_reset_reset, nios2_processor:reset_n, onchip_memory:reset, parallel_input:reset_n, parallel_output:reset_n, rst_translator:in_reset, switches:reset_n, transmit_enable:reset_n]
 	wire         rst_controller_reset_out_reset_req;                              // rst_controller:reset_req -> [nios2_processor:reset_req, onchip_memory:reset_req, rst_translator:reset_req_in]
 	wire         nios2_processor_jtag_debug_module_reset_reset;                   // nios2_processor:jtag_debug_module_resetrequest -> rst_controller:reset_in1
 
@@ -98,23 +95,20 @@ module nios_sys (
 		.out_port   (leds_external_connection_export)       // external_connection.export
 	);
 
-	nios_sys_char_received char_received (
-		.clk      (clk_clk),                                     //                 clk.clk
-		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
-		.address  (mm_interconnect_0_char_received_s1_address),  //                  s1.address
-		.readdata (mm_interconnect_0_char_received_s1_readdata), //                    .readdata
-		.in_port  (data_received_external_connection_export)     // external_connection.export
+	nios_sys_char_sent char_sent (
+		.clk      (clk_clk),                                 //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),         //               reset.reset_n
+		.address  (mm_interconnect_0_char_sent_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_char_sent_s1_readdata), //                    .readdata
+		.in_port  (char_sent_external_connection_export)     // external_connection.export
 	);
 
-	nios_sys_LEDs char_sent (
-		.clk        (clk_clk),                                   //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
-		.address    (mm_interconnect_0_char_sent_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_char_sent_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_char_sent_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_char_sent_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_char_sent_s1_readdata),   //                    .readdata
-		.out_port   (char_sent_external_connection_export)       // external_connection.export
+	nios_sys_data_received data_received (
+		.clk      (clk_clk),                                     //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address  (mm_interconnect_0_data_received_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_data_received_s1_readdata), //                    .readdata
+		.in_port  (data_received_external_connection_export)     // external_connection.export
 	);
 
 	nios_sys_jtag_uart jtag_uart (
@@ -183,7 +177,7 @@ module nios_sys (
 		.reset_req  (rst_controller_reset_out_reset_req)             //       .reset_req
 	);
 
-	nios_sys_parallel_input parallel_input (
+	nios_sys_char_sent parallel_input (
 		.clk      (clk_clk),                                      //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),              //               reset.reset_n
 		.address  (mm_interconnect_0_parallel_input_s1_address),  //                  s1.address
@@ -202,7 +196,7 @@ module nios_sys (
 		.out_port   (parallel_output_external_connection_export)       // external_connection.export
 	);
 
-	nios_sys_parallel_input switches (
+	nios_sys_char_sent switches (
 		.clk      (clk_clk),                                //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),        //               reset.reset_n
 		.address  (mm_interconnect_0_switches_s1_address),  //                  s1.address
@@ -236,13 +230,10 @@ module nios_sys (
 		.nios2_processor_instruction_master_waitrequest      (nios2_processor_instruction_master_waitrequest),                  //                                              .waitrequest
 		.nios2_processor_instruction_master_read             (nios2_processor_instruction_master_read),                         //                                              .read
 		.nios2_processor_instruction_master_readdata         (nios2_processor_instruction_master_readdata),                     //                                              .readdata
-		.char_received_s1_address                            (mm_interconnect_0_char_received_s1_address),                      //                              char_received_s1.address
-		.char_received_s1_readdata                           (mm_interconnect_0_char_received_s1_readdata),                     //                                              .readdata
 		.char_sent_s1_address                                (mm_interconnect_0_char_sent_s1_address),                          //                                  char_sent_s1.address
-		.char_sent_s1_write                                  (mm_interconnect_0_char_sent_s1_write),                            //                                              .write
 		.char_sent_s1_readdata                               (mm_interconnect_0_char_sent_s1_readdata),                         //                                              .readdata
-		.char_sent_s1_writedata                              (mm_interconnect_0_char_sent_s1_writedata),                        //                                              .writedata
-		.char_sent_s1_chipselect                             (mm_interconnect_0_char_sent_s1_chipselect),                       //                                              .chipselect
+		.data_received_s1_address                            (mm_interconnect_0_data_received_s1_address),                      //                              data_received_s1.address
+		.data_received_s1_readdata                           (mm_interconnect_0_data_received_s1_readdata),                     //                                              .readdata
 		.jtag_uart_avalon_jtag_slave_address                 (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),           //                   jtag_uart_avalon_jtag_slave.address
 		.jtag_uart_avalon_jtag_slave_write                   (mm_interconnect_0_jtag_uart_avalon_jtag_slave_write),             //                                              .write
 		.jtag_uart_avalon_jtag_slave_read                    (mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),              //                                              .read

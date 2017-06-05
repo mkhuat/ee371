@@ -35,43 +35,43 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   8 .debug_aranges 00000208  00000000  00000000  00001998  2**3
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_info   000018da  00000000  00000000  00001ba0  2**0
+  9 .debug_info   000018de  00000000  00000000  00001ba0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 00000b3e  00000000  00000000  0000347a  2**0
+ 10 .debug_abbrev 00000b3e  00000000  00000000  0000347e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   00000b86  00000000  00000000  00003fb8  2**0
+ 11 .debug_line   00000b86  00000000  00000000  00003fbc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_frame  00000294  00000000  00000000  00004b40  2**2
+ 12 .debug_frame  00000294  00000000  00000000  00004b44  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    0000085f  00000000  00000000  00004dd4  2**0
+ 13 .debug_str    00000896  00000000  00000000  00004dd8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    0000043d  00000000  00000000  00005633  2**0
+ 14 .debug_loc    0000043d  00000000  00000000  0000566e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_alt_sim_info 00000010  00000000  00000000  00005a70  2**2
+ 15 .debug_alt_sim_info 00000010  00000000  00000000  00005aac  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 000000d8  00000000  00000000  00005a80  2**3
+ 16 .debug_ranges 000000d8  00000000  00000000  00005ac0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .thread_model 00000003  00000000  00000000  00006a96  2**0
+ 17 .thread_model 00000003  00000000  00000000  00006ad6  2**0
                   CONTENTS, READONLY
- 18 .cpu          0000000f  00000000  00000000  00006a99  2**0
+ 18 .cpu          0000000f  00000000  00000000  00006ad9  2**0
                   CONTENTS, READONLY
- 19 .qsys         00000001  00000000  00000000  00006aa8  2**0
+ 19 .qsys         00000001  00000000  00000000  00006ae8  2**0
                   CONTENTS, READONLY
- 20 .simulation_enabled 00000001  00000000  00000000  00006aa9  2**0
+ 20 .simulation_enabled 00000001  00000000  00000000  00006ae9  2**0
                   CONTENTS, READONLY
- 21 .stderr_dev   00000009  00000000  00000000  00006aaa  2**0
+ 21 .stderr_dev   00000009  00000000  00000000  00006aea  2**0
                   CONTENTS, READONLY
- 22 .stdin_dev    00000009  00000000  00000000  00006ab3  2**0
+ 22 .stdin_dev    00000009  00000000  00000000  00006af3  2**0
                   CONTENTS, READONLY
- 23 .stdout_dev   00000009  00000000  00000000  00006abc  2**0
+ 23 .stdout_dev   00000009  00000000  00000000  00006afc  2**0
                   CONTENTS, READONLY
- 24 .sopc_system_name 00000008  00000000  00000000  00006ac5  2**0
+ 24 .sopc_system_name 00000008  00000000  00000000  00006b05  2**0
                   CONTENTS, READONLY
- 25 .quartus_project_dir 00000020  00000000  00000000  00006acd  2**0
+ 25 .quartus_project_dir 00000024  00000000  00000000  00006b0d  2**0
                   CONTENTS, READONLY
- 26 .jdi          00004255  00000000  00000000  00006aed  2**0
+ 26 .jdi          00004255  00000000  00000000  00006b31  2**0
                   CONTENTS, READONLY
- 27 .sopcinfo     00059bcd  00000000  00000000  0000ad42  2**0
+ 27 .sopcinfo     00059a47  00000000  00000000  0000ad86  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00000000 l    d  .entry	00000000 .entry
@@ -240,59 +240,23 @@ alt_after_alt_main:
   58:	003fff06 	br	58 <_gp+0xffff7700>
 
 0000005c <main>:
-{
-	// NOTE: To run this, I disabled a few checks.
-	// There is likely something wrong with our config!
-	// Look at messed up System ID Checks.
-
-	alt_putstr("\nLetter Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
   5c:	01000034 	movhi	r4,0
-#define START_GAME 's'
-#define WIN_GAME 'w'
-#define LOSE_GAME 'l'
-
-int main()
-{
   60:	defffc04 	addi	sp,sp,-16
-	// NOTE: To run this, I disabled a few checks.
-	// There is likely something wrong with our config!
-	// Look at messed up System ID Checks.
-
-	alt_putstr("\nLetter Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
   64:	2101c804 	addi	r4,r4,1824
-#define START_GAME 's'
-#define WIN_GAME 'w'
-#define LOSE_GAME 'l'
-
-int main()
-{
   68:	dfc00315 	stw	ra,12(sp)
   6c:	dc800215 	stw	r18,8(sp)
   70:	dc400115 	stw	r17,4(sp)
   74:	dc000015 	stw	r16,0(sp)
-	// NOTE: To run this, I disabled a few checks.
-	// There is likely something wrong with our config!
-	// Look at messed up System ID Checks.
-
-	alt_putstr("\nLetter Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
   78:	00006000 	call	600 <alt_putstr>
-
-	char in = alt_getchar();
   7c:	00002f80 	call	2f8 <alt_getchar>
-	if (in == 'g') {
   80:	11403fcc 	andi	r5,r2,255
   84:	2940201c 	xori	r5,r5,128
   88:	297fe004 	addi	r5,r5,-128
   8c:	008019c4 	movi	r2,103
   90:	2880461e 	bne	r5,r2,1ac <main+0x150>
-		// Guesser
-		alt_putstr("\nYou chose guesser! \n");
   94:	01000034 	movhi	r4,0
   98:	2101d804 	addi	r4,r4,1888
   9c:	00006000 	call	600 <alt_putstr>
-
-		// Listen for game start, then clear buffer
-		while (!*received_char);
   a0:	01240814 	movui	r4,36896
   a4:	20800003 	ldbu	r2,0(r4)
   a8:	00e40814 	movui	r3,36896
@@ -300,88 +264,47 @@ int main()
   b0:	1080201c 	xori	r2,r2,128
   b4:	10bfe004 	addi	r2,r2,-128
   b8:	103ffa26 	beq	r2,zero,a4 <_gp+0xffff774c>
-		in = *received_char;
   bc:	19800003 	ldbu	r6,0(r3)
-		*received_char = 0;
-
-		if (in != START_GAME){
   c0:	01401cc4 	movi	r5,115
-		alt_putstr("\nYou chose guesser! \n");
-
-		// Listen for game start, then clear buffer
-		while (!*received_char);
-		in = *received_char;
-		*received_char = 0;
   c4:	18000005 	stb	zero,0(r3)
-
-		if (in != START_GAME){
   c8:	31803fcc 	andi	r6,r6,255
   cc:	3180201c 	xori	r6,r6,128
   d0:	31bfe004 	addi	r6,r6,-128
   d4:	31400426 	beq	r6,r5,e8 <main+0x8c>
-			alt_printf("\nWanted Game Start=%c, but found %c \n", START_GAME, in);
   d8:	01000034 	movhi	r4,0
   dc:	2101de04 	addi	r4,r4,1912
   e0:	00004480 	call	448 <alt_printf>
   e4:	00002f06 	br	1a4 <main+0x148>
-			exit(0);
-		}
-
-		alt_putstr("\nGame start as guesser! \n");
   e8:	01000034 	movhi	r4,0
   ec:	2101e804 	addi	r4,r4,1952
   f0:	00006000 	call	600 <alt_putstr>
-
-		alt_putstr("\nEnter a letter a guess: \n");
   f4:	01000034 	movhi	r4,0
   f8:	2101ef04 	addi	r4,r4,1980
   fc:	00006000 	call	600 <alt_putstr>
-		in = alt_getchar();
  100:	00002f80 	call	2f8 <alt_getchar>
-		alt_printf("Letter Guessed: %c \n", in);
  104:	11403fcc 	andi	r5,r2,255
  108:	2940201c 	xori	r5,r5,128
  10c:	01000034 	movhi	r4,0
  110:	2101f604 	addi	r4,r4,2008
  114:	297fe004 	addi	r5,r5,-128
-		}
-
-		alt_putstr("\nGame start as guesser! \n");
-
-		alt_putstr("\nEnter a letter a guess: \n");
-		in = alt_getchar();
  118:	1021883a 	mov	r16,r2
-		alt_printf("Letter Guessed: %c \n", in);
  11c:	00004480 	call	448 <alt_printf>
-
-		// Load guess character
-		*parallel_out = in;
  120:	00a41014 	movui	r2,36928
  124:	14000005 	stb	r16,0(r2)
-		*load = 1;
  128:	00c00044 	movi	r3,1
  12c:	00a40c14 	movui	r2,36912
  130:	10c00005 	stb	r3,0(r2)
-		*transmit_enable = 1;
  134:	00a40414 	movui	r2,36880
  138:	10c00005 	stb	r3,0(r2)
-		// Wait for send...
-		while (!*sent_char);
  13c:	01240014 	movui	r4,36864
  140:	20c00003 	ldbu	r3,0(r4)
  144:	18c03fcc 	andi	r3,r3,255
  148:	18c0201c 	xori	r3,r3,128
  14c:	18ffe004 	addi	r3,r3,-128
  150:	183ffb26 	beq	r3,zero,140 <_gp+0xffff77e8>
-		*sent_char = 0;
  154:	00e40014 	movui	r3,36864
  158:	18000005 	stb	zero,0(r3)
-		*transmit_enable = 0;
  15c:	10000005 	stb	zero,0(r2)
-
-
-		// Listen for game status - win or lose
-		while (!*received_char);
  160:	01240814 	movui	r4,36896
  164:	20800003 	ldbu	r2,0(r4)
  168:	00e40814 	movui	r3,36896
@@ -389,23 +312,9 @@ int main()
  170:	1080201c 	xori	r2,r2,128
  174:	10bfe004 	addi	r2,r2,-128
  178:	103ffa26 	beq	r2,zero,164 <_gp+0xffff780c>
-		in = *received_char;
  17c:	19c00003 	ldbu	r7,0(r3)
-		*received_char = 0;
-
-		if (in != WIN_GAME || in != LOSE_GAME) {
-			alt_printf("\nWanted Game Win=%c or Game Lose=%c, but found %c \n", WIN_GAME, LOSE_GAME, in);
  180:	01000034 	movhi	r4,0
-
-
-		// Listen for game status - win or lose
-		while (!*received_char);
-		in = *received_char;
-		*received_char = 0;
  184:	18000005 	stb	zero,0(r3)
-
-		if (in != WIN_GAME || in != LOSE_GAME) {
-			alt_printf("\nWanted Game Win=%c or Game Lose=%c, but found %c \n", WIN_GAME, LOSE_GAME, in);
  188:	39c03fcc 	andi	r7,r7,255
  18c:	39c0201c 	xori	r7,r7,128
  190:	39ffe004 	addi	r7,r7,-128
@@ -413,26 +322,15 @@ int main()
  198:	01401dc4 	movi	r5,119
  19c:	2101fc04 	addi	r4,r4,2032
  1a0:	00004480 	call	448 <alt_printf>
-			exit(0);
  1a4:	0009883a 	mov	r4,zero
  1a8:	000000c0 	call	c <_exit>
-			alt_putstr("\nGuess was wrong!\n");
-		}
-
-	} else {
-		// Proposer
-		alt_printf("\nYou chose proposer, because you entered %c. \n", in);
  1ac:	01000034 	movhi	r4,0
  1b0:	21020904 	addi	r4,r4,2084
  1b4:	00004480 	call	448 <alt_printf>
-
-		alt_putstr("\nEnter a letter for an opponent to guess: \n");
  1b8:	01000034 	movhi	r4,0
  1bc:	21021504 	addi	r4,r4,2132
  1c0:	00006000 	call	600 <alt_putstr>
-		char to_guess = alt_getchar();
  1c4:	00002f80 	call	2f8 <alt_getchar>
-		alt_printf("Guess target: %c \n", to_guess);
  1c8:	14403fcc 	andi	r17,r2,255
  1cc:	8c40201c 	xori	r17,r17,128
  1d0:	8c7fe004 	addi	r17,r17,-128
@@ -440,38 +338,23 @@ int main()
  1d8:	21022004 	addi	r4,r4,2176
  1dc:	880b883a 	mov	r5,r17
  1e0:	00004480 	call	448 <alt_printf>
-
-		// Send game start
-
-		// Load start game character
-		*parallel_out = START_GAME;
  1e4:	00c01cc4 	movi	r3,115
  1e8:	00a41014 	movui	r2,36928
  1ec:	10c00005 	stb	r3,0(r2)
-		*load = 1;
  1f0:	00c00044 	movi	r3,1
  1f4:	00a40c14 	movui	r2,36912
  1f8:	10c00005 	stb	r3,0(r2)
-		*transmit_enable = 1;
  1fc:	00a40414 	movui	r2,36880
  200:	10c00005 	stb	r3,0(r2)
-
-		// Wait for send...
-		while (!*sent_char);
  204:	01240014 	movui	r4,36864
  208:	20c00003 	ldbu	r3,0(r4)
  20c:	18c03fcc 	andi	r3,r3,255
  210:	18c0201c 	xori	r3,r3,128
  214:	18ffe004 	addi	r3,r3,-128
  218:	183ffb26 	beq	r3,zero,208 <_gp+0xffff78b0>
-		*sent_char = 0;
  21c:	00e40014 	movui	r3,36864
  220:	18000005 	stb	zero,0(r3)
-		*transmit_enable = 0;
  224:	10000005 	stb	zero,0(r2)
-
-		// Listen for game start ack/guess, then clear buffer
-		while (!*received_char);
  228:	01240814 	movui	r4,36896
  22c:	20800003 	ldbu	r2,0(r4)
  230:	00e40814 	movui	r3,36896
@@ -479,32 +362,12 @@ int main()
  238:	1080201c 	xori	r2,r2,128
  23c:	10bfe004 	addi	r2,r2,-128
  240:	103ffa26 	beq	r2,zero,22c <_gp+0xffff78d4>
-		char received_guess = *received_char;
  244:	1c000003 	ldbu	r16,0(r3)
-		*received_char = 0;
-
-		alt_putstr("\nGame start as proposer! \n");
  248:	01000034 	movhi	r4,0
-		*transmit_enable = 0;
-
-		// Listen for game start ack/guess, then clear buffer
-		while (!*received_char);
-		char received_guess = *received_char;
-		*received_char = 0;
  24c:	18000005 	stb	zero,0(r3)
-
-		alt_putstr("\nGame start as proposer! \n");
  250:	21022504 	addi	r4,r4,2196
-		alt_printf("\nReceived guess: %c \n", received_guess);
  254:	84003fcc 	andi	r16,r16,255
-		// Listen for game start ack/guess, then clear buffer
-		while (!*received_char);
-		char received_guess = *received_char;
-		*received_char = 0;
-
-		alt_putstr("\nGame start as proposer! \n");
  258:	00006000 	call	600 <alt_putstr>
-		alt_printf("\nReceived guess: %c \n", received_guess);
  25c:	8400201c 	xori	r16,r16,128
  260:	843fe004 	addi	r16,r16,-128
  264:	01000034 	movhi	r4,0
@@ -512,54 +375,31 @@ int main()
  26c:	21022c04 	addi	r4,r4,2224
  270:	00004480 	call	448 <alt_printf>
  274:	04a41014 	movui	r18,36928
-
-
-		if (to_guess == received_guess) {
  278:	8c00051e 	bne	r17,r16,290 <main+0x234>
-			alt_putstr("\nGuess was correct!\n");
  27c:	01000034 	movhi	r4,0
  280:	21023204 	addi	r4,r4,2248
  284:	00006000 	call	600 <alt_putstr>
-			*parallel_out = WIN_GAME;
  288:	00801dc4 	movi	r2,119
  28c:	00000406 	br	2a0 <main+0x244>
-		} else {
-			alt_putstr("\nGuess was wrong!\n");
  290:	01000034 	movhi	r4,0
  294:	21023804 	addi	r4,r4,2272
  298:	00006000 	call	600 <alt_putstr>
-			*parallel_out = LOSE_GAME;
  29c:	00801b04 	movi	r2,108
  2a0:	90800005 	stb	r2,0(r18)
-		}
-
-		// Load game win or loss
-		*load = 1;
  2a4:	00c00044 	movi	r3,1
  2a8:	00a40c14 	movui	r2,36912
  2ac:	10c00005 	stb	r3,0(r2)
-		*transmit_enable = 1;
  2b0:	00a40414 	movui	r2,36880
  2b4:	10c00005 	stb	r3,0(r2)
-
-		// Wait for send...
-		while (!*sent_char);
  2b8:	01240014 	movui	r4,36864
  2bc:	20c00003 	ldbu	r3,0(r4)
  2c0:	18c03fcc 	andi	r3,r3,255
  2c4:	18c0201c 	xori	r3,r3,128
  2c8:	18ffe004 	addi	r3,r3,-128
  2cc:	183ffb26 	beq	r3,zero,2bc <_gp+0xffff7964>
-		*sent_char = 0;
  2d0:	00e40014 	movui	r3,36864
  2d4:	18000005 	stb	zero,0(r3)
-		*transmit_enable = 0;
  2d8:	10000005 	stb	zero,0(r2)
-
-	}
-
-	return 0;
-}
  2dc:	0005883a 	mov	r2,zero
  2e0:	dfc00317 	ldw	ra,12(sp)
  2e4:	dc800217 	ldw	r18,8(sp)
@@ -633,24 +473,12 @@ alt_getchar(void)
  338:	f800283a 	ret
 
 0000033c <alt_load>:
- * there is no bootloader, so this application is responsible for loading to
- * RAM any sections that are required.
- */  
-
-void alt_load (void)
-{
  33c:	deffff04 	addi	sp,sp,-4
  340:	01000034 	movhi	r4,0
  344:	01400034 	movhi	r5,0
  348:	dfc00015 	stw	ra,0(sp)
  34c:	21024004 	addi	r4,r4,2304
  350:	29425c04 	addi	r5,r5,2416
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
  354:	2140061e 	bne	r4,r5,370 <alt_load+0x34>
  358:	01000034 	movhi	r4,0
  35c:	01400034 	movhi	r5,0
@@ -662,11 +490,7 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
  374:	18c25c04 	addi	r3,r3,2416
  378:	1907c83a 	sub	r3,r3,r4
  37c:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
  380:	10fff526 	beq	r2,r3,358 <_gp+0xffff7a00>
-    {
-      *to++ = *from++;
  384:	114f883a 	add	r7,r2,r5
  388:	39c00017 	ldw	r7,0(r7)
  38c:	110d883a 	add	r6,r2,r4
@@ -677,62 +501,28 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
  3a0:	01400034 	movhi	r5,0
  3a4:	2101c804 	addi	r4,r4,1824
  3a8:	2941c804 	addi	r5,r5,1824
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
  3ac:	2140101e 	bne	r4,r5,3f0 <alt_load+0xb4>
  3b0:	00000b06 	br	3e0 <alt_load+0xa4>
  3b4:	00c00034 	movhi	r3,0
  3b8:	18c00804 	addi	r3,r3,32
  3bc:	1907c83a 	sub	r3,r3,r4
  3c0:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
  3c4:	10fff526 	beq	r2,r3,39c <_gp+0xffff7a44>
-    {
-      *to++ = *from++;
  3c8:	114f883a 	add	r7,r2,r5
  3cc:	39c00017 	ldw	r7,0(r7)
  3d0:	110d883a 	add	r6,r2,r4
  3d4:	10800104 	addi	r2,r2,4
  3d8:	31c00015 	stw	r7,0(r6)
  3dc:	003ff906 	br	3c4 <_gp+0xffff7a6c>
-  
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
  3e0:	00006ec0 	call	6ec <alt_dcache_flush_all>
-  alt_icache_flush_all();
-}
  3e4:	dfc00017 	ldw	ra,0(sp)
  3e8:	dec00104 	addi	sp,sp,4
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
-  alt_icache_flush_all();
  3ec:	00006f81 	jmpi	6f8 <alt_icache_flush_all>
  3f0:	00c00034 	movhi	r3,0
  3f4:	18c24004 	addi	r3,r3,2304
  3f8:	1907c83a 	sub	r3,r3,r4
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
  3fc:	0005883a 	mov	r2,zero
-  {
-    while( to != end )
  400:	18bff726 	beq	r3,r2,3e0 <_gp+0xffff7a88>
-    {
-      *to++ = *from++;
  404:	114f883a 	add	r7,r2,r5
  408:	39c00017 	ldw	r7,0(r7)
  40c:	110d883a 	add	r6,r2,r4
@@ -802,12 +592,6 @@ void alt_main (void)
  444:	000005c1 	jmpi	5c <main>
 
 00000448 <alt_printf>:
-/* 
- * ALT printf function 
- */
-void 
-alt_printf(const char* fmt, ... )
-{
  448:	defff204 	addi	sp,sp,-56
  44c:	2005883a 	mov	r2,r4
  450:	dfc00a15 	stw	ra,40(sp)
@@ -823,217 +607,71 @@ alt_printf(const char* fmt, ... )
  478:	d9400b15 	stw	r5,44(sp)
  47c:	d9800c15 	stw	r6,48(sp)
  480:	d9c00d15 	stw	r7,52(sp)
-    w = fmt;
-    while ((c = *w++) != 0)
-    {
-        /* If not a format escape character, just print  */
-        /* character.  Otherwise, process format string. */
-        if (c != '%')
  484:	04000944 	movi	r16,37
- */
-void 
-alt_printf(const char* fmt, ... )
-{
-	va_list args;
-	va_start(args, fmt);
  488:	dd400b04 	addi	r21,sp,44
-                if (c == '%')
-                {
-                    /* Process "%" escape sequence. */
-                    alt_putchar(c);
-                } 
-                else if (c == 'c')
  48c:	048018c4 	movi	r18,99
-                {
-                    int v = va_arg(args, int);
-                    alt_putchar(v);
-                }
-                else if (c == 'x')
  490:	04c01e04 	movi	r19,120
-                        else
-                            c = 'a' + digit - 10;
-                        alt_putchar(c);
-                    }
-                }
-                else if (c == 's')
  494:	05001cc4 	movi	r20,115
-    const char *w;
-    char c;
-
-    /* Process format string. */
-    w = fmt;
-    while ((c = *w++) != 0)
  498:	11000007 	ldb	r4,0(r2)
  49c:	20003a26 	beq	r4,zero,588 <alt_printf+0x140>
-    {
-        /* If not a format escape character, just print  */
-        /* character.  Otherwise, process format string. */
-        if (c != '%')
  4a0:	24000226 	beq	r4,r16,4ac <alt_printf+0x64>
-    const char *w;
-    char c;
-
-    /* Process format string. */
-    w = fmt;
-    while ((c = *w++) != 0)
  4a4:	14400044 	addi	r17,r2,1
  4a8:	00001406 	br	4fc <alt_printf+0xb4>
-        }
-        else
-        {
-            /* Get format character.  If none     */
-            /* available, processing is complete. */
-            if ((c = *w++) != 0)
  4ac:	14400084 	addi	r17,r2,2
  4b0:	10800047 	ldb	r2,1(r2)
  4b4:	10003426 	beq	r2,zero,588 <alt_printf+0x140>
-            {
-                if (c == '%')
  4b8:	1400021e 	bne	r2,r16,4c4 <alt_printf+0x7c>
-                {
-                    /* Process "%" escape sequence. */
-                    alt_putchar(c);
  4bc:	8009883a 	mov	r4,r16
  4c0:	00000e06 	br	4fc <alt_printf+0xb4>
-                } 
-                else if (c == 'c')
  4c4:	1480051e 	bne	r2,r18,4dc <alt_printf+0x94>
-                {
-                    int v = va_arg(args, int);
-                    alt_putchar(v);
  4c8:	a9000017 	ldw	r4,0(r21)
-                    /* Process "%" escape sequence. */
-                    alt_putchar(c);
-                } 
-                else if (c == 'c')
-                {
-                    int v = va_arg(args, int);
  4cc:	ad800104 	addi	r22,r21,4
  4d0:	b02b883a 	mov	r21,r22
-                    alt_putchar(v);
  4d4:	00005b80 	call	5b8 <alt_putchar>
  4d8:	00002906 	br	580 <alt_printf+0x138>
-                }
-                else if (c == 'x')
  4dc:	14c0201e 	bne	r2,r19,560 <alt_printf+0x118>
-                {
-                    /* Process hexadecimal number format. */
-                    unsigned long v = va_arg(args, unsigned long);
  4e0:	adc00017 	ldw	r23,0(r21)
  4e4:	ad400104 	addi	r21,r21,4
-                    unsigned long digit;
-                    int digit_shift;
-
-                    /* If the number value is zero, just print and continue. */
-                    if (v == 0)
  4e8:	b8000326 	beq	r23,zero,4f8 <alt_printf+0xb0>
  4ec:	05800704 	movi	r22,28
-                        continue;
-                    }
-
-                    /* Find first non-zero digit. */
-                    digit_shift = 28;
-                    while (!(v & (0xF << digit_shift)))
  4f0:	00c003c4 	movi	r3,15
  4f4:	00000306 	br	504 <alt_printf+0xbc>
-                    int digit_shift;
-
-                    /* If the number value is zero, just print and continue. */
-                    if (v == 0)
-                    {
-                        alt_putchar('0');
  4f8:	01000c04 	movi	r4,48
  4fc:	00005b80 	call	5b8 <alt_putchar>
-                        continue;
  500:	00001f06 	br	580 <alt_printf+0x138>
-                    }
-
-                    /* Find first non-zero digit. */
-                    digit_shift = 28;
-                    while (!(v & (0xF << digit_shift)))
  504:	1d84983a 	sll	r2,r3,r22
  508:	15c4703a 	and	r2,r2,r23
  50c:	1000021e 	bne	r2,zero,518 <alt_printf+0xd0>
-                        digit_shift -= 4;
  510:	b5bfff04 	addi	r22,r22,-4
  514:	003ffb06 	br	504 <_gp+0xffff7bac>
-
-                    /* Print digits. */
-                    for (; digit_shift >= 0; digit_shift -= 4)
-                    {
-                        digit = (v & (0xF << digit_shift)) >> digit_shift;
  518:	070003c4 	movi	fp,15
-                        if (digit <= 9)
  51c:	00c00244 	movi	r3,9
-                    digit_shift = 28;
-                    while (!(v & (0xF << digit_shift)))
-                        digit_shift -= 4;
-
-                    /* Print digits. */
-                    for (; digit_shift >= 0; digit_shift -= 4)
  520:	b0001716 	blt	r22,zero,580 <alt_printf+0x138>
-                    {
-                        digit = (v & (0xF << digit_shift)) >> digit_shift;
  524:	e588983a 	sll	r4,fp,r22
  528:	25c8703a 	and	r4,r4,r23
  52c:	2588d83a 	srl	r4,r4,r22
-                        if (digit <= 9)
  530:	19000236 	bltu	r3,r4,53c <alt_printf+0xf4>
-                            c = '0' + digit;
  534:	21000c04 	addi	r4,r4,48
  538:	00000106 	br	540 <alt_printf+0xf8>
-                        else
-                            c = 'a' + digit - 10;
  53c:	210015c4 	addi	r4,r4,87
-                        alt_putchar(c);
  540:	21003fcc 	andi	r4,r4,255
  544:	2100201c 	xori	r4,r4,128
  548:	213fe004 	addi	r4,r4,-128
  54c:	d8c00015 	stw	r3,0(sp)
  550:	00005b80 	call	5b8 <alt_putchar>
-                    digit_shift = 28;
-                    while (!(v & (0xF << digit_shift)))
-                        digit_shift -= 4;
-
-                    /* Print digits. */
-                    for (; digit_shift >= 0; digit_shift -= 4)
  554:	b5bfff04 	addi	r22,r22,-4
  558:	d8c00017 	ldw	r3,0(sp)
  55c:	003ff006 	br	520 <_gp+0xffff7bc8>
-                        else
-                            c = 'a' + digit - 10;
-                        alt_putchar(c);
-                    }
-                }
-                else if (c == 's')
  560:	1500071e 	bne	r2,r20,580 <alt_printf+0x138>
-                {
-                    /* Process string format. */
-                    char *s = va_arg(args, char *);
  564:	ad800017 	ldw	r22,0(r21)
  568:	ad400104 	addi	r21,r21,4
-
-                    while(*s)
  56c:	b1000007 	ldb	r4,0(r22)
  570:	20000326 	beq	r4,zero,580 <alt_printf+0x138>
-                      alt_putchar(*s++);
  574:	b5800044 	addi	r22,r22,1
  578:	00005b80 	call	5b8 <alt_putchar>
  57c:	003ffb06 	br	56c <_gp+0xffff7c14>
-                    /* Process "%" escape sequence. */
-                    alt_putchar(c);
-                } 
-                else if (c == 'c')
-                {
-                    int v = va_arg(args, int);
  580:	8805883a 	mov	r2,r17
  584:	003fc406 	br	498 <_gp+0xffff7b40>
-        }
-    }
-#ifdef ALT_SEMIHOSTING
-    alt_putbufflush();
-#endif
-}
  588:	dfc00a17 	ldw	ra,40(sp)
  58c:	df000917 	ldw	fp,36(sp)
  590:	ddc00817 	ldw	r23,32(sp)

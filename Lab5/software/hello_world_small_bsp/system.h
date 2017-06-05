@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_processor' in SOPC Builder design 'nios_sys'
  * SOPC Builder design path: ../../nios_sys.sopcinfo
  *
- * Generated: Sat Jun 03 20:22:59 PDT 2017
+ * Generated: Sun Jun 04 15:10:09 PDT 2017
  */
 
 /*
@@ -234,8 +234,8 @@
 #define CHAR_SENT_DRIVEN_SIM_VALUE 0
 #define CHAR_SENT_EDGE_TYPE "NONE"
 #define CHAR_SENT_FREQ 50000000
-#define CHAR_SENT_HAS_IN 0
-#define CHAR_SENT_HAS_OUT 1
+#define CHAR_SENT_HAS_IN 1
+#define CHAR_SENT_HAS_OUT 0
 #define CHAR_SENT_HAS_TRI 0
 #define CHAR_SENT_IRQ -1
 #define CHAR_SENT_IRQ_INTERRUPT_CONTROLLER_ID -1

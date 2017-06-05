@@ -11,7 +11,7 @@ module nios_sys (
 	switches_external_connection_export,
 	transmit_enable_external_connection_export);	
 
-	output	[7:0]	char_sent_external_connection_export;
+	input	[7:0]	char_sent_external_connection_export;
 	input		clk_clk;
 	input		data_received_external_connection_export;
 	output	[7:0]	leds_external_connection_export;

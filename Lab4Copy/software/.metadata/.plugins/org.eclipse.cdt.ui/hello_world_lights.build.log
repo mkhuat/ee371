@@ -1,0 +1,21 @@
+16:59:41 **** Incremental Build of configuration Nios II for project hello_world_lights ****
+make all 
+Info: Building ../hello_world_small_bsp/
+C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hello_world_small_bsp/
+Makefile not up to date.
+../../nios_sys.sopcinfo has been modified since the BSP was generated.
+
+Generate the BSP to update the Makefile, and then build again.
+
+To generate from Eclipse:
+ 1. Right-click the BSP project.
+ 2. In the Nios II Menu, click Generate BSP.
+
+To generate from the command line:
+ nios2-bsp-generate-files --settings=<settings file> --bsp-dir=<target bsp files directory>
+
+make[1]: *** [public.mk] Error 1
+make: *** [../hello_world_small_bsp/-recurs-make-lib] Error 2
+
+16:59:42 Build Finished (took 537ms)
+

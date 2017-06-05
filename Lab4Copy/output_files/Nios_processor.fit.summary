@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sun Jun 04 18:52:35 2017
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+Revision Name : Nios_processor
+Top-level Entity Name : TopLevelCommSystem
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 763 / 32,070 ( 2 % )
+Total registers : 1060
+Total pins : 24 / 457 ( 5 % )
+Total virtual pins : 0
+Total block memory bits : 273,408 / 4,065,280 ( 7 % )
+Total RAM Blocks : 37 / 397 ( 9 % )
+Total DSP Blocks : 0 / 87 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0 / 6 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

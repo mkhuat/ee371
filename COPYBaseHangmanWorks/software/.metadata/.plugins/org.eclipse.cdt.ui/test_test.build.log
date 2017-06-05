@@ -1,0 +1,6 @@
+11:38:32 **** Clean-only build of configuration Nios II for project test_test ****
+make clean 
+[test_test clean complete]
+
+11:38:32 Build Finished (took 132ms)
+

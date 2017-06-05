@@ -31,6 +31,7 @@ module Nios_processor (clk, reset, SW, LEDR, parallel_in, parallel_out, data_rec
 		.parallel_input_external_connection_export  (parallel_in),
 		.data_received_external_connection_export   (data_received),
 		.transmit_enable_external_connection_export (transmit_enable)  // transmit_enable_external_connection.export
+		
 	);
 	
 		

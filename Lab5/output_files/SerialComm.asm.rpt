@@ -1,5 +1,5 @@
 Assembler report for SerialComm
-Sat Jun 03 21:32:29 2017
+Sun Jun 04 16:07:09 2017
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 
 
@@ -11,7 +11,7 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
   3. Assembler Settings
   4. Assembler Encrypted IP Cores Summary
   5. Assembler Generated Files
-  6. Assembler Device Options: C:/Users/nja4/Desktop/ee371/Lab5/output_files/SerialComm.sof
+  6. Assembler Device Options: C:/Users/mkhuat/Documents/ee371/Lab5/output_files/SerialComm.sof
   7. Assembler Messages
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sat Jun 03 21:32:29 2017 ;
+; Assembler Status      ; Successful - Sun Jun 04 16:07:09 2017 ;
 ; Revision Name         ; SerialComm                            ;
 ; Top-level Entity Name ; TopLevelCommSystem                    ;
 ; Family                ; Cyclone V                             ;
@@ -64,24 +64,24 @@ agreement for further details.
 +--------+------------------------+--------------+
 
 
-+--------------------------------------------------------------+
-; Assembler Generated Files                                    ;
-+--------------------------------------------------------------+
-; File Name                                                    ;
-+--------------------------------------------------------------+
-; C:/Users/nja4/Desktop/ee371/Lab5/output_files/SerialComm.sof ;
-+--------------------------------------------------------------+
++------------------------------------------------------------------+
+; Assembler Generated Files                                        ;
++------------------------------------------------------------------+
+; File Name                                                        ;
++------------------------------------------------------------------+
+; C:/Users/mkhuat/Documents/ee371/Lab5/output_files/SerialComm.sof ;
++------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/nja4/Desktop/ee371/Lab5/output_files/SerialComm.sof ;
-+----------------+-----------------------------------------------------------------------+
-; Option         ; Setting                                                               ;
-+----------------+-----------------------------------------------------------------------+
-; Device         ; 5CSEMA5F31C6                                                          ;
-; JTAG usercode  ; 0x01821ABB                                                            ;
-; Checksum       ; 0x01821ABB                                                            ;
-+----------------+-----------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/mkhuat/Documents/ee371/Lab5/output_files/SerialComm.sof ;
++----------------+---------------------------------------------------------------------------+
+; Option         ; Setting                                                                   ;
++----------------+---------------------------------------------------------------------------+
+; Device         ; 5CSEMA5F31C6                                                              ;
+; JTAG usercode  ; 0x0182DB7B                                                                ;
+; Checksum       ; 0x0182DB7B                                                                ;
++----------------+---------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -90,13 +90,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
-    Info: Processing started: Sat Jun 03 21:32:21 2017
+    Info: Processing started: Sun Jun 04 16:07:01 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off SerialComm -c SerialComm
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 946 megabytes
-    Info: Processing ended: Sat Jun 03 21:32:29 2017
+    Info: Peak virtual memory: 948 megabytes
+    Info: Processing ended: Sun Jun 04 16:07:09 2017
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:08
 

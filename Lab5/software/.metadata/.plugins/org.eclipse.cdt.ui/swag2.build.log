@@ -1,0 +1,6 @@
+15:05:35 **** Clean-only build of configuration Nios II for project swag2 ****
+make clean 
+[swag2 clean complete]
+
+15:05:35 Build Finished (took 136ms)
+

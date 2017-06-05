@@ -216,9 +216,9 @@ module nios_sys_mm_interconnect_0_router
     end
 
     // ( 0x9000 .. 0x9010 )
-    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 16'h9000   ) begin
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 16'h9000  && read_transaction  ) begin
             src_channel = 11'b10000000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0x9010 .. 0x9020 )
@@ -230,7 +230,7 @@ module nios_sys_mm_interconnect_0_router
     // ( 0x9020 .. 0x9030 )
     if ( {address[RG:PAD4],{PAD4{1'b0}}} == 16'h9020  && read_transaction  ) begin
             src_channel = 11'b00100000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 
     // ( 0x9030 .. 0x9040 )

@@ -1,0 +1,435 @@
+Partition Merge report for Nios_processor
+Sun Jun 04 18:51:34 2017
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Partition Merge Summary
+  3. Partition Merge Netlist Types Used
+  4. Partition Merge Partition Statistics
+  5. Partition Merge Partition Pin Processing
+  6. Partition Merge Resource Usage Summary
+  7. Partition Merge RAM Summary
+  8. Partition Merge Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Partition Merge Summary                                                           ;
++---------------------------------+-------------------------------------------------+
+; Partition Merge Status          ; Successful - Sun Jun 04 18:51:34 2017           ;
+; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Standard Edition ;
+; Revision Name                   ; Nios_processor                                  ;
+; Top-level Entity Name           ; TopLevelCommSystem                              ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 1017                                            ;
+; Total pins                      ; 24                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 273,408                                         ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Netlist Types Used                                                                                            ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used ; Netlist Type Requested ; Partition Contents             ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Top                            ; User-created   ; Source File       ; Post-Fit               ;                                ;
+; sld_hub:auto_hub               ; Auto-generated ; Post-Synthesis    ; Post-Synthesis         ; sld_hub:auto_hub               ;
+; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; Source File            ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Statistics                                                                     ;
++---------------------------------------------+--------+------------------+--------------------------------+
+; Statistic                                   ; Top    ; sld_hub:auto_hub ; hard_block:auto_generated_inst ;
++---------------------------------------------+--------+------------------+--------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 712    ; 66               ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Combinational ALUT usage for logic          ; 1141   ; 119              ; 0                              ;
+;     -- 7 input functions                    ; 3      ; 3                ; 0                              ;
+;     -- 6 input functions                    ; 146    ; 27               ; 0                              ;
+;     -- 5 input functions                    ; 286    ; 18               ; 0                              ;
+;     -- 4 input functions                    ; 195    ; 18               ; 0                              ;
+;     -- <=3 input functions                  ; 511    ; 53               ; 0                              ;
+; Memory ALUT usage                           ; 0      ; 0                ; 0                              ;
+;     -- 64-address deep                      ; 0      ; 0                ; 0                              ;
+;     -- 32-address deep                      ; 0      ; 0                ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Dedicated logic registers                   ; 934    ; 83               ; 0                              ;
+;                                             ;        ;                  ;                                ;
+;                                             ;        ;                  ;                                ;
+; I/O pins                                    ; 24     ; 0                ; 0                              ;
+; I/O registers                               ; 0      ; 0                ; 0                              ;
+; Total block memory bits                     ; 273408 ; 0                ; 0                              ;
+; Total block memory implementation bits      ; 0      ; 0                ; 0                              ;
+; JTAG                                        ; 0      ; 0                ; 1                              ;
+;                                             ;        ;                  ;                                ;
+; Connections                                 ;        ;                  ;                                ;
+;     -- Input Connections                    ; 292    ; 127              ; 1                              ;
+;     -- Registered Input Connections         ; 143    ; 92               ; 0                              ;
+;     -- Output Connections                   ; 6      ; 197              ; 217                            ;
+;     -- Registered Output Connections        ; 4      ; 197              ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Internal Connections                        ;        ;                  ;                                ;
+;     -- Total Connections                    ; 10043  ; 919              ; 226                            ;
+;     -- Registered Connections               ; 4955   ; 697              ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; External Connections                        ;        ;                  ;                                ;
+;     -- Top                                  ; 0      ; 201              ; 97                             ;
+;     -- sld_hub:auto_hub                     ; 201    ; 2                ; 121                            ;
+;     -- hard_block:auto_generated_inst       ; 97     ; 121              ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Partition Interface                         ;        ;                  ;                                ;
+;     -- Input Ports                          ; 62     ; 62               ; 4                              ;
+;     -- Output Ports                         ; 20     ; 79               ; 9                              ;
+;     -- Bidir Ports                          ; 0      ; 0                ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Registered Ports                            ;        ;                  ;                                ;
+;     -- Registered Input Ports               ; 0      ; 3                ; 0                              ;
+;     -- Registered Output Ports              ; 0      ; 40               ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Port Connectivity                           ;        ;                  ;                                ;
+;     -- Input Ports driven by GND            ; 0      ; 2                ; 0                              ;
+;     -- Output Ports driven by GND           ; 0      ; 29               ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0      ; 0                ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0      ; 0                ; 0                              ;
+;     -- Input Ports with no Source           ; 0      ; 47               ; 0                              ;
+;     -- Output Ports with no Source          ; 0      ; 0                ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0      ; 52               ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0      ; 59               ; 0                              ;
++---------------------------------------------+--------+------------------+--------------------------------+
+Note: Resource usage numbers presented for Partitions containing post-synthesis logic are estimates.  For Partitions containing post-fit logic, resource usage numbers are accurate based on previous placement information.  Actual Fitter results may vary depending on current Fitter Preservation Level assignments.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Pin Processing                                                                                                                                                                                                                                    ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+; Name                                                                                                                                                                                                                   ; Partition ; Type          ; Location ; Status      ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+; CLOCK_50                                                                                                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;     -- CLOCK_50                                                                                                                                                                                                        ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- CLOCK_50~input                                                                                                                                                                                                  ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; KEY[0]                                                                                                                                                                                                                 ; Top       ; Input Port    ; n/a      ;             ;
+;     -- KEY[0]                                                                                                                                                                                                          ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- KEY[0]~input                                                                                                                                                                                                    ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; LEDR[0]                                                                                                                                                                                                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- LEDR[0]                                                                                                                                                                                                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- LEDR[0]~output                                                                                                                                                                                                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; LEDR[1]                                                                                                                                                                                                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- LEDR[1]                                                                                                                                                                                                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- LEDR[1]~output                                                                                                                                                                                                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; LEDR[2]                                                                                                                                                                                                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- LEDR[2]                                                                                                                                                                                                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- LEDR[2]~output                                                                                                                                                                                                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; LEDR[3]                                                                                                                                                                                                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- LEDR[3]                                                                                                                                                                                                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- LEDR[3]~output                                                                                                                                                                                                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; LEDR[4]                                                                                                                                                                                                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- LEDR[4]                                                                                                                                                                                                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- LEDR[4]~output                                                                                                                                                                                                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; LEDR[5]                                                                                                                                                                                                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- LEDR[5]                                                                                                                                                                                                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- LEDR[5]~output                                                                                                                                                                                                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; LEDR[6]                                                                                                                                                                                                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- LEDR[6]                                                                                                                                                                                                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- LEDR[6]~output                                                                                                                                                                                                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; LEDR[7]                                                                                                                                                                                                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- LEDR[7]                                                                                                                                                                                                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- LEDR[7]~output                                                                                                                                                                                                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; SW[0]                                                                                                                                                                                                                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- SW[0]                                                                                                                                                                                                           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- SW[0]~input                                                                                                                                                                                                     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; SW[1]                                                                                                                                                                                                                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- SW[1]                                                                                                                                                                                                           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- SW[1]~input                                                                                                                                                                                                     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; SW[2]                                                                                                                                                                                                                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- SW[2]                                                                                                                                                                                                           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- SW[2]~input                                                                                                                                                                                                     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; SW[3]                                                                                                                                                                                                                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- SW[3]                                                                                                                                                                                                           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- SW[3]~input                                                                                                                                                                                                     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; SW[4]                                                                                                                                                                                                                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- SW[4]                                                                                                                                                                                                           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- SW[4]~input                                                                                                                                                                                                     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; SW[5]                                                                                                                                                                                                                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- SW[5]                                                                                                                                                                                                           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- SW[5]~input                                                                                                                                                                                                     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; SW[6]                                                                                                                                                                                                                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- SW[6]                                                                                                                                                                                                           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- SW[6]~input                                                                                                                                                                                                     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; SW[7]                                                                                                                                                                                                                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- SW[7]                                                                                                                                                                                                           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- SW[7]~input                                                                                                                                                                                                     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; altera_reserved_tck                                                                                                                                                                                                    ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tck                                                                                                                                                                                             ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tck~input                                                                                                                                                                                       ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; altera_reserved_tdi                                                                                                                                                                                                    ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tdi                                                                                                                                                                                             ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tdi~input                                                                                                                                                                                       ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; altera_reserved_tdo                                                                                                                                                                                                    ; Top       ; Output Port   ; n/a      ;             ;
+;     -- altera_reserved_tdo                                                                                                                                                                                             ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tdo~output                                                                                                                                                                                      ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; altera_reserved_tms                                                                                                                                                                                                    ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tms                                                                                                                                                                                             ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tms~input                                                                                                                                                                                       ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_0_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_10_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_11_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_12_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_13_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_14_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_15_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_16_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_17_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_18_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_19_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_1_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_20_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_21_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_22_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_23_                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_2_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_3_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_4_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_5_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_6_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_7_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_8_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_receive_9_                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_send_0_                                                                                                                                   ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_send_1_                                                                                                                                   ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_jtag_uart_nios_sys_jtag_uart_alt_jtag_atlantic_inst_ep_fabric_send_2_                                                                                                                                   ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_clr             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_ena             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_ir_in_0_        ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_ir_in_1_        ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_ir_out_0_       ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_ir_out_1_       ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_cdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_cir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_e1dr ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_e1ir ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_e2dr ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_e2ir ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_pdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_pir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_rti  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_sdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_sdrs ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_sir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_sirs ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_tlr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_udr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_jtag_state_uir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_raw_tck         ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_raw_tms         ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_tdi             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_tdo             ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; jtag.bp.NiosII_nios2_processor_the_nios_sys_nios2_processor_nios2_oci_the_nios_sys_nios2_processor_jtag_debug_module_wrapper_nios_sys_nios2_processor_jtag_debug_module_phy_sld_virtual_jtag_impl_inst_usr1            ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; ps[0]                                                                                                                                                                                                                  ; Top       ; Output Port   ; n/a      ;             ;
+;     -- ps[0]                                                                                                                                                                                                           ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- ps[0]~output                                                                                                                                                                                                    ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; ps[1]                                                                                                                                                                                                                  ; Top       ; Output Port   ; n/a      ;             ;
+;     -- ps[1]                                                                                                                                                                                                           ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- ps[1]~output                                                                                                                                                                                                    ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; ps[2]                                                                                                                                                                                                                  ; Top       ; Output Port   ; n/a      ;             ;
+;     -- ps[2]                                                                                                                                                                                                           ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- ps[2]~output                                                                                                                                                                                                    ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; ps[3]                                                                                                                                                                                                                  ; Top       ; Output Port   ; n/a      ;             ;
+;     -- ps[3]                                                                                                                                                                                                           ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- ps[3]~output                                                                                                                                                                                                    ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; serial_in                                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- serial_in                                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- serial_in~input                                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
+; serial_out                                                                                                                                                                                                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- serial_out                                                                                                                                                                                                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- serial_out~output                                                                                                                                                                                               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                                        ;           ;               ;          ;             ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+
+
++--------------------------------------------------------------+
+; Partition Merge Resource Usage Summary                       ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 780            ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 1260           ;
+;     -- 7 input functions                    ; 6              ;
+;     -- 6 input functions                    ; 173            ;
+;     -- 5 input functions                    ; 304            ;
+;     -- 4 input functions                    ; 213            ;
+;     -- <=3 input functions                  ; 564            ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 1017           ;
+;                                             ;                ;
+; I/O pins                                    ; 24             ;
+; Total MLAB memory bits                      ; 0              ;
+; Total block memory bits                     ; 273408         ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 962            ;
+; Total fan-out                               ; 10595          ;
+; Average fan-out                             ; 4.28           ;
++---------------------------------------------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge RAM Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------------------------------------------------------+
+; Name                                                                                                                                                                                                                                                                                                                                                                        ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                                                  ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------------------------------------------------------+
+; nios_sys:NiosII|nios_sys_jtag_uart:jtag_uart|nios_sys_jtag_uart_scfifo_r:the_nios_sys_jtag_uart_scfifo_r|scfifo:rfifo|scfifo_3291:auto_generated|a_dpfifo_5771:dpfifo|altsyncram_7pu1:FIFOram|ALTSYNCRAM                                                                                                                                                                    ; AUTO ; Simple Dual Port ; 64           ; 8            ; 64           ; 8            ; 512    ; None                                                 ;
+; nios_sys:NiosII|nios_sys_jtag_uart:jtag_uart|nios_sys_jtag_uart_scfifo_w:the_nios_sys_jtag_uart_scfifo_w|scfifo:wfifo|scfifo_3291:auto_generated|a_dpfifo_5771:dpfifo|altsyncram_7pu1:FIFOram|ALTSYNCRAM                                                                                                                                                                    ; AUTO ; Simple Dual Port ; 64           ; 8            ; 64           ; 8            ; 512    ; None                                                 ;
+; nios_sys:NiosII|nios_sys_nios2_processor:nios2_processor|nios_sys_nios2_processor_nios2_oci:the_nios_sys_nios2_processor_nios2_oci|nios_sys_nios2_processor_nios2_ocimem:the_nios_sys_nios2_processor_nios2_ocimem|nios_sys_nios2_processor_ociram_sp_ram_module:nios_sys_nios2_processor_ociram_sp_ram|altsyncram:the_altsyncram|altsyncram_ttf1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 256          ; 32           ; --           ; --           ; 8192   ; nios_sys_nios2_processor_ociram_default_contents.mif ;
+; nios_sys:NiosII|nios_sys_nios2_processor:nios2_processor|nios_sys_nios2_processor_register_bank_a_module:nios_sys_nios2_processor_register_bank_a|altsyncram:the_altsyncram|altsyncram_ann1:auto_generated|ALTSYNCRAM                                                                                                                                                       ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024   ; nios_sys_nios2_processor_rf_ram_a.mif                ;
+; nios_sys:NiosII|nios_sys_nios2_processor:nios2_processor|nios_sys_nios2_processor_register_bank_b_module:nios_sys_nios2_processor_register_bank_b|altsyncram:the_altsyncram|altsyncram_bnn1:auto_generated|ALTSYNCRAM                                                                                                                                                       ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024   ; nios_sys_nios2_processor_rf_ram_b.mif                ;
+; nios_sys:NiosII|nios_sys_onchip_memory:onchip_memory|altsyncram:the_altsyncram|altsyncram_38j1:auto_generated|ALTSYNCRAM                                                                                                                                                                                                                                                    ; AUTO ; Single Port      ; 8192         ; 32           ; --           ; --           ; 262144 ; nios_sys_onchip_memory.hex                           ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------------------------------------------------------+
+
+
++--------------------------+
+; Partition Merge Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Partition Merge
+    Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+    Info: Processing started: Sun Jun 04 18:51:32 2017
+Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor --merge=on
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Warning (35010): Previously generated Fitter netlist for partition "Top" is older than current Synthesis netlist -- using the current Synthesis netlist instead to ensure that the latest source changes are included
+    Info (35011): Set the option to Ignore source file changes to force the Quartus Prime software to always use a previously generated Fitter netlist
+Info (35007): Using synthesis netlist for partition "Top"
+Info (35007): Using synthesis netlist for partition "sld_hub:auto_hub"
+Info (35002): Resolved and merged 2 partition(s)
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1821 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 1648 logic cells
+    Info (21064): Implemented 144 RAM segments
+Info: Quartus Prime Partition Merge was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 889 megabytes
+    Info: Processing ended: Sun Jun 04 18:51:34 2017
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+

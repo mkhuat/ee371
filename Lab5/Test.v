@@ -36,8 +36,8 @@ module Tester(clk, reset, serial_io, parallel_in, parallel_out,
 
 	// COMPILE CSV DATA
 	initial begin
-		$display("serial_io,parallel_in,parallel_out, data_r, data_t, bic, char_sent, char_received ,transmit_en, load");
-		$monitor("%b,%b,%b,%b,%b,%b,%b,%b,%b,%b", serial_io, parallel_in, parallel_out, data_r, data_t, bic, char_sent, char_received, transmit_en, load);
+		$display("ser_io\tparallel_in\tparallel_out\tdata_rec\tdata_transm\tbic\tch_sent\tch_rec\tt_en\tload");
+		$monitor("%b\t%b\t%b\t%b\t%b\t%b\t%b\t%b\t%b\t%b", serial_io, parallel_in, parallel_out, data_r, data_t, bic, char_sent, char_received, transmit_en, load);
 	end
 
 	// FACSIMILATE CLOCK

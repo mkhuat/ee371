@@ -681,7 +681,7 @@
     </registers>
    </peripheral>
   <peripheral>
-      <name>nios_sys_char_sent_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
+      <name>nios_sys_data_received_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
       <addressBlock>
         <offset>0x0</offset>
         <size>32</size>
@@ -799,7 +799,7 @@
     </registers>
    </peripheral>
   <peripheral>
-      <name>nios_sys_char_received_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
+      <name>nios_sys_char_sent_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
       <addressBlock>
         <offset>0x0</offset>
         <size>32</size>

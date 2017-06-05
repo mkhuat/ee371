@@ -25,6 +25,13 @@ agreement for further details.
 	(text "nios_sys" (rect 262 -1 298 11)(font "Arial" (font_size 10)))
 	(text "inst" (rect 8 448 20 460)(font "Arial" ))
 	(port
+		(pt 0 72)
+		(input)
+		(text "char_sent_external_connection_export[7..0]" (rect 0 0 174 12)(font "Arial" (font_size 8)))
+		(text "char_sent_external_connection_export[7..0]" (rect 4 61 256 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 256 72)(line_width 3))
+	)
+	(port
 		(pt 0 112)
 		(input)
 		(text "clk_clk" (rect 0 0 27 12)(font "Arial" (font_size 8)))
@@ -58,13 +65,6 @@ agreement for further details.
 		(text "switches_external_connection_export[7..0]" (rect 0 0 167 12)(font "Arial" (font_size 8)))
 		(text "switches_external_connection_export[7..0]" (rect 4 381 250 392)(font "Arial" (font_size 8)))
 		(line (pt 0 392)(pt 256 392)(line_width 3))
-	)
-	(port
-		(pt 0 72)
-		(output)
-		(text "char_sent_external_connection_export[7..0]" (rect 0 0 174 12)(font "Arial" (font_size 8)))
-		(text "char_sent_external_connection_export[7..0]" (rect 4 61 256 72)(font "Arial" (font_size 8)))
-		(line (pt 0 72)(pt 256 72)(line_width 3))
 	)
 	(port
 		(pt 0 192)
