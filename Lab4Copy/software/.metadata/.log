@@ -4103,3 +4103,93 @@ Binding(CTRL+SHIFT+H,
 
 !ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:21:49.498
 !MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:24:34.281
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:24:35.789
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:24:35.800
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:24:43.266
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:24:44.757
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-2]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:24:44.820
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:27:28.062
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:27:29.566
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:27:29.595
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:27:33.780
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:27:35.304
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-2]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:27:35.358
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:28:49.464
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:28:50.969
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:28:50.995
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:28:55.209
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:28:56.721
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-2]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:28:56.772
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:32:05.642
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:32:07.177
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:32:07.188
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:32:13.873
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:32:15.375
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-2]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:32:15.434
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:37:10.114
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:37:11.626
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:37:11.638
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:37:19.001
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-06-05 14:37:20.502
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-2]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-06-05 14:37:20.577
+!MESSAGE Executing: [C:/altera/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-2]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman/hangman.elf]

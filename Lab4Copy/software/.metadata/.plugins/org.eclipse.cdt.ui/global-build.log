@@ -1,4 +1,4 @@
-14:21:33 **** Incremental Build of configuration Nios II for project hangman ****
+14:37:01 **** Incremental Build of configuration Nios II for project hangman ****
 make all 
 Info: Building ../hangman_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_bsp/
@@ -7,44 +7,44 @@ Info: Compiling hello_world_small.c to obj/default/hello_world_small.o
 nios2-elf-gcc -xc -MP -MMD -c -I../hangman_bsp//HAL/inc -I../hangman_bsp/ -I../hangman_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world_small.o hello_world_small.c
 hello_world_small.c: In function 'main':
 <command-line>:0:9: warning: implicit declaration of function '_exit' [-Wimplicit-function-declaration]
-hello_world_small.c:113:4: note: in expansion of macro 'exit'
+hello_world_small.c:114:4: note: in expansion of macro 'exit'
     exit(0);
     ^
 <command-line>:0:9: warning: incompatible implicit declaration of built-in function '_exit'
-hello_world_small.c:113:4: note: in expansion of macro 'exit'
+hello_world_small.c:114:4: note: in expansion of macro 'exit'
     exit(0);
     ^
 <command-line>:0:9: warning: incompatible implicit declaration of built-in function '_exit'
-hello_world_small.c:137:4: note: in expansion of macro 'exit'
+hello_world_small.c:139:4: note: in expansion of macro 'exit'
     exit(0);
     ^
 Info: Linking hangman.elf
 nios2-elf-g++  -T'../hangman_bsp//linker.x' -msys-crt0='../hangman_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../hangman_bsp/  -msmallc  -Wl,-Map=hangman.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o hangman.elf obj/default/hello_world_small.o -lm -msys-lib=m
 nios2-elf-insert hangman.elf --thread_model hal --cpu_name nios2_processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_sys --quartus_project_dir "C:/Users/mkhuat/Documents/ee371/Lab4Copy" --jdi ../..//output_files/Nios_processor.jdi --sopcinfo C:/Users/mkhuat/Documents/ee371/Lab4Copy/software/hangman_bsp/../../nios_sys.sopcinfo
-Info: (hangman.elf) 2424 Bytes program size (code + initialized data).
+Info: (hangman.elf) 2520 Bytes program size (code + initialized data).
 Info:               29 KBytes free for stack + heap.
 Info: Creating hangman.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source hangman.elf >hangman.objdump
 [hangman build complete]
-14:21:40 **** Build of configuration Nios II for project hangman ****
+14:37:07 **** Build of configuration Nios II for project hangman ****
 make all 
 Info: Building ../hangman_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_bsp/
 [BSP build complete]
 [hangman build complete]
-14:21:42 **** Incremental Build of configuration Nios II for project hangman ****
+14:37:09 **** Incremental Build of configuration Nios II for project hangman ****
 make all 
 Info: Building ../hangman_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_bsp/
 [BSP build complete]
 [hangman build complete]
-14:21:44 **** Build of configuration Nios II for project hangman ****
+14:37:15 **** Build of configuration Nios II for project hangman ****
 make all 
 Info: Building ../hangman_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_bsp/
 [BSP build complete]
 [hangman build complete]
-14:21:46 **** Incremental Build of configuration Nios II for project hangman ****
+14:37:17 **** Incremental Build of configuration Nios II for project hangman ****
 make all 
 Info: Building ../hangman_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_bsp/

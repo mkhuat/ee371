@@ -101,7 +101,6 @@ int main()
 	alt_putstr("\nLetter Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
 
 	char in = alt_getchar();
-	alt_getchar(); // To strip out the enter!
 	if (in == 'g') {
 		// Guesser
 		alt_putstr("\nYou chose guesser! \n");
@@ -118,7 +117,6 @@ int main()
 
 		alt_putstr("\nEnter a letter a guess: \n");
 		in = alt_getchar();
-		alt_getchar();
 		alt_printf("Letter Guessed: %c \n", in);
 
 		// Load guess character
@@ -134,7 +132,7 @@ int main()
 		while (!*received_char);
 		in = *parallel_out;
 
-		if (in != WIN_GAME && in != LOSE_GAME) {
+		if (in != WIN_GAME || in != LOSE_GAME) {
 			alt_printf("\nWanted Game Win=%c or Game Lose=%c, but found %c \n", WIN_GAME, LOSE_GAME, in);
 			exit(0);
 		}
@@ -151,7 +149,6 @@ int main()
 
 		alt_putstr("\nEnter a letter for an opponent to guess: \n");
 		char to_guess = alt_getchar();
-		alt_getchar();
 		alt_printf("Guess target: %c \n", to_guess);
 
 		// Send game start
@@ -166,13 +163,12 @@ int main()
 		*load = 0;
 		*transmit_enable = 0;
 
-		// Listen for game start ack/guess
+		// Listen for game start ack/guess, then clear buffer
 		while (!*received_char);
-
 		char received_guess = *parallel_out;
 
 		alt_putstr("\nGame start as proposer! \n");
-		alt_printf("\nReceived guess: %c as guess \n", received_guess);
+		alt_printf("\nReceived guess: %c \n", received_guess);
 
 
 		if (to_guess == received_guess) {
@@ -186,8 +182,6 @@ int main()
 		// Load game win or loss
 		*load = 1;
 		*transmit_enable = 1;
-
-		while (*sent_char);
 
 		// Wait for send...
 		while (!*sent_char);

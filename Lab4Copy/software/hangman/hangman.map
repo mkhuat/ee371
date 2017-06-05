@@ -86,7 +86,7 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
                 0x0000000000000020                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
                 0x0000000000000020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
 
-.text           0x0000000000000020      0x6fc
+.text           0x0000000000000020      0x754
                 [!provide]                        PROVIDE (stext, ABSOLUTE (.))
  *(.interp)
  *(.hash)
@@ -134,44 +134,44 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
  .text          0x0000000000000020       0x3c ../hangman_bsp//obj/HAL/src/crt0.o
                 0x0000000000000020                _start
  .text          0x000000000000005c        0x0 obj/default/hello_world_small.o
- .text.startup  0x000000000000005c      0x298 obj/default/hello_world_small.o
+ .text.startup  0x000000000000005c      0x2f0 obj/default/hello_world_small.o
                 0x000000000000005c                main
- .text          0x00000000000002f4       0x44 ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
-                0x00000000000002f4                alt_getchar
- .text          0x0000000000000338       0xe0 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
-                0x0000000000000338                alt_load
- .text          0x0000000000000418       0x2c ../hangman_bsp/\libhal_bsp.a(alt_main.o)
-                0x0000000000000418                alt_main
- .text          0x0000000000000444      0x170 ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
-                0x0000000000000444                alt_printf
- .text          0x00000000000005b4       0x48 ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
-                0x00000000000005b4                alt_putchar
- .text          0x00000000000005fc       0x38 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
-                0x00000000000005fc                alt_putstr
- .text          0x0000000000000634       0x24 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x0000000000000634                alt_irq_init
-                0x0000000000000654                alt_sys_init
- .text          0x0000000000000658       0x5c ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
-                0x0000000000000658                altera_avalon_jtag_uart_read
- .text          0x00000000000006b4       0x34 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
-                0x00000000000006b4                altera_avalon_jtag_uart_write
- .text          0x00000000000006e8        0x4 ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
-                0x00000000000006e8                alt_dcache_flush_all
- .text          0x00000000000006ec        0x8 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
- .text          0x00000000000006f4        0x4 ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
-                0x00000000000006f4                alt_icache_flush_all
- .text          0x00000000000006f8        0x8 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
-                0x00000000000006f8                altera_nios2_qsys_irq_init
- .text          0x0000000000000700        0x0 c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
- .text.strlen   0x0000000000000700       0x1c c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
-                0x0000000000000700                strlen
+ .text          0x000000000000034c       0x44 ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
+                0x000000000000034c                alt_getchar
+ .text          0x0000000000000390       0xe0 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
+                0x0000000000000390                alt_load
+ .text          0x0000000000000470       0x2c ../hangman_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000000470                alt_main
+ .text          0x000000000000049c      0x170 ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
+                0x000000000000049c                alt_printf
+ .text          0x000000000000060c       0x48 ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
+                0x000000000000060c                alt_putchar
+ .text          0x0000000000000654       0x38 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
+                0x0000000000000654                alt_putstr
+ .text          0x000000000000068c       0x24 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x000000000000068c                alt_irq_init
+                0x00000000000006ac                alt_sys_init
+ .text          0x00000000000006b0       0x5c ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                0x00000000000006b0                altera_avalon_jtag_uart_read
+ .text          0x000000000000070c       0x34 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x000000000000070c                altera_avalon_jtag_uart_write
+ .text          0x0000000000000740        0x4 ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x0000000000000740                alt_dcache_flush_all
+ .text          0x0000000000000744        0x8 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
+ .text          0x000000000000074c        0x4 ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x000000000000074c                alt_icache_flush_all
+ .text          0x0000000000000750        0x8 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+                0x0000000000000750                altera_nios2_qsys_irq_init
+ .text          0x0000000000000758        0x0 c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .text.strlen   0x0000000000000758       0x1c c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                0x0000000000000758                strlen
  *(.gnu.warning.*)
  *(.fini)
                 [!provide]                        PROVIDE (__etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (_etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (etext, ABSOLUTE (.))
  *(.eh_frame_hdr)
-                0x000000000000071c                . = ALIGN (0x4)
+                0x0000000000000774                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start, ABSOLUTE (.))
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end, ABSOLUTE (.))
@@ -193,109 +193,109 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
  *(SORT(.dtors.*))
                 [!provide]                        PROVIDE (__DTOR_END__, ABSOLUTE (.))
  *(.jcr)
-                0x000000000000071c                . = ALIGN (0x4)
+                0x0000000000000774                . = ALIGN (0x4)
 
-.rodata         0x000000000000071c      0x1e0
-                0x000000000000071c                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
-                0x000000000000071c                . = ALIGN (0x4)
+.rodata         0x0000000000000774      0x1e8
+                0x0000000000000774                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0000000000000774                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x000000000000071c      0x1d3 obj/default/hello_world_small.o
- *fill*         0x00000000000008ef        0x1 
+                0x0000000000000774      0x1db obj/default/hello_world_small.o
+ *fill*         0x000000000000094f        0x1 
  .rodata.str1.4
-                0x00000000000008f0        0xc ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000000950        0xc ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
                                           0xa (size before relaxing)
  *(.rodata1)
-                0x00000000000008fc                . = ALIGN (0x4)
-                0x00000000000008fc                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
-                0x000000000000071c                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+                0x000000000000095c                . = ALIGN (0x4)
+                0x000000000000095c                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0000000000000774                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
 
-.rwdata         0x00000000000008fc       0x70 load address 0x000000000000096c
-                0x00000000000008fc                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
-                0x00000000000008fc                . = ALIGN (0x4)
+.rwdata         0x000000000000095c       0x70 load address 0x00000000000009cc
+                0x000000000000095c                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x000000000000095c                . = ALIGN (0x4)
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x00000000000008fc        0x0 ../hangman_bsp//obj/HAL/src/crt0.o
- .data          0x00000000000008fc        0x0 obj/default/hello_world_small.o
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(alt_main.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .data          0x00000000000008fc        0x0 ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .data          0x00000000000008fc       0x58 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
-                0x00000000000008fc                alt_fd_list
-                0x000000000000092c                alt_dev_null
- .data          0x0000000000000954        0x0 ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .data          0x0000000000000954        0x0 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
- .data          0x0000000000000954        0x0 c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
-                0x0000000000008954                _gp = ABSOLUTE ((. + 0x8000))
+ .data          0x000000000000095c        0x0 ../hangman_bsp//obj/HAL/src/crt0.o
+ .data          0x000000000000095c        0x0 obj/default/hello_world_small.o
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x000000000000095c        0x0 ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x000000000000095c       0x58 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
+                0x000000000000095c                alt_fd_list
+                0x000000000000098c                alt_dev_null
+ .data          0x00000000000009b4        0x0 ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x00000000000009b4        0x0 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .data          0x00000000000009b4        0x0 c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                0x00000000000089b4                _gp = ABSOLUTE ((. + 0x8000))
                 [!provide]                        PROVIDE (gp, _gp)
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0x0000000000000954        0x4 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x0000000000000954                jtag_uart
- .sdata         0x0000000000000958       0x14 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
-                0x0000000000000958                alt_max_fd
-                0x000000000000095c                alt_dev_list
-                0x0000000000000964                alt_fs_list
+ .sdata         0x00000000000009b4        0x4 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x00000000000009b4                jtag_uart
+ .sdata         0x00000000000009b8       0x14 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
+                0x00000000000009b8                alt_max_fd
+                0x00000000000009bc                alt_dev_list
+                0x00000000000009c4                alt_fs_list
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x000000000000096c                . = ALIGN (0x4)
-                0x000000000000096c                _edata = ABSOLUTE (.)
+                0x00000000000009cc                . = ALIGN (0x4)
+                0x00000000000009cc                _edata = ABSOLUTE (.)
                 [!provide]                        PROVIDE (edata, ABSOLUTE (.))
-                0x000000000000096c                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
-                0x000000000000096c                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+                0x00000000000009cc                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x00000000000009cc                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
 
-.bss            0x00000000000009dc        0xc
-                0x00000000000009dc                __bss_start = ABSOLUTE (.)
+.bss            0x0000000000000a3c        0xc
+                0x0000000000000a3c                __bss_start = ABSOLUTE (.)
                 [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0x00000000000009dc        0xc ../hangman_bsp/\libhal_bsp.a(alt_main.o)
-                0x00000000000009dc                alt_envp
-                0x00000000000009e0                alt_argv
-                0x00000000000009e4                alt_argc
+ .sbss          0x0000000000000a3c        0xc ../hangman_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000000a3c                alt_envp
+                0x0000000000000a40                alt_argv
+                0x0000000000000a44                alt_argc
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
                 [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp//obj/HAL/src/crt0.o
- .bss           0x00000000000009e8        0x0 obj/default/hello_world_small.o
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_main.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .bss           0x00000000000009e8        0x0 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
- .bss           0x00000000000009e8        0x0 c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp//obj/HAL/src/crt0.o
+ .bss           0x0000000000000a48        0x0 obj/default/hello_world_small.o
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0000000000000a48        0x0 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .bss           0x0000000000000a48        0x0 c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
  *(COMMON)
-                0x00000000000009e8                . = ALIGN (0x4)
-                0x00000000000009e8                __bss_end = ABSOLUTE (.)
+                0x0000000000000a48                . = ALIGN (0x4)
+                0x0000000000000a48                __bss_end = ABSOLUTE (.)
 
-.onchip_memory  0x00000000000009e8        0x0
+.onchip_memory  0x0000000000000a48        0x0
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_start, ABSOLUTE (.))
  *(.onchip_memory .onchip_memory. onchip_memory.*)
-                0x00000000000009e8                . = ALIGN (0x4)
+                0x0000000000000a48                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_end, ABSOLUTE (.))
-                0x00000000000009e8                _end = ABSOLUTE (.)
-                0x00000000000009e8                end = ABSOLUTE (.)
-                0x00000000000009e8                __alt_stack_base = ABSOLUTE (.)
+                0x0000000000000a48                _end = ABSOLUTE (.)
+                0x0000000000000a48                end = ABSOLUTE (.)
+                0x0000000000000a48                __alt_stack_base = ABSOLUTE (.)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_load_addr, LOADADDR (.onchip_memory))
 
 .stab
@@ -385,24 +385,24 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x190d
+.debug_info     0x0000000000000000     0x1935
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0x72 ../hangman_bsp//obj/HAL/src/crt0.o
- .debug_info    0x0000000000000072      0x2a3 obj/default/hello_world_small.o
- .debug_info    0x0000000000000315      0x32d ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
- .debug_info    0x0000000000000642      0x1c9 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
- .debug_info    0x000000000000080b      0x169 ../hangman_bsp/\libhal_bsp.a(alt_main.o)
- .debug_info    0x0000000000000974      0x14d ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
- .debug_info    0x0000000000000ac1      0x12a ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_info    0x0000000000000beb      0x13a ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_info    0x0000000000000d25      0x185 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_info    0x0000000000000eaa      0x1b4 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_info    0x000000000000105e      0x197 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_info    0x00000000000011f5       0x92 ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_info    0x0000000000001287      0x499 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_info    0x0000000000001720       0x92 ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_info    0x00000000000017b2       0x92 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
- .debug_info    0x0000000000001844       0xc9 c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_info    0x0000000000000072      0x2cb obj/default/hello_world_small.o
+ .debug_info    0x000000000000033d      0x32d ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
+ .debug_info    0x000000000000066a      0x1c9 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_info    0x0000000000000833      0x169 ../hangman_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x000000000000099c      0x14d ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_info    0x0000000000000ae9      0x12a ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_info    0x0000000000000c13      0x13a ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_info    0x0000000000000d4d      0x185 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000000ed2      0x1b4 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_info    0x0000000000001086      0x197 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x000000000000121d       0x92 ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x00000000000012af      0x499 ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_info    0x0000000000001748       0x92 ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x00000000000017da       0x92 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_info    0x000000000000186c       0xc9 c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
 .debug_abbrev   0x0000000000000000      0xb44
  *(.debug_abbrev)
@@ -423,24 +423,24 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
  .debug_abbrev  0x0000000000000a83       0x42 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
  .debug_abbrev  0x0000000000000ac5       0x7f c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
-.debug_line     0x0000000000000000      0xb8e
+.debug_line     0x0000000000000000      0xb9e
  *(.debug_line)
  .debug_line    0x0000000000000000       0x66 ../hangman_bsp//obj/HAL/src/crt0.o
- .debug_line    0x0000000000000066       0xf6 obj/default/hello_world_small.o
- .debug_line    0x000000000000015c       0xb7 ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
- .debug_line    0x0000000000000213       0xa5 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
- .debug_line    0x00000000000002b8       0xbd ../hangman_bsp/\libhal_bsp.a(alt_main.o)
- .debug_line    0x0000000000000375      0x10a ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
- .debug_line    0x000000000000047f       0x55 ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_line    0x00000000000004d4       0x98 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_line    0x000000000000056c      0x101 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_line    0x000000000000066d       0xfb ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_line    0x0000000000000768       0xf0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_line    0x0000000000000858       0x4e ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_line    0x00000000000008a6       0xee ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_line    0x0000000000000994       0x4e ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_line    0x00000000000009e2       0x50 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
- .debug_line    0x0000000000000a32      0x15c c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_line    0x0000000000000066      0x106 obj/default/hello_world_small.o
+ .debug_line    0x000000000000016c       0xb7 ../hangman_bsp/\libhal_bsp.a(alt_getchar.o)
+ .debug_line    0x0000000000000223       0xa5 ../hangman_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_line    0x00000000000002c8       0xbd ../hangman_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_line    0x0000000000000385      0x10a ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_line    0x000000000000048f       0x55 ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_line    0x00000000000004e4       0x98 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_line    0x000000000000057c      0x101 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x000000000000067d       0xfb ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_line    0x0000000000000778       0xf0 ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x0000000000000868       0x4e ../hangman_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x00000000000008b6       0xee ../hangman_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_line    0x00000000000009a4       0x4e ../hangman_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x00000000000009f2       0x50 ../hangman_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_line    0x0000000000000a42      0x15c c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
 .debug_frame    0x0000000000000000      0x294
  *(.debug_frame)
@@ -493,16 +493,16 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
  .debug_str     0x0000000000000759      0x13a c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
                                         0x1e5 (size before relaxing)
 
-.debug_loc      0x0000000000000000      0x432
+.debug_loc      0x0000000000000000      0x448
  *(.debug_loc)
- .debug_loc     0x0000000000000000       0x5a obj/default/hello_world_small.o
- .debug_loc     0x000000000000005a      0x1de ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
- .debug_loc     0x0000000000000238       0x2c ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_loc     0x0000000000000264       0x37 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_loc     0x000000000000029b       0x21 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_loc     0x00000000000002bc       0xcd ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_loc     0x0000000000000389       0x8b ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_loc     0x0000000000000414       0x1e c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_loc     0x0000000000000000       0x70 obj/default/hello_world_small.o
+ .debug_loc     0x0000000000000070      0x1de ../hangman_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_loc     0x000000000000024e       0x2c ../hangman_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_loc     0x000000000000027a       0x37 ../hangman_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_loc     0x00000000000002b1       0x21 ../hangman_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_loc     0x00000000000002d2       0xcd ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_loc     0x000000000000039f       0x8b ../hangman_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_loc     0x000000000000042a       0x1e c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.2.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
 .debug_macinfo
  *(.debug_macinfo)
