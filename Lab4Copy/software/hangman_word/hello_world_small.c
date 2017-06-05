@@ -98,7 +98,7 @@ int main()
 	// There is likely something wrong with our config!
 	// Look at messed up System ID Checks.
 
-	alt_putstr("\nLetter Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
+	alt_putstr("\nHEX Word Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
 
 	char in = alt_getchar();
 	alt_getchar(); // To strip out the enter!
@@ -106,34 +106,43 @@ int main()
 		// Guesser
 		alt_putstr("\nYou chose guesser! \n");
 
-		// Listen for game start, then clear buffer
+		// Listen for game start
+		// This should be the length of the HEX 
 		while (!*received_char);
-		*leds = *parallel_out;
-		if (*parallel_out != START_GAME){
-			alt_printf("\nWanted Game Start=%c, but found %c \n", START_GAME, *parallel_out);
-			exit(0);
-		}
+		int in = *parallel_out;
+		*leds = in;
+
 
 		alt_putstr("\nGame start as guesser! \n");
+		alt_putstr("\nGuess must be length: %d \n", in);
 
-		alt_putstr("\nEnter a letter a guess: \n");
-		in = alt_getchar();
-		alt_getchar();
-		alt_printf("Letter Guessed: %c \n", in);
+		char input_buffer[in];
 
-		// Load guess character
-		*parallel_in = in;
-		*load = 1;
-		*transmit_enable = 1;
-		// Wait for send...
-		while (!*sent_char);
-		*sent_char = 0;
-		*transmit_enable = 0;
+		alt_printf("Word Guessed: ");
+		for (int i = 0; i < in; i++) {
+			alt_printf("%c", input_buffer[i]);
+		}
+		alt_printf("\n");
 
-		// Listen for game status - win or lose
-		while (!*received_char);
+		// Load guess characters one by one
+		for (int i = 0; i < in; i++) {
+			*parallel_in = input_buffer[i];
+			*load = 1;
+			*transmit_enable = 1;
+			// Wait for send...
+			while (!*sent_char);
+			*sent_char = 0;
+			*transmit_enable = 0;
+
+			// Wait for receive response
+			// TODO: Do we want to perform validation with parallel_out?
+			while (!*received_char);
+		}
+
+		// Final response will indicate whether the guess was correct
 		in = *parallel_out;
 		*leds = in;
+
 		if (in != WIN_GAME && in != LOSE_GAME) {
 			alt_printf("\nWanted Game Win=%c or Game Lose=%c, but found %c \n", WIN_GAME, LOSE_GAME, in);
 			exit(0);
@@ -150,14 +159,33 @@ int main()
 		alt_printf("\nYou chose proposer, because you entered %c. \n", in);
 
 		alt_putstr("\nEnter a letter for an opponent to guess: \n");
-		char to_guess = alt_getchar();
-		alt_getchar();
-		alt_printf("Guess target: %c \n", to_guess);
 
-		// Send game start
+		alt_putstr("\nEnter a guess length: \n");
+		int length = alt_getchar(); // Treat char as int...
+		alt_getchar(); // Read in enter
+
+		alt_putstr("\nEnter a guess length of length %d: \n", length);
+		
+		// Read in a guess, character by character
+		char input_buffer[length];
+		for (int i = 0; i < length; i++) {
+			input_buffer[i] = alt_getchar();
+		}
+		alt_getchar(); // Read in enter
+
+
+		// Print out what you entered...
+		alt_printf("Word to Guess: ");
+		for (int i = 0; i < length; i++) {
+			alt_printf("%c", input_buffer[i]);
+		}
+		alt_printf("\n");
+
+
+		// Send game start, which is the length of the word to guess
 
 		// Load start game character
-		*parallel_in = START_GAME;
+		*parallel_in = length;
 		*load = 1;
 		*transmit_enable = 1;
 
@@ -166,16 +194,44 @@ int main()
 		*load = 0;
 		*transmit_enable = 0;
 
-		// Listen for game start ack/guess
-		while (!*received_char);
 
-		char received_guess = *parallel_out;
-		*leds = received_guess;
+		// Read in guess...
+		char guess_buffer[length];
+		for (int i = 0; i < length; i++) {
+
+			// Wait for receive a character...
+			while (!*received_char);
+			char received_guess = *parallel_out;
+			*leds = received_guess;
+			guess_buffer[i] = received_guess;
+
+			// Received OK - we can accept another character after sending a response
+
+			// Load the index of the last character we read in...
+			*parallel_in = i;
+			*load = 1;
+			*transmit_enable = 1;
+
+			// Wait for send...
+			while (!*sent_char);
+			*sent_char = 0;
+			*transmit_enable = 0;
+		}
+
 		alt_putstr("\nGame start as proposer! \n");
-		alt_printf("\nReceived guess: %c as guess \n", received_guess);
 
+		// Print out what received as a guess...
+		// Validate as you print...
+		int correct = 1;
+		alt_printf("\nReceived guess: ");
+		for (int i = 0; i < length; i++) {
+			alt_printf("%c", guess_buffer[i]);
+			if (guess_buffer[i] != input_buffer[i])
+				correct = 0;
+		}
+		alt_printf("\n");
 
-		if (to_guess == received_guess) {
+		if (correct) {
 			alt_putstr("\nGuess was correct!\n");
 			*parallel_in = WIN_GAME;
 		} else {
