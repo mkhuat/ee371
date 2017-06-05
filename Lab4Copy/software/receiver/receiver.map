@@ -76,7 +76,7 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
                 0x0000000000000020                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
                 0x0000000000000020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
 
-.text           0x0000000000000020      0x3a0
+.text           0x0000000000000020      0x3d4
                 [!provide]                        PROVIDE (stext, ABSOLUTE (.))
  *(.interp)
  *(.hash)
@@ -124,34 +124,34 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
  .text          0x0000000000000020       0x3c ../receiver_bsp//obj/HAL/src/crt0.o
                 0x0000000000000020                _start
  .text          0x000000000000005c        0x0 obj/default/hello_world_small.o
- .text.startup  0x000000000000005c       0x38 obj/default/hello_world_small.o
+ .text.startup  0x000000000000005c       0x6c obj/default/hello_world_small.o
                 0x000000000000005c                main
- .text          0x0000000000000094       0xe0 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
-                0x0000000000000094                alt_load
- .text          0x0000000000000174       0x2c ../receiver_bsp/\libhal_bsp.a(alt_main.o)
-                0x0000000000000174                alt_main
- .text          0x00000000000001a0      0x170 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
-                0x00000000000001a0                alt_printf
- .text          0x0000000000000310       0x48 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
-                0x0000000000000310                alt_putchar
- .text          0x0000000000000358       0x24 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x0000000000000358                alt_irq_init
-                0x0000000000000378                alt_sys_init
- .text          0x000000000000037c       0x34 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
-                0x000000000000037c                altera_avalon_jtag_uart_write
- .text          0x00000000000003b0        0x4 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
-                0x00000000000003b0                alt_dcache_flush_all
- .text          0x00000000000003b4        0x4 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
-                0x00000000000003b4                alt_icache_flush_all
- .text          0x00000000000003b8        0x8 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
-                0x00000000000003b8                altera_nios2_qsys_irq_init
+ .text          0x00000000000000c8       0xe0 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
+                0x00000000000000c8                alt_load
+ .text          0x00000000000001a8       0x2c ../receiver_bsp/\libhal_bsp.a(alt_main.o)
+                0x00000000000001a8                alt_main
+ .text          0x00000000000001d4      0x170 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
+                0x00000000000001d4                alt_printf
+ .text          0x0000000000000344       0x48 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
+                0x0000000000000344                alt_putchar
+ .text          0x000000000000038c       0x24 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x000000000000038c                alt_irq_init
+                0x00000000000003ac                alt_sys_init
+ .text          0x00000000000003b0       0x34 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x00000000000003b0                altera_avalon_jtag_uart_write
+ .text          0x00000000000003e4        0x4 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x00000000000003e4                alt_dcache_flush_all
+ .text          0x00000000000003e8        0x4 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x00000000000003e8                alt_icache_flush_all
+ .text          0x00000000000003ec        0x8 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+                0x00000000000003ec                altera_nios2_qsys_irq_init
  *(.gnu.warning.*)
  *(.fini)
                 [!provide]                        PROVIDE (__etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (_etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (etext, ABSOLUTE (.))
  *(.eh_frame_hdr)
-                0x00000000000003c0                . = ALIGN (0x4)
+                0x00000000000003f4                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start, ABSOLUTE (.))
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end, ABSOLUTE (.))
@@ -173,90 +173,90 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
  *(SORT(.dtors.*))
                 [!provide]                        PROVIDE (__DTOR_END__, ABSOLUTE (.))
  *(.jcr)
-                0x00000000000003c0                . = ALIGN (0x4)
+                0x00000000000003f4                . = ALIGN (0x4)
 
-.rodata         0x00000000000003c0       0x14
-                0x00000000000003c0                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
-                0x00000000000003c0                . = ALIGN (0x4)
+.rodata         0x00000000000003f4       0x14
+                0x00000000000003f4                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x00000000000003f4                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x00000000000003c0       0x14 obj/default/hello_world_small.o
+                0x00000000000003f4       0x14 obj/default/hello_world_small.o
                                          0x11 (size before relaxing)
  *(.rodata1)
-                0x00000000000003d4                . = ALIGN (0x4)
-                0x00000000000003d4                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
-                0x00000000000003c0                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+                0x0000000000000408                . = ALIGN (0x4)
+                0x0000000000000408                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x00000000000003f4                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
 
-.rwdata         0x00000000000003d4        0x4 load address 0x00000000000003d8
-                0x00000000000003d4                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
-                0x00000000000003d4                . = ALIGN (0x4)
+.rwdata         0x0000000000000408        0x4 load address 0x000000000000040c
+                0x0000000000000408                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x0000000000000408                . = ALIGN (0x4)
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x00000000000003d4        0x0 ../receiver_bsp//obj/HAL/src/crt0.o
- .data          0x00000000000003d4        0x0 obj/default/hello_world_small.o
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(alt_main.o)
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .data          0x00000000000003d4        0x0 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
-                0x00000000000083d4                _gp = ABSOLUTE ((. + 0x8000))
+ .data          0x0000000000000408        0x0 ../receiver_bsp//obj/HAL/src/crt0.o
+ .data          0x0000000000000408        0x0 obj/default/hello_world_small.o
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x0000000000000408        0x0 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+                0x0000000000008408                _gp = ABSOLUTE ((. + 0x8000))
                 [!provide]                        PROVIDE (gp, _gp)
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0x00000000000003d4        0x4 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x00000000000003d4                jtag_uart
+ .sdata         0x0000000000000408        0x4 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x0000000000000408                jtag_uart
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x00000000000003d8                . = ALIGN (0x4)
-                0x00000000000003d8                _edata = ABSOLUTE (.)
+                0x000000000000040c                . = ALIGN (0x4)
+                0x000000000000040c                _edata = ABSOLUTE (.)
                 [!provide]                        PROVIDE (edata, ABSOLUTE (.))
-                0x00000000000003d8                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
-                0x00000000000003d8                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+                0x000000000000040c                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x000000000000040c                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
 
-.bss            0x00000000000003dc        0xc
-                0x00000000000003dc                __bss_start = ABSOLUTE (.)
+.bss            0x0000000000000410        0xc
+                0x0000000000000410                __bss_start = ABSOLUTE (.)
                 [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0x00000000000003dc        0xc ../receiver_bsp/\libhal_bsp.a(alt_main.o)
-                0x00000000000003dc                alt_envp
-                0x00000000000003e0                alt_argv
-                0x00000000000003e4                alt_argc
+ .sbss          0x0000000000000410        0xc ../receiver_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000000410                alt_envp
+                0x0000000000000414                alt_argv
+                0x0000000000000418                alt_argc
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
                 [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp//obj/HAL/src/crt0.o
- .bss           0x00000000000003e8        0x0 obj/default/hello_world_small.o
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(alt_main.o)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .bss           0x00000000000003e8        0x0 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp//obj/HAL/src/crt0.o
+ .bss           0x000000000000041c        0x0 obj/default/hello_world_small.o
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x000000000000041c        0x0 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
  *(COMMON)
-                0x00000000000003e8                . = ALIGN (0x4)
-                0x00000000000003e8                __bss_end = ABSOLUTE (.)
+                0x000000000000041c                . = ALIGN (0x4)
+                0x000000000000041c                __bss_end = ABSOLUTE (.)
 
-.onchip_memory  0x00000000000003e8        0x0
+.onchip_memory  0x000000000000041c        0x0
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_start, ABSOLUTE (.))
  *(.onchip_memory .onchip_memory. onchip_memory.*)
-                0x00000000000003e8                . = ALIGN (0x4)
+                0x000000000000041c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_end, ABSOLUTE (.))
-                0x00000000000003e8                _end = ABSOLUTE (.)
-                0x00000000000003e8                end = ABSOLUTE (.)
-                0x00000000000003e8                __alt_stack_base = ABSOLUTE (.)
+                0x000000000000041c                _end = ABSOLUTE (.)
+                0x000000000000041c                end = ABSOLUTE (.)
+                0x000000000000041c                __alt_stack_base = ABSOLUTE (.)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_load_addr, LOADADDR (.onchip_memory))
 
 .stab
@@ -331,66 +331,66 @@ LOAD c:/altera/16.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000      0xb5a
+.debug_info     0x0000000000000000      0xba2
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0x73 ../receiver_bsp//obj/HAL/src/crt0.o
- .debug_info    0x0000000000000073       0x6c obj/default/hello_world_small.o
- .debug_info    0x00000000000000df      0x1c9 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
- .debug_info    0x00000000000002a8      0x169 ../receiver_bsp/\libhal_bsp.a(alt_main.o)
- .debug_info    0x0000000000000411      0x14d ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
- .debug_info    0x000000000000055e      0x12a ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_info    0x0000000000000688      0x185 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_info    0x000000000000080d      0x197 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_info    0x00000000000009a4       0x92 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_info    0x0000000000000a36       0x92 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_info    0x0000000000000ac8       0x92 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_info    0x0000000000000073       0xb4 obj/default/hello_world_small.o
+ .debug_info    0x0000000000000127      0x1c9 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_info    0x00000000000002f0      0x169 ../receiver_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x0000000000000459      0x14d ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_info    0x00000000000005a6      0x12a ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_info    0x00000000000006d0      0x185 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000000855      0x197 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x00000000000009ec       0x92 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x0000000000000a7e       0x92 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x0000000000000b10       0x92 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
 
-.debug_abbrev   0x0000000000000000      0x685
+.debug_abbrev   0x0000000000000000      0x69d
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000       0x12 ../receiver_bsp//obj/HAL/src/crt0.o
- .debug_abbrev  0x0000000000000012       0x64 obj/default/hello_world_small.o
- .debug_abbrev  0x0000000000000076       0xd8 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
- .debug_abbrev  0x000000000000014e       0xee ../receiver_bsp/\libhal_bsp.a(alt_main.o)
- .debug_abbrev  0x000000000000023c       0xd5 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
- .debug_abbrev  0x0000000000000311       0xd2 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_abbrev  0x00000000000003e3      0x107 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_abbrev  0x00000000000004ea       0xd5 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_abbrev  0x00000000000005bf       0x42 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_abbrev  0x0000000000000601       0x42 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_abbrev  0x0000000000000643       0x42 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_abbrev  0x0000000000000012       0x7c obj/default/hello_world_small.o
+ .debug_abbrev  0x000000000000008e       0xd8 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x0000000000000166       0xee ../receiver_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x0000000000000254       0xd5 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_abbrev  0x0000000000000329       0xd2 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_abbrev  0x00000000000003fb      0x107 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x0000000000000502       0xd5 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x00000000000005d7       0x42 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x0000000000000619       0x42 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x000000000000065b       0x42 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
 
-.debug_line     0x0000000000000000      0x677
+.debug_line     0x0000000000000000      0x67b
  *(.debug_line)
  .debug_line    0x0000000000000000       0x66 ../receiver_bsp//obj/HAL/src/crt0.o
- .debug_line    0x0000000000000066       0x73 obj/default/hello_world_small.o
- .debug_line    0x00000000000000d9       0xa5 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
- .debug_line    0x000000000000017e       0xbd ../receiver_bsp/\libhal_bsp.a(alt_main.o)
- .debug_line    0x000000000000023b      0x10a ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
- .debug_line    0x0000000000000345       0x55 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_line    0x000000000000039a      0x101 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_line    0x000000000000049b       0xf0 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_line    0x000000000000058b       0x4e ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_line    0x00000000000005d9       0x4e ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_line    0x0000000000000627       0x50 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_line    0x0000000000000066       0x77 obj/default/hello_world_small.o
+ .debug_line    0x00000000000000dd       0xa5 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_line    0x0000000000000182       0xbd ../receiver_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_line    0x000000000000023f      0x10a ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_line    0x0000000000000349       0x55 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_line    0x000000000000039e      0x101 ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x000000000000049f       0xf0 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x000000000000058f       0x4e ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x00000000000005dd       0x4e ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x000000000000062b       0x50 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
 
-.debug_frame    0x0000000000000000      0x1c4
+.debug_frame    0x0000000000000000      0x1c8
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x28 obj/default/hello_world_small.o
- .debug_frame   0x0000000000000028       0x30 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
- .debug_frame   0x0000000000000058       0x2c ../receiver_bsp/\libhal_bsp.a(alt_main.o)
- .debug_frame   0x0000000000000084       0x54 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
- .debug_frame   0x00000000000000d8       0x30 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_frame   0x0000000000000108       0x3c ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_frame   0x0000000000000144       0x20 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_frame   0x0000000000000164       0x20 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_frame   0x0000000000000184       0x20 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_frame   0x00000000000001a4       0x20 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_frame   0x0000000000000000       0x2c obj/default/hello_world_small.o
+ .debug_frame   0x000000000000002c       0x30 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_frame   0x000000000000005c       0x2c ../receiver_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_frame   0x0000000000000088       0x54 ../receiver_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_frame   0x00000000000000dc       0x30 ../receiver_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_frame   0x000000000000010c       0x3c ../receiver_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_frame   0x0000000000000148       0x20 ../receiver_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_frame   0x0000000000000168       0x20 ../receiver_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_frame   0x0000000000000188       0x20 ../receiver_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_frame   0x00000000000001a8       0x20 ../receiver_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
 
 .debug_str      0x0000000000000000      0x504
  *(.debug_str)
- .debug_str     0x0000000000000000       0x94 obj/default/hello_world_small.o
-                                         0x99 (size before relaxing)
- .debug_str     0x0000000000000094      0x207 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_str     0x0000000000000000       0xe4 obj/default/hello_world_small.o
+                                        0x110 (size before relaxing)
+ .debug_str     0x00000000000000e4      0x1b7 ../receiver_bsp/\libhal_bsp.a(alt_load.o)
                                         0x240 (size before relaxing)
  .debug_str     0x000000000000029b       0x8f ../receiver_bsp/\libhal_bsp.a(alt_main.o)
                                         0x1b9 (size before relaxing)

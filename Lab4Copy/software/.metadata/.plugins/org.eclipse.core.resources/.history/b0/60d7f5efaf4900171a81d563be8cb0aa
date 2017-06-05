@@ -1,0 +1,7 @@
+#define switches (volatile char *) 0x9070
+#define leds (char *) 0x9060
+void main()
+{
+	while (1)
+		*leds = *switches;
+}

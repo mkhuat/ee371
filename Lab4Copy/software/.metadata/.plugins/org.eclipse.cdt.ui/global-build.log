@@ -1,49 +1,29 @@
-17:48:21 **** Incremental Build of configuration Nios II for project sender ****
+01:21:47 **** Incremental Build of configuration Nios II for project sender ****
 make all 
 Info: Building ../sender_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../sender_bsp/
 [BSP build complete]
 Info: Compiling hello_world_small.c to obj/default/hello_world_small.o
 nios2-elf-gcc -xc -MP -MMD -c -I../sender_bsp//HAL/inc -I../sender_bsp/ -I../sender_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world_small.o hello_world_small.c
+hello_world_small.c: In function 'main':
+hello_world_small.c:95:7: warning: unused variable 'in' [-Wunused-variable]
+  char in;
+       ^
 Info: Linking sender.elf
 nios2-elf-g++  -T'../sender_bsp//linker.x' -msys-crt0='../sender_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../sender_bsp/  -msmallc  -Wl,-Map=sender.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o sender.elf obj/default/hello_world_small.o -lm -msys-lib=m
 nios2-elf-insert sender.elf --thread_model hal --cpu_name nios2_processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_sys --quartus_project_dir "C:/Users/mkhuat/Documents/ee371/Lab4Copy" --jdi ../..//output_files/Nios_processor.jdi --sopcinfo C:/Users/mkhuat/Documents/ee371/Lab4Copy/software/sender_bsp/../../nios_sys.sopcinfo
-Info: (sender.elf) 1004 Bytes program size (code + initialized data).
-Info:              30 KBytes free for stack + heap.
+Info: (sender.elf) 452 Bytes program size (code + initialized data).
+Info:              31 KBytes free for stack + heap.
 Info: Creating sender.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source sender.elf >sender.objdump
 [sender build complete]
-17:48:35 **** Build of configuration Nios II for project sender ****
+01:22:01 **** Build of configuration Nios II for project sender ****
 make all 
 Info: Building ../sender_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../sender_bsp/
 [BSP build complete]
 [sender build complete]
-17:48:36 **** Incremental Build of configuration Nios II for project sender ****
-make all 
-Info: Building ../sender_bsp/
-C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../sender_bsp/
-[BSP build complete]
-[sender build complete]
-18:53:57 **** Build of configuration Nios II for project receiver ****
-make all 
-Info: Building ../receiver_bsp/
-C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../receiver_bsp/
-[BSP build complete]
-[receiver build complete]
-18:54:23 **** Incremental Build of configuration Nios II for project receiver ****
-make all 
-Info: Building ../receiver_bsp/
-C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../receiver_bsp/
-[BSP build complete]
-[receiver build complete]
-18:54:29 **** Build of configuration Nios II for project sender ****
-make all 
-Info: Building ../sender_bsp/
-C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../sender_bsp/
-[BSP build complete]
-[sender build complete]
-18:54:41 **** Incremental Build of configuration Nios II for project sender ****
+01:22:02 **** Incremental Build of configuration Nios II for project sender ****
 make all 
 Info: Building ../sender_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../sender_bsp/

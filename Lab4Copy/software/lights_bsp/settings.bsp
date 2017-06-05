@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>May 28, 2017 3:37:54 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1496011074275</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\mkhuat\Documents\ee371\Lab4\software\lights_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>Jun 4, 2017 10:28:58 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1496640538799</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\mkhuat\Documents\ee371\Lab4Copy\software\lights_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\nios_sys.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
@@ -905,20 +905,56 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>LEDs</slaveDescriptor>
+                <slaveDescriptor>load</slaveDescriptor>
                 <addressRange>0x00009000 - 0x0000900F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>switches</slaveDescriptor>
+                <slaveDescriptor>transmit_enable</slaveDescriptor>
                 <addressRange>0x00009010 - 0x0000901F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>char_sent</slaveDescriptor>
+                <addressRange>0x00009020 - 0x0000902F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>char_received</slaveDescriptor>
+                <addressRange>0x00009030 - 0x0000903F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>parallel_output</slaveDescriptor>
+                <addressRange>0x00009040 - 0x0000904F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>parallel_input</slaveDescriptor>
+                <addressRange>0x00009050 - 0x0000905F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>LEDs</slaveDescriptor>
+                <addressRange>0x00009060 - 0x0000906F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>switches</slaveDescriptor>
+                <addressRange>0x00009070 - 0x0000907F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>jtag_uart</slaveDescriptor>
-                <addressRange>0x00009020 - 0x00009027</addressRange>
+                <addressRange>0x00009080 - 0x00009087</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

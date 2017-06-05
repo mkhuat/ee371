@@ -5,7 +5,7 @@ module testbench();
   wire clk, sample_clk, reset, serial_io, char_sent, char_received;
   wire transmit_en, load;
   wire [7:0] parallel_in, parallel_out;
-  wire [9:0] data_r, data_t;
+  wire [10:0] data_r, data_t;
   wire [3:0] bic_receive, ps, bic_transmit;
   
   ReceiveComm receiver(clk, sample_clk, reset, serial_io, parallel_out, char_received, data_r, bic_receive);
@@ -25,7 +25,7 @@ module Tester(clk, sample_clk, reset, serial_io, parallel_in, parallel_out,
   output reg clk, sample_clk, reset, load, transmit_en;
   output reg [7:0] parallel_in;
 
-  input [9:0] data_r, data_t;
+  input [10:0] data_r, data_t;
   
   input [3:0] bic_receive, ps_transmit, bic_transmit;
 
@@ -57,9 +57,9 @@ module Tester(clk, sample_clk, reset, serial_io, parallel_in, parallel_out,
     parallel_in = "k";
 	reset <= 1;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
     reset <= 0;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
-	reset <= 0;		load <= 1;	transmit_en <= 0; 	@(posedge clk);
-    reset <= 0;		load <= 0;	transmit_en <= 1; 	@(posedge clk);
-    reset <= 0;		load <= 0;	transmit_en <= 0; 	@(posedge clk);
+	reset <= 0;		load <= 1;	transmit_en <= 1; 	@(posedge clk);
+    reset <= 0;		/*load <= 0;	transmit_en <= 1;*/ 	@(posedge clk);
+    reset <= 0;		/*load <= 0;	transmit_en <= 0;*/ 	@(posedge clk);
 
 	// Step 24 times
 	for (i = 0; i < 640; i = i + 1)  @(posedge clk);

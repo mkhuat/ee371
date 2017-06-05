@@ -6,9 +6,12 @@
    <connections preferredWidth="143" />
    <irq preferredWidth="34" />
    <name preferredWidth="191" />
+   <baseaddress preferredWidth="73" />
+   <export preferredWidth="224" />
+   <description preferredWidth="84" />
   </columns>
  </systemtable>
  <library expandedCategories="Library,Project" />
- <window width="974" height="1167" x="953" y="0" />
+ <window width="1936" height="1176" x="-8" y="-8" />
  <generation path="nios_system" />
 </preferences>

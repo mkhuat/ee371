@@ -79,6 +79,8 @@
  */
 
 #include "sys/alt_stdio.h"
+#include "altera_avalon_pio_regs.h"
+
 #define sent_char (volatile char *) 0x9020
 #define transmit_enable (volatile char *) 0x9010
 #define received_char (volatile char *) 0x9030
@@ -91,8 +93,9 @@ int main()
 { 
 	// Receiver
 	while (1) {
+		alt_printf("parallel_in=%d \n", *parallel_in);
 		if (*received_char) {
-			alt_printf("parallel_in=%d \n", parallel_in);
+			alt_printf("parallel_in=%d \n", *parallel_in);
 		}
 	}
 

@@ -1,13 +1,13 @@
-Partition Merge Status : Successful - Sun Jun 04 18:51:34 2017
+Partition Merge Status : Successful - Mon Jun 05 01:11:21 2017
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 Revision Name : Nios_processor
 Top-level Entity Name : TopLevelCommSystem
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 1017
+Total registers : 4227
 Total pins : 24
 Total virtual pins : 0
-Total block memory bits : 273,408
+Total block memory bits : 483,328
 Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
