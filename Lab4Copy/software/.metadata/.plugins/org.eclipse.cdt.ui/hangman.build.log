@@ -1,21 +1,9 @@
-18:00:17 **** Incremental Build of configuration Nios II for project hangman ****
+11:03:32 **** Incremental Build of configuration Nios II for project hangman ****
 make all 
 Info: Building ../hangman_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_bsp/
-Makefile not up to date.
-../../nios_sys.sopcinfo has been modified since the BSP was generated.
+[BSP build complete]
+[hangman build complete]
 
-Generate the BSP to update the Makefile, and then build again.
-
-To generate from Eclipse:
- 1. Right-click the BSP project.
- 2. In the Nios II Menu, click Generate BSP.
-
-To generate from the command line:
- nios2-bsp-generate-files --settings=<settings file> --bsp-dir=<target bsp files directory>
-
-make[1]: *** [public.mk] Error 1
-make: *** [../hangman_bsp/-recurs-make-lib] Error 2
-
-18:00:18 Build Finished (took 738ms)
+11:03:32 Build Finished (took 740ms)
 

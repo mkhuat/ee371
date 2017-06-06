@@ -263,6 +263,8 @@ int main()
 			*transmit_enable = 0;
 		}
 
+		for (int i = 0; i < 100000; i++){}
+
 		alt_putstr("\nGame start as proposer! \n");
 
 		// Print out what received as a guess...

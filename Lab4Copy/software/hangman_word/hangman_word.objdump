@@ -807,10 +807,10 @@ int main()
  464:	e0fff617 	ldw	r3,-40(fp)
  468:	e1bff717 	ldw	r6,-36(fp)
  46c:	a480091e 	bne	r20,r18,494 <main+0x3cc>
-			while (!*sent_char);
-			*sent_char = 0;
 			*transmit_enable = 0;
 		}
+
+		for (int i = 0; i < 100000; i++){}
 
 		alt_putstr("\nGame start as proposer! \n");
  470:	01000034 	movhi	r4,0

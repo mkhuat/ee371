@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_processor' in SOPC Builder design 'nios_sys'
  * SOPC Builder design path: ../../nios_sys.sopcinfo
  *
- * Generated: Sun Jun 04 16:36:41 PDT 2017
+ * Generated: Tue Jun 06 09:58:42 PDT 2017
  */
 
 /*
@@ -130,12 +130,174 @@
 
 
 /*
+ * HEX0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_HEX0 altera_avalon_pio
+#define HEX0_BASE 0x9000
+#define HEX0_BIT_CLEARING_EDGE_REGISTER 0
+#define HEX0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HEX0_CAPTURE 0
+#define HEX0_DATA_WIDTH 8
+#define HEX0_DO_TEST_BENCH_WIRING 0
+#define HEX0_DRIVEN_SIM_VALUE 0
+#define HEX0_EDGE_TYPE "NONE"
+#define HEX0_FREQ 50000000
+#define HEX0_HAS_IN 0
+#define HEX0_HAS_OUT 1
+#define HEX0_HAS_TRI 0
+#define HEX0_IRQ -1
+#define HEX0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define HEX0_IRQ_TYPE "NONE"
+#define HEX0_NAME "/dev/HEX0"
+#define HEX0_RESET_VALUE 0
+#define HEX0_SPAN 16
+#define HEX0_TYPE "altera_avalon_pio"
+
+
+/*
+ * HEX1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_HEX1 altera_avalon_pio
+#define HEX1_BASE 0x9010
+#define HEX1_BIT_CLEARING_EDGE_REGISTER 0
+#define HEX1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HEX1_CAPTURE 0
+#define HEX1_DATA_WIDTH 8
+#define HEX1_DO_TEST_BENCH_WIRING 0
+#define HEX1_DRIVEN_SIM_VALUE 0
+#define HEX1_EDGE_TYPE "NONE"
+#define HEX1_FREQ 50000000
+#define HEX1_HAS_IN 0
+#define HEX1_HAS_OUT 1
+#define HEX1_HAS_TRI 0
+#define HEX1_IRQ -1
+#define HEX1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define HEX1_IRQ_TYPE "NONE"
+#define HEX1_NAME "/dev/HEX1"
+#define HEX1_RESET_VALUE 0
+#define HEX1_SPAN 16
+#define HEX1_TYPE "altera_avalon_pio"
+
+
+/*
+ * HEX2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_HEX2 altera_avalon_pio
+#define HEX2_BASE 0x9020
+#define HEX2_BIT_CLEARING_EDGE_REGISTER 0
+#define HEX2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HEX2_CAPTURE 0
+#define HEX2_DATA_WIDTH 8
+#define HEX2_DO_TEST_BENCH_WIRING 0
+#define HEX2_DRIVEN_SIM_VALUE 0
+#define HEX2_EDGE_TYPE "NONE"
+#define HEX2_FREQ 50000000
+#define HEX2_HAS_IN 0
+#define HEX2_HAS_OUT 1
+#define HEX2_HAS_TRI 0
+#define HEX2_IRQ -1
+#define HEX2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define HEX2_IRQ_TYPE "NONE"
+#define HEX2_NAME "/dev/HEX2"
+#define HEX2_RESET_VALUE 0
+#define HEX2_SPAN 16
+#define HEX2_TYPE "altera_avalon_pio"
+
+
+/*
+ * HEX3 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_HEX3 altera_avalon_pio
+#define HEX3_BASE 0x9030
+#define HEX3_BIT_CLEARING_EDGE_REGISTER 0
+#define HEX3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HEX3_CAPTURE 0
+#define HEX3_DATA_WIDTH 8
+#define HEX3_DO_TEST_BENCH_WIRING 0
+#define HEX3_DRIVEN_SIM_VALUE 0
+#define HEX3_EDGE_TYPE "NONE"
+#define HEX3_FREQ 50000000
+#define HEX3_HAS_IN 0
+#define HEX3_HAS_OUT 1
+#define HEX3_HAS_TRI 0
+#define HEX3_IRQ -1
+#define HEX3_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define HEX3_IRQ_TYPE "NONE"
+#define HEX3_NAME "/dev/HEX3"
+#define HEX3_RESET_VALUE 0
+#define HEX3_SPAN 16
+#define HEX3_TYPE "altera_avalon_pio"
+
+
+/*
+ * HEX4 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_HEX4 altera_avalon_pio
+#define HEX4_BASE 0x9040
+#define HEX4_BIT_CLEARING_EDGE_REGISTER 0
+#define HEX4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HEX4_CAPTURE 0
+#define HEX4_DATA_WIDTH 8
+#define HEX4_DO_TEST_BENCH_WIRING 0
+#define HEX4_DRIVEN_SIM_VALUE 0
+#define HEX4_EDGE_TYPE "NONE"
+#define HEX4_FREQ 50000000
+#define HEX4_HAS_IN 0
+#define HEX4_HAS_OUT 1
+#define HEX4_HAS_TRI 0
+#define HEX4_IRQ -1
+#define HEX4_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define HEX4_IRQ_TYPE "NONE"
+#define HEX4_NAME "/dev/HEX4"
+#define HEX4_RESET_VALUE 0
+#define HEX4_SPAN 16
+#define HEX4_TYPE "altera_avalon_pio"
+
+
+/*
+ * HEX5 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_HEX5 altera_avalon_pio
+#define HEX5_BASE 0x9050
+#define HEX5_BIT_CLEARING_EDGE_REGISTER 0
+#define HEX5_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HEX5_CAPTURE 0
+#define HEX5_DATA_WIDTH 8
+#define HEX5_DO_TEST_BENCH_WIRING 0
+#define HEX5_DRIVEN_SIM_VALUE 0
+#define HEX5_EDGE_TYPE "NONE"
+#define HEX5_FREQ 50000000
+#define HEX5_HAS_IN 0
+#define HEX5_HAS_OUT 1
+#define HEX5_HAS_TRI 0
+#define HEX5_IRQ -1
+#define HEX5_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define HEX5_IRQ_TYPE "NONE"
+#define HEX5_NAME "/dev/HEX5"
+#define HEX5_RESET_VALUE 0
+#define HEX5_SPAN 16
+#define HEX5_TYPE "altera_avalon_pio"
+
+
+/*
  * LEDs configuration
  *
  */
 
 #define ALT_MODULE_CLASS_LEDs altera_avalon_pio
-#define LEDS_BASE 0x9060
+#define LEDS_BASE 0x90c0
 #define LEDS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_CAPTURE 0
@@ -172,19 +334,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x9080
+#define ALT_STDERR_BASE 0x90e0
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x9080
+#define ALT_STDIN_BASE 0x90e0
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x9080
+#define ALT_STDOUT_BASE 0x90e0
 #define ALT_STDOUT_DEV jtag_uart
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -198,7 +360,7 @@
  */
 
 #define ALT_MODULE_CLASS_char_received altera_avalon_pio
-#define CHAR_RECEIVED_BASE 0x9030
+#define CHAR_RECEIVED_BASE 0x9090
 #define CHAR_RECEIVED_BIT_CLEARING_EDGE_REGISTER 0
 #define CHAR_RECEIVED_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define CHAR_RECEIVED_CAPTURE 0
@@ -225,7 +387,7 @@
  */
 
 #define ALT_MODULE_CLASS_char_sent altera_avalon_pio
-#define CHAR_SENT_BASE 0x9020
+#define CHAR_SENT_BASE 0x9080
 #define CHAR_SENT_BIT_CLEARING_EDGE_REGISTER 0
 #define CHAR_SENT_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define CHAR_SENT_CAPTURE 0
@@ -262,7 +424,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x9080
+#define JTAG_UART_BASE 0x90e0
 #define JTAG_UART_IRQ 5
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
@@ -280,7 +442,7 @@
  */
 
 #define ALT_MODULE_CLASS_load altera_avalon_pio
-#define LOAD_BASE 0x9000
+#define LOAD_BASE 0x9060
 #define LOAD_BIT_CLEARING_EDGE_REGISTER 0
 #define LOAD_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LOAD_CAPTURE 0
@@ -336,7 +498,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_input altera_avalon_pio
-#define PARALLEL_INPUT_BASE 0x9050
+#define PARALLEL_INPUT_BASE 0x90b0
 #define PARALLEL_INPUT_BIT_CLEARING_EDGE_REGISTER 0
 #define PARALLEL_INPUT_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PARALLEL_INPUT_CAPTURE 0
@@ -345,8 +507,8 @@
 #define PARALLEL_INPUT_DRIVEN_SIM_VALUE 0
 #define PARALLEL_INPUT_EDGE_TYPE "NONE"
 #define PARALLEL_INPUT_FREQ 50000000
-#define PARALLEL_INPUT_HAS_IN 1
-#define PARALLEL_INPUT_HAS_OUT 0
+#define PARALLEL_INPUT_HAS_IN 0
+#define PARALLEL_INPUT_HAS_OUT 1
 #define PARALLEL_INPUT_HAS_TRI 0
 #define PARALLEL_INPUT_IRQ -1
 #define PARALLEL_INPUT_IRQ_INTERRUPT_CONTROLLER_ID -1
@@ -363,7 +525,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_output altera_avalon_pio
-#define PARALLEL_OUTPUT_BASE 0x9040
+#define PARALLEL_OUTPUT_BASE 0x90a0
 #define PARALLEL_OUTPUT_BIT_CLEARING_EDGE_REGISTER 0
 #define PARALLEL_OUTPUT_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PARALLEL_OUTPUT_CAPTURE 0
@@ -372,8 +534,8 @@
 #define PARALLEL_OUTPUT_DRIVEN_SIM_VALUE 0
 #define PARALLEL_OUTPUT_EDGE_TYPE "NONE"
 #define PARALLEL_OUTPUT_FREQ 50000000
-#define PARALLEL_OUTPUT_HAS_IN 0
-#define PARALLEL_OUTPUT_HAS_OUT 1
+#define PARALLEL_OUTPUT_HAS_IN 1
+#define PARALLEL_OUTPUT_HAS_OUT 0
 #define PARALLEL_OUTPUT_HAS_TRI 0
 #define PARALLEL_OUTPUT_IRQ -1
 #define PARALLEL_OUTPUT_IRQ_INTERRUPT_CONTROLLER_ID -1
@@ -390,7 +552,7 @@
  */
 
 #define ALT_MODULE_CLASS_switches altera_avalon_pio
-#define SWITCHES_BASE 0x9070
+#define SWITCHES_BASE 0x90d0
 #define SWITCHES_BIT_CLEARING_EDGE_REGISTER 0
 #define SWITCHES_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SWITCHES_CAPTURE 0
@@ -417,7 +579,7 @@
  */
 
 #define ALT_MODULE_CLASS_transmit_enable altera_avalon_pio
-#define TRANSMIT_ENABLE_BASE 0x9010
+#define TRANSMIT_ENABLE_BASE 0x9070
 #define TRANSMIT_ENABLE_BIT_CLEARING_EDGE_REGISTER 0
 #define TRANSMIT_ENABLE_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define TRANSMIT_ENABLE_CAPTURE 0

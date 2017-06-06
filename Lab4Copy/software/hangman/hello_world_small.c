@@ -79,14 +79,21 @@
  */
 
 #include "sys/alt_stdio.h"
-#define sent_char (volatile char *) 0x9020
-#define transmit_enable (volatile char *) 0x9010
-#define received_char (volatile char *) 0x9030
-#define load (volatile char *) 0x9000
-#define parallel_out (volatile char *) 0x9040
-#define parallel_in (volatile char *) 0x9050
-#define leds (char *) 0x9060
-#define switches (volatile char *) 0x9070
+
+#define sent_char (volatile char *) 0x9080
+#define transmit_enable (volatile char *) 0x9070
+#define received_char (volatile char *) 0x9090
+#define load (volatile char *) 0x9060
+#define parallel_out (volatile char *) 0x90a0
+#define parallel_in (volatile char *) 0x90b0
+#define leds (char *) 0x90c0
+#define switches (volatile char *) 0x90d0
+#define hex0 (volatile char *) 0x9050
+#define hex1 (volatile char *) 0x9040
+#define hex2 (volatile char *) 0x9030
+#define hex3 (volatile char *) 0x9020
+#define hex4 (volatile char *) 0x9010
+#define hex5 (volatile char *) 0x9000
 
 int main()
 {
@@ -129,6 +136,8 @@ int main()
 		while (!*sent_char);
 		*sent_char = 0;
 		*transmit_enable = 0;
+
+		while (*received_char);
 
 		// Listen for game status - win or lose
 		while (!*received_char);
@@ -173,6 +182,9 @@ int main()
 		*leds = received_guess;
 		alt_putstr("\nGame start as proposer! \n");
 		alt_printf("\nReceived guess: %c as guess \n", received_guess);
+
+		for (int i = 0; i < 100000; i++){}
+
 
 		if (to_guess == received_guess) {
 			alt_putstr("\nGuess was correct!\n");

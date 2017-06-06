@@ -1,4 +1,4 @@
-16:11:44 **** Build of configuration Nios II for project count_binary_final ****
+10:15:26 **** Build of configuration Nios II for project count_binary_final ****
 make all 
 Info: Building ../count_binary_final_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../count_binary_final_bsp/
@@ -17,5 +17,5 @@ To generate from the command line:
 make[1]: *** [public.mk] Error 1
 make: *** [../count_binary_final_bsp/-recurs-make-lib] Error 2
 
-16:11:45 Build Finished (took 1s.327ms)
+10:15:26 Build Finished (took 846ms)
 
