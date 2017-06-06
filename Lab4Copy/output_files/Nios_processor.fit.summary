@@ -1,13 +1,13 @@
-Fitter Status : Successful - Mon Jun 05 13:27:38 2017
+Fitter Status : Successful - Mon Jun 05 16:31:23 2017
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 Revision Name : Nios_processor
 Top-level Entity Name : TopLevelCommSystem
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 1,841 / 32,070 ( 6 % )
-Total registers : 4347
-Total pins : 26 / 457 ( 6 % )
+Logic utilization (in ALMs) : 1,955 / 32,070 ( 6 % )
+Total registers : 4485
+Total pins : 68 / 457 ( 15 % )
 Total virtual pins : 0
 Total block memory bits : 483,328 / 4,065,280 ( 12 % )
 Total RAM Blocks : 59 / 397 ( 15 % )

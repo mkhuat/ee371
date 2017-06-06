@@ -79,17 +79,50 @@
  */
 
 #include "sys/alt_stdio.h"
-#define sent_char (volatile char *) 0x9020
-#define transmit_enable (volatile char *) 0x9010
-#define received_char (volatile char *) 0x9030
-#define load (volatile char *) 0x9000
-#define parallel_out (volatile char *) 0x9040
-#define parallel_in (volatile char *) 0x9050
-#define leds (char *) 0x9060
-#define switches (volatile char *) 0x9070
-#define hex (char *) 0x9080 // TODO: Find what this actually is
+
+#define sent_char (volatile char *) 0x9080
+#define transmit_enable (volatile char *) 0x9070
+#define received_char (volatile char *) 0x9090
+#define load (volatile char *) 0x9060
+#define parallel_out (volatile char *) 0x90a0
+#define parallel_in (volatile char *) 0x90b0
+#define leds (char *) 0x90c0
+#define switches (volatile char *) 0x90d0
+#define hex0 (volatile char *) 0x9050
+#define hex1 (volatile char *) 0x9040
+#define hex2 (volatile char *) 0x9030
+#define hex3 (volatile char *) 0x9020
+#define hex4 (volatile char *) 0x9010
+#define hex5 (volatile char *) 0x9000
+
+void write_to_hex(char to_write, int hex_idx) {
+
+	switch (hex_idx) {
+	case 0:
+		*hex0 = to_write;
+		break;
+	case 1:
+		*hex1 = to_write;
+		break;
+	case 2:
+		*hex2 = to_write;
+		break;
+	case 3:
+		*hex3 = to_write;
+		break;
+	case 4:
+		*hex4 = to_write;
+		break;
+	case 5:
+		*hex5 = to_write;
+		break;
+	}
+}
+
 int main()
 {
+	char WIN_GAME = 'w';
+	char LOSE_GAME = 'l';
 
 	alt_putstr("\nHEX Word Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
 
@@ -102,27 +135,39 @@ int main()
 		// Listen for game start
 		// This should be the length of the HEX 
 		while (!*received_char);
-		int in = *parallel_out;
-		*leds = in;
+		char length_char = *parallel_out;
+		int length = length_char - 48;
+		*leds = length_char;
 
 
 		alt_putstr("\nGame start as guesser! \n");
-		alt_putstr("\nGuess must be length: %d \n", in);
+		alt_printf("\nGuess must be length: %c \n", length_char);
+		alt_printf("\nEnter guess:\n");
 
-		char input_buffer[in];
+		char input_buffer[length];
+		for (int i = 0; i < length; i++) {
+			input_buffer[i] = alt_getchar();
+		}
+		alt_getchar(); // Read in enter
+
 
 		alt_printf("Word Guessed: ");
-		for (int i = 0; i < in; i++) {
+		for (int i = 0; i < length; i++) {
 			alt_printf("%c", input_buffer[i]);
 		}
 		alt_printf("\n");
 
 		// Load guess characters one by one
-		for (int i = 0; i < in; i++) {
+		for (int i = 0; i < length; i++) {
 			*parallel_in = input_buffer[i];
-			*(hex + i) = input_buffer[i];
+			write_to_hex(input_buffer[i], i);
+
 			*load = 1;
 			*transmit_enable = 1;
+
+			// Wait for line to clear
+			while (*sent_char);
+
 			// Wait for send...
 			while (!*sent_char);
 			*sent_char = 0;
@@ -155,10 +200,11 @@ int main()
 		alt_putstr("\nEnter a letter for an opponent to guess: \n");
 
 		alt_putstr("\nEnter a guess length: \n");
-		int length = alt_getchar(); // Treat char as int...
+		int char_length = alt_getchar(); // Treat char as int...
+		int length = char_length - 48;
 		alt_getchar(); // Read in enter
 
-		alt_putstr("\nEnter a guess length of length %d: \n", length);
+		alt_printf("\nEnter a guess of length %c: \n", char_length);
 		
 		// Read in a guess, character by character
 		char input_buffer[length];
@@ -172,7 +218,7 @@ int main()
 		alt_printf("Word to Guess: ");
 		for (int i = 0; i < length; i++) {
 			alt_printf("%c", input_buffer[i]);
-			*(hex + i) = input_buffer[i];
+			write_to_hex(input_buffer[i], i);
 		}
 		alt_printf("\n");
 
@@ -180,7 +226,7 @@ int main()
 		// Send game start, which is the length of the word to guess
 
 		// Load start game character
-		*parallel_in = length;
+		*parallel_in = char_length;
 		*load = 1;
 		*transmit_enable = 1;
 
@@ -199,14 +245,20 @@ int main()
 			char received_guess = *parallel_out;
 			*leds = received_guess;
 			guess_buffer[i] = received_guess;
-			*(hex + i) = guess_buffer[i];
+			write_to_hex(guess_buffer[i], i);
 
 			// Received OK - we can accept another character after sending a response
-
+			// Our response will be win or lose for the final char
+			if (i == length - 1) {
+				break;
+			}
 			// Load the index of the last character we read in...
 			*parallel_in = i;
 			*load = 1;
 			*transmit_enable = 1;
+
+			// Wait for line to clear
+			while (*sent_char);
 
 			// Wait for send...
 			while (!*sent_char);

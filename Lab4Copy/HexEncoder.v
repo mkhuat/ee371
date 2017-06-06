@@ -1,14 +1,14 @@
 module HexEncoder (hex_value, hex_display);
 
 	input [7:0] hex_value;
-	output reg [6:0] hex_display;
+	output wire [6:0] hex_display;
 
 	always @(*) begin
 		case (hex_value)
 			8'b00110000: hex_display = 7'b1000000; // 0
 			8'b00110001: hex_display = 7'b1111001; // 1
 			8'b00110010: hex_display = 7'b0100100; // 2
-			8'b00110100: hex_display = 7'b0110000; // 3
+			8'b00110011: hex_display = 7'b0110000; // 3
 			8'b00110100: hex_display = 7'b0011001; // 4
 			8'b00110101: hex_display = 7'b0010010; // 5
 			8'b00110110: hex_display = 7'b0000010; // 6

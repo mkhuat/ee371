@@ -77,11 +77,11 @@ module TopLevelCommSystem (CLOCK_50, SW, KEY, LEDR, HEX5, HEX4, HEX3, HEX2, HEX1
 
 		
 	// Display hex
-	HexEncoder hexencoder5 (hex_values_5, HEX5);
-	HexEncoder hexencoder4 (hex_values_4, HEX4);
-	HexEncoder hexencoder3 (hex_values_3, HEX3);
-	HexEncoder hexencoder2 (hex_values_2, HEX2);
-	HexEncoder hexencoder1 (hex_values_1, HEX1);
-	HexEncoder hexencoder0 (hex_values_0, HEX0);
+	HexEncoder hexencoder5 (hex_value_5, HEX5);
+	HexEncoder hexencoder4 (hex_value_4, HEX4);
+	HexEncoder hexencoder3 (hex_value_3, HEX3);
+	HexEncoder hexencoder2 (hex_value_2, HEX2);
+	HexEncoder hexencoder1 (hex_value_1, HEX1);
+	HexEncoder hexencoder0 (hex_value_0, HEX0);
 		
 endmodule

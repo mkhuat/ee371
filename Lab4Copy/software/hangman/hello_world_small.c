@@ -174,7 +174,6 @@ int main()
 		alt_putstr("\nGame start as proposer! \n");
 		alt_printf("\nReceived guess: %c as guess \n", received_guess);
 
-
 		if (to_guess == received_guess) {
 			alt_putstr("\nGuess was correct!\n");
 			*parallel_in = WIN_GAME;

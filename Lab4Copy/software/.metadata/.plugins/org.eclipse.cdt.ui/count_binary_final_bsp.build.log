@@ -1,0 +1,11 @@
+16:11:45 **** Build of configuration Nios II for project count_binary_final_bsp ****
+make all 
+Makefile not up to date.
+../../nios_sys.sopcinfo has been modified since the BSP was generated.
+
+Generate the BSP to update the Makefile, and then build again.
+
+Command canceled
+
+16:11:46 Build Cancelled (took 545ms)
+
