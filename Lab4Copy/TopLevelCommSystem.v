@@ -12,10 +12,10 @@ module TopLevelCommSystem (CLOCK_50, SW, KEY, LEDR, HEX5, HEX4, HEX3, HEX2, HEX1
 		
 	parameter 
 		
-		CLOCK_INDEX = 24,
+		CLOCK_INDEX = 20,
 		
 		// Sample index: subtract 4 because 16x faster
-		SAMPLE_INDEX = 20;
+		SAMPLE_INDEX = CLOCK_INDEX - 4;
 	
 	
 	input CLOCK_50, serial_in;

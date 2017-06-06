@@ -1,7 +1,7 @@
 module HexEncoder (hex_value, hex_display);
 
 	input [7:0] hex_value;
-	output wire [6:0] hex_display;
+	output reg [6:0] hex_display;
 
 	always @(*) begin
 		case (hex_value)
@@ -21,7 +21,7 @@ module HexEncoder (hex_value, hex_display);
 			8'b01000100: hex_display = 7'b1000000; // D
 			8'b01000101: hex_display = 7'b0000110; // E
 			8'b01000110: hex_display = 7'b0001110; // F
-			default:  hex_display = 7'b1111111;	
+			default:  hex_display = 7'b0111111;	   // dash
 		endcase
 	end
 

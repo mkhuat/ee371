@@ -1,5 +1,5 @@
 Partition Merge report for Nios_processor
-Mon Jun 05 16:29:43 2017
+Mon Jun 05 17:46:15 2017
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 
 
@@ -42,7 +42,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Partition Merge Summary                                                           ;
 +---------------------------------+-------------------------------------------------+
-; Partition Merge Status          ; Successful - Mon Jun 05 16:29:43 2017           ;
+; Partition Merge Status          ; Successful - Mon Jun 05 17:46:15 2017           ;
 ; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Standard Edition ;
 ; Revision Name                   ; Nios_processor                                  ;
 ; Top-level Entity Name           ; TopLevelCommSystem                              ;
@@ -238,8 +238,8 @@ agreement for further details.
 ; ReceiveComm:receive|char_received      ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; ReceiveComm:receive|char_received                        ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|char_received~reg0 ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; ReceiveComm:receive|char_received                        ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|char_received~reg0 ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; ReceiveComm:receive|char_received                        ; N/A                                                                                                                                                            ;
-; ReceiveComm:receive|clk                ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[24]                                           ; N/A                                                                                                                                                            ;
-; ReceiveComm:receive|clk                ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[24]                                           ; N/A                                                                                                                                                            ;
+; ReceiveComm:receive|clk                ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[20]                                           ; N/A                                                                                                                                                            ;
+; ReceiveComm:receive|clk                ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[20]                                           ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|data[0]            ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; ReceiveComm:receive|data[0]                              ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|data[0]            ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; ReceiveComm:receive|data[0]                              ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|data[0]~reg0       ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; ReceiveComm:receive|data[0]                              ; N/A                                                                                                                                                            ;
@@ -308,8 +308,8 @@ agreement for further details.
 ; ReceiveComm:receive|ps.SAMPLING        ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; ReceiveComm:receive|ps.SAMPLING                          ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|reset              ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; KEY[0]~_wirecell                                         ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|reset              ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; KEY[0]~_wirecell                                         ; N/A                                                                                                                                                            ;
-; ReceiveComm:receive|sample_clk         ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[20]                                           ; N/A                                                                                                                                                            ;
-; ReceiveComm:receive|sample_clk         ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[20]                                           ; N/A                                                                                                                                                            ;
+; ReceiveComm:receive|sample_clk         ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[16]                                           ; N/A                                                                                                                                                            ;
+; ReceiveComm:receive|sample_clk         ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[16]                                           ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|serial_in          ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; serial_in                                                ; N/A                                                                                                                                                            ;
 ; ReceiveComm:receive|serial_in          ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; serial_in                                                ; N/A                                                                                                                                                            ;
 ; SW[0]                                  ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; SW[0]                                                    ; N/A                                                                                                                                                            ;
@@ -370,8 +370,8 @@ agreement for further details.
 ; TransmitComm:transmit|char_sent        ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; TransmitComm:transmit|char_sent                          ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|char_sent~reg0   ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; TransmitComm:transmit|char_sent                          ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|char_sent~reg0   ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; TransmitComm:transmit|char_sent                          ; N/A                                                                                                                                                            ;
-; TransmitComm:transmit|clk              ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[24]                                           ; N/A                                                                                                                                                            ;
-; TransmitComm:transmit|clk              ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[24]                                           ; N/A                                                                                                                                                            ;
+; TransmitComm:transmit|clk              ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[20]                                           ; N/A                                                                                                                                                            ;
+; TransmitComm:transmit|clk              ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[20]                                           ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|data[0]          ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; VCC                                                      ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|data[0]          ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; VCC                                                      ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|data[0]~reg0     ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; VCC                                                      ; N/A                                                                                                                                                            ;
@@ -452,8 +452,8 @@ agreement for further details.
 ; TransmitComm:transmit|ps[3]~reg0       ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; GND                                                      ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|reset            ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; KEY[0]~_wirecell                                         ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|reset            ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; KEY[0]~_wirecell                                         ; N/A                                                                                                                                                            ;
-; TransmitComm:transmit|sample_clk       ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[20]                                           ; N/A                                                                                                                                                            ;
-; TransmitComm:transmit|sample_clk       ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[20]                                           ; N/A                                                                                                                                                            ;
+; TransmitComm:transmit|sample_clk       ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[16]                                           ; N/A                                                                                                                                                            ;
+; TransmitComm:transmit|sample_clk       ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; clock_buff[16]                                           ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|serial_out       ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; TransmitComm:transmit|data[10]                           ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|serial_out       ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; TransmitComm:transmit|data[10]                           ; N/A                                                                                                                                                            ;
 ; TransmitComm:transmit|transmit_en      ; pre-synthesis ; connected ; Top                  ; post-synthesis    ; nios_sys:NiosII|nios_sys_load:transmit_enable|data_out   ; N/A                                                                                                                                                            ;
@@ -572,13 +572,13 @@ agreement for further details.
 +---------------------------------------------+--------+------------------+--------------------------+----------------------+--------------------------------+
 ; Statistic                                   ; Top    ; sld_hub:auto_hub ; sld_signaltap:nios_ports ; sld_signaltap:stream ; hard_block:auto_generated_inst ;
 +---------------------------------------------+--------+------------------+--------------------------+----------------------+--------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 861    ; 103              ; 351                      ; 1205                 ; 0                              ;
+; Estimate of Logic utilization (ALMs needed) ; 864    ; 103              ; 351                      ; 1204                 ; 0                              ;
 ;                                             ;        ;                  ;                          ;                      ;                                ;
-; Combinational ALUT usage for logic          ; 1330   ; 155              ; 272                      ; 453                  ; 0                              ;
+; Combinational ALUT usage for logic          ; 1336   ; 155              ; 272                      ; 453                  ; 0                              ;
 ;     -- 7 input functions                    ; 16     ; 3                ; 1                        ; 0                    ; 0                              ;
 ;     -- 6 input functions                    ; 224    ; 28               ; 86                       ; 89                   ; 0                              ;
 ;     -- 5 input functions                    ; 303    ; 39               ; 39                       ; 220                  ; 0                              ;
-;     -- 4 input functions                    ; 289    ; 26               ; 24                       ; 22                   ; 0                              ;
+;     -- 4 input functions                    ; 295    ; 26               ; 24                       ; 22                   ; 0                              ;
 ;     -- <=3 input functions                  ; 498    ; 59               ; 122                      ; 122                  ; 0                              ;
 ; Memory ALUT usage                           ; 0      ; 0                ; 0                        ; 0                    ; 0                              ;
 ;     -- 64-address deep                      ; 0      ; 0                ; 0                        ; 0                    ; 0                              ;
@@ -600,8 +600,8 @@ agreement for further details.
 ;     -- Registered Output Connections        ; 338    ; 862              ; 0                        ; 0                    ; 0                              ;
 ;                                             ;        ;                  ;                          ;                      ;                                ;
 ; Internal Connections                        ;        ;                  ;                          ;                      ;                                ;
-;     -- Total Connections                    ; 14240  ; 2013             ; 3845                     ; 14066                ; 1748                           ;
-;     -- Registered Connections               ; 6211   ; 1671             ; 2485                     ; 11322                ; 0                              ;
+;     -- Total Connections                    ; 14264  ; 2013             ; 3845                     ; 14066                ; 1748                           ;
+;     -- Registered Connections               ; 6235   ; 1671             ; 2485                     ; 11322                ; 0                              ;
 ;                                             ;        ;                  ;                          ;                      ;                                ;
 ; External Connections                        ;        ;                  ;                          ;                      ;                                ;
 ;     -- Top                                  ; 0      ; 203              ; 364                      ; 2135                 ; 97                             ;
@@ -1373,13 +1373,13 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 2524           ;
+; Estimate of Logic utilization (ALMs needed) ; 2525           ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 2210           ;
+; Combinational ALUT usage for logic          ; 2216           ;
 ;     -- 7 input functions                    ; 20             ;
 ;     -- 6 input functions                    ; 427            ;
 ;     -- 5 input functions                    ; 601            ;
-;     -- 4 input functions                    ; 361            ;
+;     -- 4 input functions                    ; 367            ;
 ;     -- <=3 input functions                  ; 801            ;
 ;                                             ;                ;
 ; Dedicated logic registers                   ; 4369           ;
@@ -1392,7 +1392,7 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 3203           ;
-; Total fan-out                               ; 30409          ;
+; Total fan-out                               ; 30433          ;
 ; Average fan-out                             ; 4.30           ;
 +---------------------------------------------+----------------+
 
@@ -1419,7 +1419,7 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 Info: *******************************************************************
 Info: Running Quartus Prime Partition Merge
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
-    Info: Processing started: Mon Jun 05 16:29:41 2017
+    Info: Processing started: Mon Jun 05 17:46:13 2017
 Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor --merge=on
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Warning (35010): Previously generated Fitter netlist for partition "Top" is older than current Synthesis netlist -- using the current Synthesis netlist instead to ensure that the latest source changes are included
@@ -1433,15 +1433,15 @@ Critical Warning (35025): Partially connected in-system debug instance "stream" 
 Info (35002): Resolved and merged 4 partition(s)
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 5927 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 5933 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 14 input pins
     Info (21059): Implemented 58 output pins
-    Info (21061): Implemented 5505 logic cells
+    Info (21061): Implemented 5511 logic cells
     Info (21064): Implemented 349 RAM segments
 Info: Quartus Prime Partition Merge was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 920 megabytes
-    Info: Processing ended: Mon Jun 05 16:29:43 2017
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 922 megabytes
+    Info: Processing ended: Mon Jun 05 17:46:16 2017
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 

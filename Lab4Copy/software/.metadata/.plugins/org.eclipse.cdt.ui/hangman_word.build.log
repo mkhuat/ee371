@@ -1,9 +1,9 @@
-17:05:29 **** Incremental Build of configuration Nios II for project hangman_word ****
+17:49:55 **** Incremental Build of configuration Nios II for project hangman_word ****
 make all 
 Info: Building ../hangman_word_bsp/
 C:/altera/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../hangman_word_bsp/
 [BSP build complete]
 [hangman_word build complete]
 
-17:05:29 Build Finished (took 738ms)
+17:49:56 Build Finished (took 744ms)
 

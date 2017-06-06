@@ -1,5 +1,5 @@
 Flow report for Nios_processor
-Mon Jun 05 16:32:34 2017
+Mon Jun 05 17:49:18 2017
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 
 
@@ -41,25 +41,25 @@ agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Mon Jun 05 16:32:34 2017           ;
+; Flow Status                     ; Successful - Mon Jun 05 17:49:18 2017           ;
 ; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Standard Edition ;
 ; Revision Name                   ; Nios_processor                                  ;
 ; Top-level Entity Name           ; TopLevelCommSystem                              ;
 ; Family                          ; Cyclone V                                       ;
 ; Device                          ; 5CSEMA5F31C6                                    ;
 ; Timing Models                   ; Final                                           ;
-; Logic utilization (in ALMs)     ; 1,955 / 32,070 ( 6 % )                          ;
+; Logic utilization (in ALMs)     ; 1,953 / 32,070 ( 6 % )                          ;
 ; Total registers                 ; 4485                                            ;
 ; Total pins                      ; 68 / 457 ( 15 % )                               ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 483,328 / 4,065,280 ( 12 % )                    ;
-; Total PLLs                      ; 0 / 6 ( 0 % )                                   ;
-; Total DLLs                      ; 0 / 4 ( 0 % )                                   ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                                  ;
 ; Total HSSI RX PCSs              ; 0                                               ;
 ; Total HSSI PMA RX Deserializers ; 0                                               ;
 ; Total HSSI TX PCSs              ; 0                                               ;
 ; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0 / 6 ( 0 % )                                   ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                   ;
 +---------------------------------+-------------------------------------------------+
 
 
@@ -240,7 +240,27 @@ agreement for further details.
 ; Assembler                 ; 00:00:11     ; 1.0                     ; 978 MB              ; 00:00:10                           ;
 ; TimeQuest Timing Analyzer ; 00:00:47     ; 1.3                     ; 1378 MB             ; 00:00:59                           ;
 ; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; 932 MB              ; 00:00:05                           ;
-; Total                     ; 00:53:59     ; --                      ; --                  ; 01:36:25                           ;
+; Analysis & Elaboration    ; 00:00:11     ; 1.0                     ; 908 MB              ; 00:00:25                           ;
+; Analysis & Elaboration    ; 00:00:35     ; 1.0                     ; 1135 MB             ; 00:01:02                           ;
+; Analysis & Synthesis      ; 00:00:40     ; 1.0                     ; 1175 MB             ; 00:01:07                           ;
+; Partition Merge           ; 00:00:02     ; 1.0                     ; 919 MB              ; 00:00:02                           ;
+; Fitter                    ; 00:01:39     ; 1.2                     ; 2907 MB             ; 00:03:31                           ;
+; Assembler                 ; 00:00:11     ; 1.0                     ; 984 MB              ; 00:00:11                           ;
+; TimeQuest Timing Analyzer ; 00:00:52     ; 1.3                     ; 1381 MB             ; 00:01:06                           ;
+; EDA Netlist Writer        ; 00:00:06     ; 1.0                     ; 931 MB              ; 00:00:06                           ;
+; Analysis & Synthesis      ; 00:00:37     ; 1.0                     ; 1150 MB             ; 00:01:04                           ;
+; Partition Merge           ; 00:00:03     ; 1.0                     ; 1073 MB             ; 00:00:03                           ;
+; Fitter                    ; 00:01:37     ; 1.2                     ; 2962 MB             ; 00:03:14                           ;
+; Assembler                 ; 00:00:12     ; 1.0                     ; 982 MB              ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:49     ; 1.3                     ; 1386 MB             ; 00:01:02                           ;
+; EDA Netlist Writer        ; 00:00:06     ; 1.0                     ; 935 MB              ; 00:00:06                           ;
+; Analysis & Synthesis      ; 00:00:40     ; 1.0                     ; 1178 MB             ; 00:01:06                           ;
+; Partition Merge           ; 00:00:02     ; 1.0                     ; 922 MB              ; 00:00:02                           ;
+; Fitter                    ; 00:01:50     ; 1.2                     ; 2928 MB             ; 00:03:54                           ;
+; Assembler                 ; 00:00:12     ; 1.0                     ; 979 MB              ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:48     ; 1.3                     ; 1378 MB             ; 00:00:59                           ;
+; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; 931 MB              ; 00:00:05                           ;
+; Total                     ; 01:05:16     ; --                      ; --                  ; 01:55:50                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -382,6 +402,26 @@ agreement for further details.
 ; Assembler                 ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
 ; TimeQuest Timing Analyzer ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
 ; EDA Netlist Writer        ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Analysis & Elaboration    ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Analysis & Elaboration    ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Partition Merge           ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Fitter                    ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Assembler                 ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Partition Merge           ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Fitter                    ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Assembler                 ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Partition Merge           ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Fitter                    ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; Assembler                 ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; EE-137PC22       ; Windows 8 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 
@@ -515,6 +555,26 @@ quartus_map --read_settings_files=on --write_settings_files=off Nios_processor -
 quartus_map --read_settings_files=on --write_settings_files=off Nios_processor -c Nios_processor
 quartus_cdb --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor --merge=on
 quartus_fit --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_map --read_settings_files=on --write_settings_files=off Nios_processor -c Nios_processor
+quartus_cdb --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_asm --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_sta Nios_processor -c Nios_processor
+quartus_eda --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_map --read_settings_files=on --write_settings_files=off Nios_processor -c Nios_processor --analysis_and_elaboration
+quartus_map --read_settings_files=on --write_settings_files=off Nios_processor -c Nios_processor --analysis_and_elaboration
+quartus_map --read_settings_files=on --write_settings_files=off Nios_processor -c Nios_processor
+quartus_cdb --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_asm --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_sta Nios_processor -c Nios_processor
+quartus_eda --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_map --read_settings_files=on --write_settings_files=off Nios_processor -c Nios_processor
+quartus_cdb --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_asm --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
+quartus_sta Nios_processor -c Nios_processor
+quartus_eda --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
 quartus_map --read_settings_files=on --write_settings_files=off Nios_processor -c Nios_processor
 quartus_cdb --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor --merge=on
 quartus_fit --read_settings_files=off --write_settings_files=off Nios_processor -c Nios_processor
