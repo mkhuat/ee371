@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jun 5, 2017 5:21:35 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1496708495887</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 5, 2017 6:03:35 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1496711015324</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\mkhuat\Documents\ee371\Lab4Copy\software\hangman_word_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\nios_sys.sopcinfo</SopcDesignFile>

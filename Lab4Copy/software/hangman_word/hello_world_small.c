@@ -124,13 +124,13 @@ int main()
 	char WIN_GAME = 'w';
 	char LOSE_GAME = 'l';
 
-	alt_putstr("\nHEX Word Hangman! Enter 'g' for guessing, 'p' for proposing: \n");
+	alt_putstr("\nHEX Word Hangman! Enter 'g' for guessing, 'p' for proposing > ");
 
 	char in = alt_getchar();
 	alt_getchar(); // To strip out the enter!
 	if (in == 'g') {
 		// Guesser
-		alt_putstr("\nYou chose guesser! \n");
+		alt_printf("\nYou chose guesser, because you entered %c. \n", in);
 
 		// Listen for game start
 		// This should be the length of the HEX 
@@ -139,10 +139,9 @@ int main()
 		int length = length_char - 48;
 		*leds = length_char;
 
-
 		alt_putstr("\nGame start as guesser! \n");
-		alt_printf("\nGuess must be length: %c \n", length_char);
-		alt_printf("\nEnter guess:\n");
+		alt_printf("\nGuess must be length: %c", length_char);
+		alt_printf("\nEnter guess >  ");
 
 		char input_buffer[length];
 		for (int i = 0; i < length; i++) {
@@ -197,14 +196,12 @@ int main()
 		// Proposer
 		alt_printf("\nYou chose proposer, because you entered %c. \n", in);
 
-		alt_putstr("\nEnter a letter for an opponent to guess: \n");
-
-		alt_putstr("\nEnter a guess length: \n");
+		alt_putstr("\nEnter a guess length >  ");
 		int char_length = alt_getchar(); // Treat char as int...
 		int length = char_length - 48;
 		alt_getchar(); // Read in enter
 
-		alt_printf("\nEnter a guess of length %c: \n", char_length);
+		alt_printf("\nEnter a guess of length %c > ", char_length);
 		
 		// Read in a guess, character by character
 		char input_buffer[length];
